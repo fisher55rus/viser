@@ -1,0 +1,26 @@
+* C:\Workspace_git\Mostovoy_DC\Modelirovanie\Stable\SimmetrCM.sch
+
+* Schematics Version 9.2
+* Thu Feb 14 15:35:23 2019
+
+
+
+** Analysis setup **
+.tran 0ns 200m SKIPBP
+.OPTIONS ABSTOL=1uA
+.OPTIONS ITL4=70
+.OPTIONS RELTOL=0.01
+
+
+* From [PSPICE NETLIST] section of C:\Program Files\Orcad\PSpice\PSpice.ini:
+.lib "nom.lib"
+
+.INC "SimmetrCM.net"
+
+
+.PROBE D(*) 
+.probe N($N_0018) 
+.probe I(R_R8) 
+
+
+.END

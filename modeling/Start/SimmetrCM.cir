@@ -1,0 +1,21 @@
+* C:\Workspace_MAI\DCDC\PSE38\SimmetrCM.sch
+
+* Schematics Version 9.2
+* Mon Feb 04 15:07:22 2019
+
+
+
+** Analysis setup **
+.tran 0ns 100m
+
+
+* From [PSPICE NETLIST] section of C:\Program Files\Orcad\PSpice\PSpice.ini:
+.lib "nom.lib"
+
+.INC "SimmetrCM.net"
+
+
+.PROBE V(*) I(*) W(*) D(*) NOISE(*) 
+
+
+.END

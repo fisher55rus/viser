@@ -1,0 +1,71 @@
+* Schematics Netlist *
+
+
+
+D_D2         I_sence $N_0001 Dbreak 
+D_D4         I_sence $N_0002 Dbreak 
+D_D1         $N_0001 $N_0003 Dbreak 
+D_D3         $N_0002 $N_0004 Dbreak 
+X_S1    AA1 0 $N_0003 $N_0001 SimmetrCM_S1 
+X_S2    AA2 0 $N_0001 I_sence SimmetrCM_S2 
+X_S3    AA2 0 $N_0004 $N_0002 SimmetrCM_S3 
+X_S4    AA1 0 $N_0002 I_sence SimmetrCM_S4 
+R_R2         $N_0005 I_sence  1k  
+V_V3         $N_0004 0 DC=300V
+R_R9         $N_0007 $N_0006  10k  
+D_D6         0 $N_0008 Dbreak 
+C_C8         0 $N_0009  100u  
+C_C9         $N_0007 $N_0009  300p  
+D_D5         0 $N_0010 Dbreak 
+D_D7         $N_0010 $N_0011 Dbreak 
+D_D8         $N_0008 $N_0011 Dbreak 
+R_R12         $N_0008 $N_0012  1m  
+Kn_K1         L_L1 L_L2     1
+L_L5         $N_0009 $N_0011  20m  
+R_R10         $N_0009 $N_0006  80k  
+R_R11         $N_0006 0  20k  
+R_R6         $N_0014 $N_0013  50k  
+C_C7         $N_0015 $N_0014  1n  
+C_C6         $N_0015 $N_0013  100p  
+R_R7         $N_0006 $N_0015  5k  
+V_V1         $N_0003 0 DC=300V
+V_V2         $N_0016 0 DC=15V
+C_C1         0 $N_0005  0.5n  
+C_C2         0 $N_0017  100p  
+C_C3         0 $N_0018  1u  
+C_C4         0 $N_0019  1n  
+R_R3         $N_0020 0  500k  
+C_C5         0 $N_0021  500p  
+C_C10         0 $N_0015  1n  
+X_U1         $N_0015 $N_0018 $N_0013 $N_0020 $N_0019 $N_0021 $N_0017 $N_0005 0
++  AA1 0 $N_0016 AA2 $N_0016 $N_0018 SG1825 
++ PARAMS: PERIOD={1/20k} DEADTIME=5e-8
+L_L1         $N_0001 $N_0002  40  
+L_L2         $N_0012 $N_0010  0.12  
+R_R8         $N_0009 0  0.2  
+R_R5         I_sence $N_0021  1k  
+R_R1         0 I_sence  20m  
+
+.subckt SimmetrCM_S1 1 2 3 4  
+S_S1         3 4 1 2 _S1
+RS_S1         1 2 1G
+.MODEL         _S1 VSWITCH Roff=1e6 Ron=1m Voff=0.0V Von=1.0V
+.ends SimmetrCM_S1
+
+.subckt SimmetrCM_S2 1 2 3 4  
+S_S2         3 4 1 2 _S2
+RS_S2         1 2 1G
+.MODEL         _S2 VSWITCH Roff=1e6 Ron=1m Voff=0.0V Von=1.0V
+.ends SimmetrCM_S2
+
+.subckt SimmetrCM_S3 1 2 3 4  
+S_S3         3 4 1 2 _S3
+RS_S3         1 2 1G
+.MODEL         _S3 VSWITCH Roff=1e6 Ron=1m Voff=0.0V Von=1.0V
+.ends SimmetrCM_S3
+
+.subckt SimmetrCM_S4 1 2 3 4  
+S_S4         3 4 1 2 _S4
+RS_S4         1 2 1G
+.MODEL         _S4 VSWITCH Roff=1m Ron=1.0 Voff=0.0V Von=1.0V
+.ends SimmetrCM_S4

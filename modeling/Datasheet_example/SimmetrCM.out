@@ -1,0 +1,2695 @@
+
+**** 02/14/19 15:17:18 ********* PSpice 9.2 (Mar 2000) ******** ID# 1 ********
+
+ * C:\Workspace_git\Mostovoy_DC\Modelirovanie\Datasheet_example\SimmetrCM.sch
+
+
+ ****     CIRCUIT DESCRIPTION
+
+
+******************************************************************************
+
+
+
+
+* Schematics Version 9.2
+* Thu Feb 14 15:17:12 2019
+
+
+
+** Analysis setup **
+.tran 0ns 160m 0 10u SKIPBP
+.OPTIONS ABSTOL=1uA
+.OPTIONS ITL4=70
+.OPTIONS RELTOL=0.01
+
+
+* From [PSPICE NETLIST] section of C:\Program Files\Orcad\PSpice\PSpice.ini:
+.lib "nom.lib"
+
+.INC "SimmetrCM.net"
+
+
+
+**** INCLUDING SimmetrCM.net ****
+* Schematics Netlist *
+
+
+
+D_D2         I_sence $N_0001 Dbreak 
+D_D4         I_sence $N_0002 Dbreak 
+D_D1         $N_0001 $N_0003 Dbreak 
+D_D3         $N_0002 $N_0004 Dbreak 
+X_S1    AA1 0 $N_0003 $N_0001 SimmetrCM_S1 
+X_S2    AA2 0 $N_0001 I_sence SimmetrCM_S2 
+X_S3    AA2 0 $N_0004 $N_0002 SimmetrCM_S3 
+X_S4    AA1 0 $N_0002 I_sence SimmetrCM_S4 
+R_R2         $N_0005 I_sence  1k  
+V_V3         $N_0004 0 DC=300V
+R_R9         $N_0007 $N_0006  10k  
+D_D6         0 $N_0008 Dbreak 
+C_C8         0 $N_0009  100u  
+C_C9         $N_0007 $N_0009  300p  
+D_D5         0 $N_0010 Dbreak 
+D_D7         $N_0010 $N_0011 Dbreak 
+D_D8         $N_0008 $N_0011 Dbreak 
+R_R12         $N_0008 $N_0012  1m  
+Kn_K1         L_L1 L_L2     1
+L_L5         $N_0009 $N_0011  20m  
+R_R10         $N_0009 $N_0006  80k  
+R_R11         $N_0006 0  20k  
+R_R6         $N_0014 $N_0013  50k  
+C_C7         $N_0015 $N_0014  1n  
+C_C6         $N_0015 $N_0013  100p  
+R_R7         $N_0006 $N_0015  5k  
+V_V1         $N_0003 0 DC=300V
+V_V2         $N_0016 0 DC=15V
+C_C1         0 $N_0005  0.5n  
+C_C2         0 $N_0017  100p  
+C_C3         0 $N_0018  1u  
+C_C4         0 $N_0019  1n  
+R_R3         $N_0020 0  500k  
+C_C5         0 $N_0021  500p  
+C_C10         0 $N_0015  1n  
+X_U1         $N_0015 $N_0018 $N_0013 $N_0020 $N_0019 $N_0021 $N_0017 $N_0005 0
++  AA1 0 $N_0016 AA2 $N_0016 $N_0018 SG1825 
++ PARAMS: PERIOD={1/20k} DEADTIME=5e-8
+L_L1         $N_0001 $N_0002  40  
+L_L2         $N_0012 $N_0010  0.12  
+R_R8         $N_0009 0  0.2  
+R_R5         I_sence $N_0021  1k  
+R_R1         0 I_sence  20m  
+
+.subckt SimmetrCM_S1 1 2 3 4  
+S_S1         3 4 1 2 _S1
+RS_S1         1 2 1G
+.MODEL         _S1 VSWITCH Roff=1e6 Ron=1m Voff=0.0V Von=1.0V
+.ends SimmetrCM_S1
+
+.subckt SimmetrCM_S2 1 2 3 4  
+S_S2         3 4 1 2 _S2
+RS_S2         1 2 1G
+.MODEL         _S2 VSWITCH Roff=1e6 Ron=1m Voff=0.0V Von=1.0V
+.ends SimmetrCM_S2
+
+.subckt SimmetrCM_S3 1 2 3 4  
+S_S3         3 4 1 2 _S3
+RS_S3         1 2 1G
+.MODEL         _S3 VSWITCH Roff=1e6 Ron=1m Voff=0.0V Von=1.0V
+.ends SimmetrCM_S3
+
+.subckt SimmetrCM_S4 1 2 3 4  
+S_S4         3 4 1 2 _S4
+RS_S4         1 2 1G
+.MODEL         _S4 VSWITCH Roff=1m Ron=1.0 Voff=0.0V Von=1.0V
+.ends SimmetrCM_S4
+
+**** RESUMING SimmetrCM.cir ****
+.PROBE D(*) 
+.probe N($N_0009) 
+.probe I(R_R8) 
+
+
+.END
+
+
+**** Generated AtoD and DtoA Interfaces ****
+
+*
+* Analog/Digital interface for node $N_0020
+*
+* Moving X_U1.u99:OUT1 from analog node $N_0020 to new digital node $N_0020$DtoA
+X$$N_0020_DtoA1
++ $N_0020$DtoA
++ $N_0020
++ X_U1.DPWR
++ X_U1.DGND
++ DtoA_STD
++       PARAMS: DRVH=  96.4   DRVL= 104    CAPACITANCE=   0     
+*
+* Analog/Digital interface for node X_U1.xoutst.31
+*
+* Moving X_U1.xoutst.un1:OUT1 from analog node X_U1.xoutst.31 to new digital node X_U1.xoutst.31$DtoA
+X$X_U1.xoutst.31_DtoA1
++ X_U1.xoutst.31$DtoA
++ X_U1.xoutst.31
++ X_U1.DPWR
++ X_U1.DGND
++ dtoa_s_o1
++       PARAMS: DRVH=   1.0000E+06 DRVL=  60.6   CAPACITANCE=   0     
+*
+* Analog/Digital interface for node X_U1.xoutst.32
+*
+* Moving X_U1.xoutst.un2:OUT1 from analog node X_U1.xoutst.32 to new digital node X_U1.xoutst.32$DtoA
+X$X_U1.xoutst.32_DtoA1
++ X_U1.xoutst.32$DtoA
++ X_U1.xoutst.32
++ X_U1.DPWR
++ X_U1.DGND
++ dtoa_s_o1
++       PARAMS: DRVH=   1.0000E+06 DRVL=  60.6   CAPACITANCE=   0     
+*
+* Analog/Digital interface for node X_U1.xoutst.33
+*
+* Moving X_U1.xoutst.un11:OUT1 from analog node X_U1.xoutst.33 to new digital node X_U1.xoutst.33$DtoA
+X$X_U1.xoutst.33_DtoA1
++ X_U1.xoutst.33$DtoA
++ X_U1.xoutst.33
++ X_U1.DPWR
++ X_U1.DGND
++ dtoa_s_o1
++       PARAMS: DRVH=   1.0000E+06 DRVL=  60.6   CAPACITANCE=   0     
+*
+* Analog/Digital interface for node X_U1.xoutst.34
+*
+* Moving X_U1.xoutst.un22:OUT1 from analog node X_U1.xoutst.34 to new digital node X_U1.xoutst.34$DtoA
+X$X_U1.xoutst.34_DtoA1
++ X_U1.xoutst.34$DtoA
++ X_U1.xoutst.34
++ X_U1.DPWR
++ X_U1.DGND
++ dtoa_s_o1
++       PARAMS: DRVH=   1.0000E+06 DRVL=  60.6   CAPACITANCE=   0     
+*
+* Analog/Digital interface for node X_U1.45
+*
+* Moving X_U1.uor2:OUT1 from analog node X_U1.45 to new digital node X_U1.45$DtoA
+X$X_U1.45_DtoA1
++ X_U1.45$DtoA
++ X_U1.45
++ X_U1.DPWR
++ X_U1.DGND
++ DtoA_STD
++       PARAMS: DRVH=  96.4   DRVL= 104    CAPACITANCE=   0     
+*
+* Analog/Digital interface power supply subcircuits
+*
+
+X$DIGIFPWR 0 DIGIFPWR
+
+**** 02/14/19 15:17:18 ********* PSpice 9.2 (Mar 2000) ******** ID# 1 ********
+
+ * C:\Workspace_git\Mostovoy_DC\Modelirovanie\Datasheet_example\SimmetrCM.sch
+
+
+ ****     Diode MODEL PARAMETERS
+
+
+******************************************************************************
+
+
+
+
+               Dbreak          X_U1.xbl1.x2.x1.dxea25 
+          IS   10.000000E-15  800.000000E-18 
+          RS     .1                          
+         CJO  100.000000E-15                 
+
+
+**** 02/14/19 15:17:18 ********* PSpice 9.2 (Mar 2000) ******** ID# 1 ********
+
+ * C:\Workspace_git\Mostovoy_DC\Modelirovanie\Datasheet_example\SimmetrCM.sch
+
+
+ ****     BJT MODEL PARAMETERS
+
+
+******************************************************************************
+
+
+
+
+               q_pwm           X_U1.xbl1.x2.x1.qxea25 
+               NPN             NPN             
+          IS    1.340000E-15  800.000000E-18 
+          BF   65.62          100            
+          NF    1               1            
+         VAF   74.03                         
+         IKF     .5385                       
+         ISE   19.480000E-15                 
+          NE    1.208                        
+          BR    9.715           1            
+          NR    1               1            
+          RB   10                            
+          RC    9                            
+         CJE    2.010000E-12                 
+         MJE     .377                        
+         CJC    1.393000E-12                 
+         MJC     .3416                       
+          TF  408.800000E-12                 
+         XTF    3                            
+         VTF    1.7                          
+         ITF     .6                          
+          TR  100.000000E-12                 
+         XTB    1.5                          
+          CN    2.42            2.42         
+           D     .87             .87         
+
+
+**** 02/14/19 15:17:18 ********* PSpice 9.2 (Mar 2000) ******** ID# 1 ********
+
+ * C:\Workspace_git\Mostovoy_DC\Modelirovanie\Datasheet_example\SimmetrCM.sch
+
+
+ ****     Voltage Controlled Switch MODEL PARAMETERS
+
+
+******************************************************************************
+
+
+
+
+               X_S1._S1        X_S2._S2        X_S3._S3        X_S4._S4        
+         RON    1.000000E-03    1.000000E-03    1.000000E-03    1            
+        ROFF    1.000000E+06    1.000000E+06    1.000000E+06    1.000000E-03 
+         VON    1               1               1               1            
+        VOFF    0               0               0               0            
+
+
+               sstop25         ssoftd25        
+         RON    1               5.000000E+03 
+        ROFF  100.000000E+06  100.000000E+06 
+         VON   13               1            
+        VOFF   12                .7          
+
+
+**** 02/14/19 15:17:18 ********* PSpice 9.2 (Mar 2000) ******** ID# 1 ********
+
+ * C:\Workspace_git\Mostovoy_DC\Modelirovanie\Datasheet_example\SimmetrCM.sch
+
+
+ ****     Current Controlled Switch MODEL PARAMETERS
+
+
+******************************************************************************
+
+
+
+
+               X_U1.xoutst.x2.isw25 
+         RON    1            
+        ROFF  100.000000E+06 
+         ION    1.5          
+        IOFF    1.3          
+
+
+**** 02/14/19 15:17:18 ********* PSpice 9.2 (Mar 2000) ******** ID# 1 ********
+
+ * C:\Workspace_git\Mostovoy_DC\Modelirovanie\Datasheet_example\SimmetrCM.sch
+
+
+ ****     Digital Input MODEL PARAMETERS
+
+
+******************************************************************************
+
+
+
+
+               dincone         DIN74           din74s_o1       
+        FILE DSO_DTOA        DSO_DTOA        DSO_DTOA        
+      FORMAT    6               6               6            
+    TIMESTEP  100.000000E-12  100.000000E-12  100.000000E-12 
+         CLO                                    1.000000E-12 
+         CHI                                    1.000000E-12 
+      S0NAME 0               0               0               
+       S0TSW    3.500000E-09    3.500000E-09  100.000000E-12 
+       S0RLO    1.000000E+03    7.13             .1          
+       S0RHI    1             389              10.000000E+03 
+      S1NAME 1               1               1               
+       S1TSW    5.500000E-09    5.500000E-09  100.000000E-12 
+       S1RLO    1             467             200.000000E+03 
+       S1RHI    1.000000E+03  200             200.000000E+03 
+      S2NAME X               X               x               
+       S2TSW    3.500000E-09    3.500000E-09  100.000000E-12 
+       S2RLO   42.9            42.9            34.6          
+       S2RHI  116             116              98.4          
+      S3NAME R               R               z               
+       S3TSW    3.500000E-09    3.500000E-09  100.000000E-12 
+       S3RLO   42.9            42.9           200.000000E+03 
+       S3RHI  116             116             200.000000E+03 
+      S4NAME F               F               R               
+       S4TSW    3.500000E-09    3.500000E-09  100.000000E-12 
+       S4RLO   42.9            42.9            34.6          
+       S4RHI  116             116              98.4          
+      S5NAME Z               Z               F               
+       S5TSW    3.500000E-09    3.500000E-09  100.000000E-12 
+       S5RLO  200.000000E+03  200.000000E+03   34.6          
+       S5RHI  200.000000E+03  200.000000E+03   98.4          
+
+
+**** 02/14/19 15:17:18 ********* PSpice 9.2 (Mar 2000) ******** ID# 1 ********
+
+ * C:\Workspace_git\Mostovoy_DC\Modelirovanie\Datasheet_example\SimmetrCM.sch
+
+
+ ****     Digital Output MODEL PARAMETERS
+
+
+******************************************************************************
+
+
+
+
+               X_U1.uvl        X_U1.uvlref     X_U1.cmp1825    X_U1.trig1825   
+        FILE DSO_ATOD        DSO_ATOD        DSO_ATOD        DSO_ATOD        
+      FORMAT    6               6               6               6            
+     CHGONLY    1               1               1               1            
+    TIMESTEP  100.000000E-12  100.000000E-12  100.000000E-12  100.000000E-12 
+      S0NAME 0               0               0               0               
+       S0VHI    9.8             4.2                                          
+       S0VLO   -5              -1             -35             -35            
+      S1NAME 1               1               1               1               
+       S1VHI   50              10              70              70            
+       S1VLO    9               4                                            
+
+
+               X_U1.x15.cmp    X_U1.xbl1.x1.compwm 
+        FILE DSO_ATOD        DSO_ATOD        
+      FORMAT    6               6            
+     CHGONLY    1               1            
+    TIMESTEP  100.000000E-12  100.000000E-12 
+      S0NAME 0               0               
+       S0VLO  -20.000000E+03  -30            
+      S1NAME 1               1               
+       S1VHI   20.000000E+03   30            
+
+
+**** 02/14/19 15:17:18 ********* PSpice 9.2 (Mar 2000) ******** ID# 1 ********
+
+ * C:\Workspace_git\Mostovoy_DC\Modelirovanie\Datasheet_example\SimmetrCM.sch
+
+
+ ****     Digital Gate MODEL PARAMETERS
+
+
+******************************************************************************
+
+
+
+
+               d0_gate         
+      TPLHMN    0            
+      TPLHTY    0            
+      TPLHMX    0            
+      TPHLMN    0            
+      TPHLTY    0            
+      TPHLMX    0            
+
+
+**** 02/14/19 15:17:18 ********* PSpice 9.2 (Mar 2000) ******** ID# 1 ********
+
+ * C:\Workspace_git\Mostovoy_DC\Modelirovanie\Datasheet_example\SimmetrCM.sch
+
+
+ ****     Digital Edge Triggered FF MODEL PARAMETERS
+
+
+******************************************************************************
+
+
+
+
+               d0_eff          
+  TPCLKQLHMN    0            
+  TPCLKQLHTY    0            
+  TPCLKQLHMX    0            
+  TPCLKQHLMN    0            
+  TPCLKQHLTY    0            
+  TPCLKQHLMX    0            
+   TPPCQLHMN    0            
+   TPPCQLHTY    0            
+   TPPCQLHMX    0            
+   TPPCQHLMN    0            
+   TPPCQHLTY    0            
+   TPPCQHLMX    0            
+    TWCLKLMN    0            
+    TWCLKLTY    0            
+    TWCLKLMX    0            
+    TWCLKHMN    0            
+    TWCLKHTY    0            
+    TWCLKHMX    0            
+     TWPCLMN    0            
+     TWPCLTY    0            
+     TWPCLMX    0            
+   TSUDCLKMN    0            
+   TSUDCLKTY    0            
+   TSUDCLKMX    0            
+ TSUPCCLKHMN    0            
+ TSUPCCLKHTY    0            
+ TSUPCCLKHMX    0            
+    THDCLKMN    0            
+    THDCLKTY    0            
+    THDCLKMX    0            
+  TSUCECLKMN    0            
+  TSUCECLKTY    0            
+  TSUCECLKMX    0            
+   THCECLKMN    0            
+   THCECLKTY    0            
+   THCECLKMX    0            
+
+
+**** 02/14/19 15:17:18 ********* PSpice 9.2 (Mar 2000) ******** ID# 1 ********
+
+ * C:\Workspace_git\Mostovoy_DC\Modelirovanie\Datasheet_example\SimmetrCM.sch
+
+
+ ****     Digital Gated FF MODEL PARAMETERS
+
+
+******************************************************************************
+
+
+
+
+               d0_gff          
+    TPDQLHMN    0            
+    TPDQLHTY    0            
+    TPDQLHMX    0            
+    TPDQHLMN    0            
+    TPDQHLTY    0            
+    TPDQHLMX    0            
+    TPGQLHMN    0            
+    TPGQLHTY    0            
+    TPGQLHMX    0            
+    TPGQHLMN    0            
+    TPGQHLTY    0            
+    TPGQHLMX    0            
+   TPPCQLHMN    0            
+   TPPCQLHTY    0            
+   TPPCQLHMX    0            
+   TPPCQHLMN    0            
+   TPPCQHLTY    0            
+   TPPCQHLMX    0            
+      TWGHMN    0            
+      TWGHTY    0            
+      TWGHMX    0            
+     TWPCLMN    0            
+     TWPCLTY    0            
+     TWPCLMX    0            
+     TSUDGMN    0            
+     TSUDGTY    0            
+     TSUDGMX    0            
+   TSUPCGHMN    0            
+   TSUPCGHTY    0            
+   TSUPCGHMX    0            
+      THDGMN    0            
+      THDGTY    0            
+      THDGMX    0            
+
+
+**** 02/14/19 15:17:18 ********* PSpice 9.2 (Mar 2000) ******** ID# 1 ********
+
+ * C:\Workspace_git\Mostovoy_DC\Modelirovanie\Datasheet_example\SimmetrCM.sch
+
+
+ ****     Digital Delay Line MODEL PARAMETERS
+
+
+******************************************************************************
+
+
+
+
+               X_U1.xlog.dlmod 
+       DLYMN    0            
+       DLYTY   70.000000E-09 
+       DLYMX   70.000000E-09 
+
+
+**** 02/14/19 15:17:18 ********* PSpice 9.2 (Mar 2000) ******** ID# 1 ********
+
+ * C:\Workspace_git\Mostovoy_DC\Modelirovanie\Datasheet_example\SimmetrCM.sch
+
+
+ ****     Digital IO  MODEL PARAMETERS
+
+
+******************************************************************************
+
+
+
+
+               io_std          io_pwm_oc       io_stm          io_s_oc         
+        DRVL  104              60.6             0              60.6          
+        DRVH   96.4             1.000000E+06    0               1.000000E+06 
+       AtoD1 AtoD_STD        atod_s                          AtoD_S          
+       AtoD2 AtoD_STD_NX     atod_s_nx                       AtoD_S_NX       
+       AtoD3 AtoD_STD        atod_s_e                        AtoD_S          
+       AtoD4 AtoD_STD_NX     atod_s_nxe                      AtoD_S_NX       
+       DtoA1 DtoA_STD        dtoa_s_o1       DtoA_STM        DtoA_S_OC       
+       DtoA2 DtoA_STD        dtoa_s_o1       DtoA_STM        DtoA_S_OC       
+       DtoA3 DtoA_STD        dtoa_s_o1       DtoA_STM        DtoA_S_OC       
+       DtoA4 DtoA_STD        dtoa_s_o1       DtoA_STM        DtoA_S_OC       
+      TSWHL1    1.511000E-09                                    1.305000E-09 
+      TSWHL2    1.487000E-09                                    1.306000E-09 
+      TSWHL3    1.511000E-09                                    1.305000E-09 
+      TSWHL4    1.487000E-09                                    1.306000E-09 
+      TSWLH1    3.517000E-09                                  483.000000E-12 
+      TSWLH2    3.564000E-09                                  471.000000E-12 
+      TSWLH3    3.517000E-09                                  483.000000E-12 
+      TSWLH4    3.564000E-09                                  471.000000E-12 
+       TPWRT  100.000000E+03  100.000000E+03  100.000000E+03  100.000000E+03 
+
+
+**** 02/14/19 15:17:18 ********* PSpice 9.2 (Mar 2000) ******** ID# 1 ********
+
+ * C:\Workspace_git\Mostovoy_DC\Modelirovanie\Datasheet_example\SimmetrCM.sch
+
+
+ ****     SIMULATION ERRORS
+
+
+******************************************************************************
+
+
+
+
+DIGITAL Message ID#1 (SERIOUS):
+DIGITAL INPUT VOLTAGE Hazard at time 0s
+  Device: X_U1.x15.ocmp1
+  Voltage V(X_U1.x15.pos_neg,0)=-10.00E+06 is beyond the ranges defined in model X_U1.x15.cmp
+
+
+DIGITAL Message ID#2 (SERIOUS):
+DIGITAL INPUT VOLTAGE Hazard at time 56ns
+  Device: X_U1.xbl1.x1.o6
+  Voltage V(X_U1.xbl1.x1.67,X_U1.57)= 30.0440 is beyond the ranges defined in model X_U1.xbl1.x1.compwm
+
+
+DIGITAL Message ID#3 (SERIOUS):
+DIGITAL INPUT VOLTAGE Hazard at time 200.1356us
+  Device: X_U1.xbl1.x1.o6
+  Voltage V(X_U1.xbl1.x1.67,X_U1.57)= 30.0030 is beyond the ranges defined in model X_U1.xbl1.x1.compwm
+
+
+DIGITAL Message ID#4 (SERIOUS):
+DIGITAL INPUT VOLTAGE Hazard at time 300.1357us
+  Device: X_U1.xbl1.x1.o6
+  Voltage V(X_U1.xbl1.x1.67,X_U1.57)= 30.0030 is beyond the ranges defined in model X_U1.xbl1.x1.compwm
+
+
+DIGITAL Message ID#5 (SERIOUS):
+DIGITAL INPUT VOLTAGE Hazard at time 400.1356us
+  Device: X_U1.xbl1.x1.o6
+  Voltage V(X_U1.xbl1.x1.67,X_U1.57)= 30.0030 is beyond the ranges defined in model X_U1.xbl1.x1.compwm
+
+
+DIGITAL Message ID#6 (SERIOUS):
+DIGITAL INPUT VOLTAGE Hazard at time 500.1356us
+  Device: X_U1.xbl1.x1.o6
+  Voltage V(X_U1.xbl1.x1.67,X_U1.57)= 30.0030 is beyond the ranges defined in model X_U1.xbl1.x1.compwm
+
+
+DIGITAL Message ID#7 (SERIOUS):
+DIGITAL INPUT VOLTAGE Hazard at time 600.1356us
+  Device: X_U1.xbl1.x1.o6
+  Voltage V(X_U1.xbl1.x1.67,X_U1.57)= 30.0030 is beyond the ranges defined in model X_U1.xbl1.x1.compwm
+
+
+DIGITAL Message ID#8 (SERIOUS):
+DIGITAL INPUT VOLTAGE Hazard at time 700.1357us
+  Device: X_U1.xbl1.x1.o6
+  Voltage V(X_U1.xbl1.x1.67,X_U1.57)= 30.0040 is beyond the ranges defined in model X_U1.xbl1.x1.compwm
+
+
+DIGITAL Message ID#9 (SERIOUS):
+DIGITAL INPUT VOLTAGE Hazard at time 800.1356us
+  Device: X_U1.xbl1.x1.o6
+  Voltage V(X_U1.xbl1.x1.67,X_U1.57)= 30.0030 is beyond the ranges defined in model X_U1.xbl1.x1.compwm
+
+
+DIGITAL Message ID#10 (SERIOUS):
+DIGITAL INPUT VOLTAGE Hazard at time 900.1356us
+  Device: X_U1.xbl1.x1.o6
+  Voltage V(X_U1.xbl1.x1.67,X_U1.57)= 30.0040 is beyond the ranges defined in model X_U1.xbl1.x1.compwm
+
+
+DIGITAL Message ID#11 (SERIOUS):
+DIGITAL INPUT VOLTAGE Hazard at time 1.0001356ms
+  Device: X_U1.xbl1.x1.o6
+  Voltage V(X_U1.xbl1.x1.67,X_U1.57)= 30.0040 is beyond the ranges defined in model X_U1.xbl1.x1.compwm
+
+
+DIGITAL Message ID#12 (SERIOUS):
+DIGITAL INPUT VOLTAGE Hazard at time 1.1001356ms
+  Device: X_U1.xbl1.x1.o6
+  Voltage V(X_U1.xbl1.x1.67,X_U1.57)= 30.0040 is beyond the ranges defined in model X_U1.xbl1.x1.compwm
+
+
+DIGITAL Message ID#13 (SERIOUS):
+DIGITAL INPUT VOLTAGE Hazard at time 1.2001356ms
+  Device: X_U1.xbl1.x1.o6
+  Voltage V(X_U1.xbl1.x1.67,X_U1.57)= 30.0040 is beyond the ranges defined in model X_U1.xbl1.x1.compwm
+
+
+DIGITAL Message ID#14 (SERIOUS):
+DIGITAL INPUT VOLTAGE Hazard at time 1.3001356ms
+  Device: X_U1.xbl1.x1.o6
+  Voltage V(X_U1.xbl1.x1.67,X_U1.57)= 30.0130 is beyond the ranges defined in model X_U1.xbl1.x1.compwm
+
+
+DIGITAL Message ID#15 (SERIOUS):
+DIGITAL INPUT VOLTAGE Hazard at time 1.4001356ms
+  Device: X_U1.xbl1.x1.o6
+  Voltage V(X_U1.xbl1.x1.67,X_U1.57)= 30.0040 is beyond the ranges defined in model X_U1.xbl1.x1.compwm
+
+
+DIGITAL Message ID#16 (SERIOUS):
+DIGITAL INPUT VOLTAGE Hazard at time 1.5001356ms
+  Device: X_U1.xbl1.x1.o6
+  Voltage V(X_U1.xbl1.x1.67,X_U1.57)= 30.0030 is beyond the ranges defined in model X_U1.xbl1.x1.compwm
+
+
+DIGITAL Message ID#17 (SERIOUS):
+DIGITAL INPUT VOLTAGE Hazard at time 1.6001356ms
+  Device: X_U1.xbl1.x1.o6
+  Voltage V(X_U1.xbl1.x1.67,X_U1.57)= 30.0040 is beyond the ranges defined in model X_U1.xbl1.x1.compwm
+
+
+DIGITAL Message ID#18 (SERIOUS):
+DIGITAL INPUT VOLTAGE Hazard at time 1.7001356ms
+  Device: X_U1.xbl1.x1.o6
+  Voltage V(X_U1.xbl1.x1.67,X_U1.57)= 30.0030 is beyond the ranges defined in model X_U1.xbl1.x1.compwm
+
+
+DIGITAL Message ID#19 (SERIOUS):
+DIGITAL INPUT VOLTAGE Hazard at time 1.8001356ms
+  Device: X_U1.xbl1.x1.o6
+  Voltage V(X_U1.xbl1.x1.67,X_U1.57)= 30.0040 is beyond the ranges defined in model X_U1.xbl1.x1.compwm
+
+
+DIGITAL Message ID#20 (SERIOUS):
+DIGITAL INPUT VOLTAGE Hazard at time 1.9001356ms
+  Device: X_U1.xbl1.x1.o6
+  Voltage V(X_U1.xbl1.x1.67,X_U1.57)= 30.0050 is beyond the ranges defined in model X_U1.xbl1.x1.compwm
+
+
+DIGITAL Message ID#21 (SERIOUS):
+DIGITAL INPUT VOLTAGE Hazard at time 2.0001356ms
+  Device: X_U1.xbl1.x1.o6
+  Voltage V(X_U1.xbl1.x1.67,X_U1.57)= 30.0040 is beyond the ranges defined in model X_U1.xbl1.x1.compwm
+
+
+DIGITAL Message ID#22 (SERIOUS):
+DIGITAL INPUT VOLTAGE Hazard at time 2.1001356ms
+  Device: X_U1.xbl1.x1.o6
+  Voltage V(X_U1.xbl1.x1.67,X_U1.57)= 30.0050 is beyond the ranges defined in model X_U1.xbl1.x1.compwm
+
+
+DIGITAL Message ID#23 (SERIOUS):
+DIGITAL INPUT VOLTAGE Hazard at time 2.2001356ms
+  Device: X_U1.xbl1.x1.o6
+  Voltage V(X_U1.xbl1.x1.67,X_U1.57)= 30.0050 is beyond the ranges defined in model X_U1.xbl1.x1.compwm
+
+
+DIGITAL Message ID#24 (SERIOUS):
+DIGITAL INPUT VOLTAGE Hazard at time 2.3001356ms
+  Device: X_U1.xbl1.x1.o6
+  Voltage V(X_U1.xbl1.x1.67,X_U1.57)= 30.0040 is beyond the ranges defined in model X_U1.xbl1.x1.compwm
+
+
+DIGITAL Message ID#25 (SERIOUS):
+DIGITAL INPUT VOLTAGE Hazard at time 2.4001356ms
+  Device: X_U1.xbl1.x1.o6
+  Voltage V(X_U1.xbl1.x1.67,X_U1.57)= 30.0030 is beyond the ranges defined in model X_U1.xbl1.x1.compwm
+
+
+DIGITAL Message ID#26 (SERIOUS):
+DIGITAL INPUT VOLTAGE Hazard at time 2.5001356ms
+  Device: X_U1.xbl1.x1.o6
+  Voltage V(X_U1.xbl1.x1.67,X_U1.57)= 30.0050 is beyond the ranges defined in model X_U1.xbl1.x1.compwm
+
+
+DIGITAL Message ID#27 (SERIOUS):
+DIGITAL INPUT VOLTAGE Hazard at time 2.6001356ms
+  Device: X_U1.xbl1.x1.o6
+  Voltage V(X_U1.xbl1.x1.67,X_U1.57)= 30.0030 is beyond the ranges defined in model X_U1.xbl1.x1.compwm
+
+
+DIGITAL Message ID#28 (SERIOUS):
+DIGITAL INPUT VOLTAGE Hazard at time 2.7001356ms
+  Device: X_U1.xbl1.x1.o6
+  Voltage V(X_U1.xbl1.x1.67,X_U1.57)= 30.0060 is beyond the ranges defined in model X_U1.xbl1.x1.compwm
+
+
+DIGITAL Message ID#29 (SERIOUS):
+DIGITAL INPUT VOLTAGE Hazard at time 2.8001356ms
+  Device: X_U1.xbl1.x1.o6
+  Voltage V(X_U1.xbl1.x1.67,X_U1.57)= 30.0030 is beyond the ranges defined in model X_U1.xbl1.x1.compwm
+
+
+DIGITAL Message ID#30 (SERIOUS):
+DIGITAL INPUT VOLTAGE Hazard at time 2.9001356ms
+  Device: X_U1.xbl1.x1.o6
+  Voltage V(X_U1.xbl1.x1.67,X_U1.57)= 30.0030 is beyond the ranges defined in model X_U1.xbl1.x1.compwm
+
+
+DIGITAL Message ID#31 (SERIOUS):
+DIGITAL INPUT VOLTAGE Hazard at time 3.0001356ms
+  Device: X_U1.xbl1.x1.o6
+  Voltage V(X_U1.xbl1.x1.67,X_U1.57)= 30.0040 is beyond the ranges defined in model X_U1.xbl1.x1.compwm
+
+
+DIGITAL Message ID#32 (SERIOUS):
+DIGITAL INPUT VOLTAGE Hazard at time 3.1001356ms
+  Device: X_U1.xbl1.x1.o6
+  Voltage V(X_U1.xbl1.x1.67,X_U1.57)= 30.0060 is beyond the ranges defined in model X_U1.xbl1.x1.compwm
+
+
+DIGITAL Message ID#33 (SERIOUS):
+DIGITAL INPUT VOLTAGE Hazard at time 3.2001356ms
+  Device: X_U1.xbl1.x1.o6
+  Voltage V(X_U1.xbl1.x1.67,X_U1.57)= 30.0060 is beyond the ranges defined in model X_U1.xbl1.x1.compwm
+
+
+DIGITAL Message ID#34 (SERIOUS):
+DIGITAL INPUT VOLTAGE Hazard at time 3.3001356ms
+  Device: X_U1.xbl1.x1.o6
+  Voltage V(X_U1.xbl1.x1.67,X_U1.57)= 30.0030 is beyond the ranges defined in model X_U1.xbl1.x1.compwm
+
+
+DIGITAL Message ID#35 (SERIOUS):
+DIGITAL INPUT VOLTAGE Hazard at time 3.4001356ms
+  Device: X_U1.xbl1.x1.o6
+  Voltage V(X_U1.xbl1.x1.67,X_U1.57)= 30.0060 is beyond the ranges defined in model X_U1.xbl1.x1.compwm
+
+
+DIGITAL Message ID#36 (SERIOUS):
+DIGITAL INPUT VOLTAGE Hazard at time 3.5001356ms
+  Device: X_U1.xbl1.x1.o6
+  Voltage V(X_U1.xbl1.x1.67,X_U1.57)= 30.0030 is beyond the ranges defined in model X_U1.xbl1.x1.compwm
+
+
+DIGITAL Message ID#37 (SERIOUS):
+DIGITAL INPUT VOLTAGE Hazard at time 3.6001356ms
+  Device: X_U1.xbl1.x1.o6
+  Voltage V(X_U1.xbl1.x1.67,X_U1.57)= 30.0060 is beyond the ranges defined in model X_U1.xbl1.x1.compwm
+
+
+DIGITAL Message ID#38 (SERIOUS):
+DIGITAL INPUT VOLTAGE Hazard at time 3.7001356ms
+  Device: X_U1.xbl1.x1.o6
+  Voltage V(X_U1.xbl1.x1.67,X_U1.57)= 30.0040 is beyond the ranges defined in model X_U1.xbl1.x1.compwm
+
+
+DIGITAL Message ID#39 (SERIOUS):
+DIGITAL INPUT VOLTAGE Hazard at time 3.8001356ms
+  Device: X_U1.xbl1.x1.o6
+  Voltage V(X_U1.xbl1.x1.67,X_U1.57)= 30.0040 is beyond the ranges defined in model X_U1.xbl1.x1.compwm
+
+
+DIGITAL Message ID#40 (SERIOUS):
+DIGITAL INPUT VOLTAGE Hazard at time 3.9001356ms
+  Device: X_U1.xbl1.x1.o6
+  Voltage V(X_U1.xbl1.x1.67,X_U1.57)= 30.0040 is beyond the ranges defined in model X_U1.xbl1.x1.compwm
+
+
+DIGITAL Message ID#41 (SERIOUS):
+DIGITAL INPUT VOLTAGE Hazard at time 4.0001356ms
+  Device: X_U1.xbl1.x1.o6
+  Voltage V(X_U1.xbl1.x1.67,X_U1.57)= 30.0040 is beyond the ranges defined in model X_U1.xbl1.x1.compwm
+
+
+DIGITAL Message ID#42 (SERIOUS):
+DIGITAL INPUT VOLTAGE Hazard at time 4.1001356ms
+  Device: X_U1.xbl1.x1.o6
+  Voltage V(X_U1.xbl1.x1.67,X_U1.57)= 30.0060 is beyond the ranges defined in model X_U1.xbl1.x1.compwm
+
+
+DIGITAL Message ID#43 (SERIOUS):
+DIGITAL INPUT VOLTAGE Hazard at time 4.2001356ms
+  Device: X_U1.xbl1.x1.o6
+  Voltage V(X_U1.xbl1.x1.67,X_U1.57)= 30.0070 is beyond the ranges defined in model X_U1.xbl1.x1.compwm
+
+
+DIGITAL Message ID#44 (SERIOUS):
+DIGITAL INPUT VOLTAGE Hazard at time 4.3001356ms
+  Device: X_U1.xbl1.x1.o6
+  Voltage V(X_U1.xbl1.x1.67,X_U1.57)= 30.0040 is beyond the ranges defined in model X_U1.xbl1.x1.compwm
+
+
+DIGITAL Message ID#45 (SERIOUS):
+DIGITAL INPUT VOLTAGE Hazard at time 4.4001356ms
+  Device: X_U1.xbl1.x1.o6
+  Voltage V(X_U1.xbl1.x1.67,X_U1.57)= 30.0060 is beyond the ranges defined in model X_U1.xbl1.x1.compwm
+
+
+DIGITAL Message ID#46 (SERIOUS):
+DIGITAL INPUT VOLTAGE Hazard at time 4.5001356ms
+  Device: X_U1.xbl1.x1.o6
+  Voltage V(X_U1.xbl1.x1.67,X_U1.57)= 30.0040 is beyond the ranges defined in model X_U1.xbl1.x1.compwm
+
+
+DIGITAL Message ID#47 (SERIOUS):
+DIGITAL INPUT VOLTAGE Hazard at time 4.6001356ms
+  Device: X_U1.xbl1.x1.o6
+  Voltage V(X_U1.xbl1.x1.67,X_U1.57)= 30.0060 is beyond the ranges defined in model X_U1.xbl1.x1.compwm
+
+
+DIGITAL Message ID#48 (SERIOUS):
+DIGITAL INPUT VOLTAGE Hazard at time 4.7001356ms
+  Device: X_U1.xbl1.x1.o6
+  Voltage V(X_U1.xbl1.x1.67,X_U1.57)= 30.0070 is beyond the ranges defined in model X_U1.xbl1.x1.compwm
+
+
+DIGITAL Message ID#49 (SERIOUS):
+DIGITAL INPUT VOLTAGE Hazard at time 4.8001356ms
+  Device: X_U1.xbl1.x1.o6
+  Voltage V(X_U1.xbl1.x1.67,X_U1.57)= 30.0040 is beyond the ranges defined in model X_U1.xbl1.x1.compwm
+
+
+DIGITAL Message ID#50 (SERIOUS):
+DIGITAL INPUT VOLTAGE Hazard at time 4.9001356ms
+  Device: X_U1.xbl1.x1.o6
+  Voltage V(X_U1.xbl1.x1.67,X_U1.57)= 30.0040 is beyond the ranges defined in model X_U1.xbl1.x1.compwm
+
+
+DIGITAL Message ID#51 (SERIOUS):
+DIGITAL INPUT VOLTAGE Hazard at time 5.0001356ms
+  Device: X_U1.xbl1.x1.o6
+  Voltage V(X_U1.xbl1.x1.67,X_U1.57)= 30.0050 is beyond the ranges defined in model X_U1.xbl1.x1.compwm
+
+
+DIGITAL Message ID#52 (SERIOUS):
+DIGITAL INPUT VOLTAGE Hazard at time 5.1001356ms
+  Device: X_U1.xbl1.x1.o6
+  Voltage V(X_U1.xbl1.x1.67,X_U1.57)= 30.0050 is beyond the ranges defined in model X_U1.xbl1.x1.compwm
+
+
+DIGITAL Message ID#53 (SERIOUS):
+DIGITAL INPUT VOLTAGE Hazard at time 5.2001356ms
+  Device: X_U1.xbl1.x1.o6
+  Voltage V(X_U1.xbl1.x1.67,X_U1.57)= 30.0070 is beyond the ranges defined in model X_U1.xbl1.x1.compwm
+
+
+DIGITAL Message ID#54 (SERIOUS):
+DIGITAL INPUT VOLTAGE Hazard at time 5.3001356ms
+  Device: X_U1.xbl1.x1.o6
+  Voltage V(X_U1.xbl1.x1.67,X_U1.57)= 30.0040 is beyond the ranges defined in model X_U1.xbl1.x1.compwm
+
+
+DIGITAL Message ID#55 (SERIOUS):
+DIGITAL INPUT VOLTAGE Hazard at time 5.4001356ms
+  Device: X_U1.xbl1.x1.o6
+  Voltage V(X_U1.xbl1.x1.67,X_U1.57)= 30.0050 is beyond the ranges defined in model X_U1.xbl1.x1.compwm
+
+
+DIGITAL Message ID#56 (SERIOUS):
+DIGITAL INPUT VOLTAGE Hazard at time 5.5001356ms
+  Device: X_U1.xbl1.x1.o6
+  Voltage V(X_U1.xbl1.x1.67,X_U1.57)= 30.0040 is beyond the ranges defined in model X_U1.xbl1.x1.compwm
+
+
+DIGITAL Message ID#57 (SERIOUS):
+DIGITAL INPUT VOLTAGE Hazard at time 5.6001356ms
+  Device: X_U1.xbl1.x1.o6
+  Voltage V(X_U1.xbl1.x1.67,X_U1.57)= 30.0060 is beyond the ranges defined in model X_U1.xbl1.x1.compwm
+
+
+DIGITAL Message ID#58 (SERIOUS):
+DIGITAL INPUT VOLTAGE Hazard at time 5.7001356ms
+  Device: X_U1.xbl1.x1.o6
+  Voltage V(X_U1.xbl1.x1.67,X_U1.57)= 30.0040 is beyond the ranges defined in model X_U1.xbl1.x1.compwm
+
+
+DIGITAL Message ID#59 (SERIOUS):
+DIGITAL INPUT VOLTAGE Hazard at time 5.8001356ms
+  Device: X_U1.xbl1.x1.o6
+  Voltage V(X_U1.xbl1.x1.67,X_U1.57)= 30.0040 is beyond the ranges defined in model X_U1.xbl1.x1.compwm
+
+
+DIGITAL Message ID#60 (SERIOUS):
+DIGITAL INPUT VOLTAGE Hazard at time 5.9001356ms
+  Device: X_U1.xbl1.x1.o6
+  Voltage V(X_U1.xbl1.x1.67,X_U1.57)= 30.0040 is beyond the ranges defined in model X_U1.xbl1.x1.compwm
+
+
+DIGITAL Message ID#61 (SERIOUS):
+DIGITAL INPUT VOLTAGE Hazard at time 6.0001356ms
+  Device: X_U1.xbl1.x1.o6
+  Voltage V(X_U1.xbl1.x1.67,X_U1.57)= 30.0050 is beyond the ranges defined in model X_U1.xbl1.x1.compwm
+
+
+DIGITAL Message ID#62 (SERIOUS):
+DIGITAL INPUT VOLTAGE Hazard at time 6.1001356ms
+  Device: X_U1.xbl1.x1.o6
+  Voltage V(X_U1.xbl1.x1.67,X_U1.57)= 30.0050 is beyond the ranges defined in model X_U1.xbl1.x1.compwm
+
+
+DIGITAL Message ID#63 (SERIOUS):
+DIGITAL INPUT VOLTAGE Hazard at time 6.2001356ms
+  Device: X_U1.xbl1.x1.o6
+  Voltage V(X_U1.xbl1.x1.67,X_U1.57)= 30.0060 is beyond the ranges defined in model X_U1.xbl1.x1.compwm
+
+
+DIGITAL Message ID#64 (SERIOUS):
+DIGITAL INPUT VOLTAGE Hazard at time 6.3001356ms
+  Device: X_U1.xbl1.x1.o6
+  Voltage V(X_U1.xbl1.x1.67,X_U1.57)= 30.0040 is beyond the ranges defined in model X_U1.xbl1.x1.compwm
+
+
+DIGITAL Message ID#65 (SERIOUS):
+DIGITAL INPUT VOLTAGE Hazard at time 6.4001356ms
+  Device: X_U1.xbl1.x1.o6
+  Voltage V(X_U1.xbl1.x1.67,X_U1.57)= 30.0050 is beyond the ranges defined in model X_U1.xbl1.x1.compwm
+
+
+DIGITAL Message ID#66 (SERIOUS):
+DIGITAL INPUT VOLTAGE Hazard at time 6.5001356ms
+  Device: X_U1.xbl1.x1.o6
+  Voltage V(X_U1.xbl1.x1.67,X_U1.57)= 30.0040 is beyond the ranges defined in model X_U1.xbl1.x1.compwm
+
+
+DIGITAL Message ID#67 (SERIOUS):
+DIGITAL INPUT VOLTAGE Hazard at time 6.6001356ms
+  Device: X_U1.xbl1.x1.o6
+  Voltage V(X_U1.xbl1.x1.67,X_U1.57)= 30.0050 is beyond the ranges defined in model X_U1.xbl1.x1.compwm
+
+
+DIGITAL Message ID#68 (SERIOUS):
+DIGITAL INPUT VOLTAGE Hazard at time 6.7001356ms
+  Device: X_U1.xbl1.x1.o6
+  Voltage V(X_U1.xbl1.x1.67,X_U1.57)= 30.0050 is beyond the ranges defined in model X_U1.xbl1.x1.compwm
+
+
+DIGITAL Message ID#69 (SERIOUS):
+DIGITAL INPUT VOLTAGE Hazard at time 6.8001356ms
+  Device: X_U1.xbl1.x1.o6
+  Voltage V(X_U1.xbl1.x1.67,X_U1.57)= 30.0040 is beyond the ranges defined in model X_U1.xbl1.x1.compwm
+
+
+DIGITAL Message ID#70 (SERIOUS):
+DIGITAL INPUT VOLTAGE Hazard at time 6.9001356ms
+  Device: X_U1.xbl1.x1.o6
+  Voltage V(X_U1.xbl1.x1.67,X_U1.57)= 30.0050 is beyond the ranges defined in model X_U1.xbl1.x1.compwm
+
+
+DIGITAL Message ID#71 (SERIOUS):
+DIGITAL INPUT VOLTAGE Hazard at time 7.0001356ms
+  Device: X_U1.xbl1.x1.o6
+  Voltage V(X_U1.xbl1.x1.67,X_U1.57)= 30.0040 is beyond the ranges defined in model X_U1.xbl1.x1.compwm
+
+
+DIGITAL Message ID#72 (SERIOUS):
+DIGITAL INPUT VOLTAGE Hazard at time 7.1001356ms
+  Device: X_U1.xbl1.x1.o6
+  Voltage V(X_U1.xbl1.x1.67,X_U1.57)= 30.0050 is beyond the ranges defined in model X_U1.xbl1.x1.compwm
+
+
+DIGITAL Message ID#73 (SERIOUS):
+DIGITAL INPUT VOLTAGE Hazard at time 7.2001356ms
+  Device: X_U1.xbl1.x1.o6
+  Voltage V(X_U1.xbl1.x1.67,X_U1.57)= 30.0070 is beyond the ranges defined in model X_U1.xbl1.x1.compwm
+
+
+DIGITAL Message ID#74 (SERIOUS):
+DIGITAL INPUT VOLTAGE Hazard at time 7.3001356ms
+  Device: X_U1.xbl1.x1.o6
+  Voltage V(X_U1.xbl1.x1.67,X_U1.57)= 30.0070 is beyond the ranges defined in model X_U1.xbl1.x1.compwm
+
+
+DIGITAL Message ID#75 (SERIOUS):
+DIGITAL INPUT VOLTAGE Hazard at time 7.4001356ms
+  Device: X_U1.xbl1.x1.o6
+  Voltage V(X_U1.xbl1.x1.67,X_U1.57)= 30.0050 is beyond the ranges defined in model X_U1.xbl1.x1.compwm
+
+
+DIGITAL Message ID#76 (SERIOUS):
+DIGITAL INPUT VOLTAGE Hazard at time 7.5001357ms
+  Device: X_U1.xbl1.x1.o6
+  Voltage V(X_U1.xbl1.x1.67,X_U1.57)= 30.0050 is beyond the ranges defined in model X_U1.xbl1.x1.compwm
+
+
+DIGITAL Message ID#77 (SERIOUS):
+DIGITAL INPUT VOLTAGE Hazard at time 7.6001356ms
+  Device: X_U1.xbl1.x1.o6
+  Voltage V(X_U1.xbl1.x1.67,X_U1.57)= 30.0050 is beyond the ranges defined in model X_U1.xbl1.x1.compwm
+
+
+DIGITAL Message ID#78 (SERIOUS):
+DIGITAL INPUT VOLTAGE Hazard at time 7.7001356ms
+  Device: X_U1.xbl1.x1.o6
+  Voltage V(X_U1.xbl1.x1.67,X_U1.57)= 30.0040 is beyond the ranges defined in model X_U1.xbl1.x1.compwm
+
+
+DIGITAL Message ID#79 (SERIOUS):
+DIGITAL INPUT VOLTAGE Hazard at time 7.8001357ms
+  Device: X_U1.xbl1.x1.o6
+  Voltage V(X_U1.xbl1.x1.67,X_U1.57)= 30.0060 is beyond the ranges defined in model X_U1.xbl1.x1.compwm
+
+
+DIGITAL Message ID#80 (SERIOUS):
+DIGITAL INPUT VOLTAGE Hazard at time 7.9001356ms
+  Device: X_U1.xbl1.x1.o6
+  Voltage V(X_U1.xbl1.x1.67,X_U1.57)= 30.0050 is beyond the ranges defined in model X_U1.xbl1.x1.compwm
+
+
+DIGITAL Message ID#81 (SERIOUS):
+DIGITAL INPUT VOLTAGE Hazard at time 8.0001356ms
+  Device: X_U1.xbl1.x1.o6
+  Voltage V(X_U1.xbl1.x1.67,X_U1.57)= 30.0020 is beyond the ranges defined in model X_U1.xbl1.x1.compwm
+
+
+DIGITAL Message ID#82 (SERIOUS):
+DIGITAL INPUT VOLTAGE Hazard at time 8.1001356ms
+  Device: X_U1.xbl1.x1.o6
+  Voltage V(X_U1.xbl1.x1.67,X_U1.57)= 30.0070 is beyond the ranges defined in model X_U1.xbl1.x1.compwm
+
+
+DIGITAL Message ID#83 (SERIOUS):
+DIGITAL INPUT VOLTAGE Hazard at time 8.2001356ms
+  Device: X_U1.xbl1.x1.o6
+  Voltage V(X_U1.xbl1.x1.67,X_U1.57)= 30.0050 is beyond the ranges defined in model X_U1.xbl1.x1.compwm
+
+
+DIGITAL Message ID#84 (SERIOUS):
+DIGITAL INPUT VOLTAGE Hazard at time 8.3001356ms
+  Device: X_U1.xbl1.x1.o6
+  Voltage V(X_U1.xbl1.x1.67,X_U1.57)= 30.0060 is beyond the ranges defined in model X_U1.xbl1.x1.compwm
+
+
+DIGITAL Message ID#85 (SERIOUS):
+DIGITAL INPUT VOLTAGE Hazard at time 8.4001356ms
+  Device: X_U1.xbl1.x1.o6
+  Voltage V(X_U1.xbl1.x1.67,X_U1.57)= 30.0080 is beyond the ranges defined in model X_U1.xbl1.x1.compwm
+
+
+DIGITAL Message ID#86 (SERIOUS):
+DIGITAL INPUT VOLTAGE Hazard at time 8.5001356ms
+  Device: X_U1.xbl1.x1.o6
+  Voltage V(X_U1.xbl1.x1.67,X_U1.57)= 30.0060 is beyond the ranges defined in model X_U1.xbl1.x1.compwm
+
+
+DIGITAL Message ID#87 (SERIOUS):
+DIGITAL INPUT VOLTAGE Hazard at time 8.6001356ms
+  Device: X_U1.xbl1.x1.o6
+  Voltage V(X_U1.xbl1.x1.67,X_U1.57)= 30.0070 is beyond the ranges defined in model X_U1.xbl1.x1.compwm
+
+
+DIGITAL Message ID#88 (SERIOUS):
+DIGITAL INPUT VOLTAGE Hazard at time 8.7001356ms
+  Device: X_U1.xbl1.x1.o6
+  Voltage V(X_U1.xbl1.x1.67,X_U1.57)= 30.0050 is beyond the ranges defined in model X_U1.xbl1.x1.compwm
+
+
+DIGITAL Message ID#89 (SERIOUS):
+DIGITAL INPUT VOLTAGE Hazard at time 8.8001356ms
+  Device: X_U1.xbl1.x1.o6
+  Voltage V(X_U1.xbl1.x1.67,X_U1.57)= 30.0060 is beyond the ranges defined in model X_U1.xbl1.x1.compwm
+
+
+DIGITAL Message ID#90 (SERIOUS):
+DIGITAL INPUT VOLTAGE Hazard at time 8.9001356ms
+  Device: X_U1.xbl1.x1.o6
+  Voltage V(X_U1.xbl1.x1.67,X_U1.57)= 30.0050 is beyond the ranges defined in model X_U1.xbl1.x1.compwm
+
+
+DIGITAL Message ID#91 (SERIOUS):
+DIGITAL INPUT VOLTAGE Hazard at time 9.0001356ms
+  Device: X_U1.xbl1.x1.o6
+  Voltage V(X_U1.xbl1.x1.67,X_U1.57)= 30.0050 is beyond the ranges defined in model X_U1.xbl1.x1.compwm
+
+
+DIGITAL Message ID#92 (SERIOUS):
+DIGITAL INPUT VOLTAGE Hazard at time 9.1001356ms
+  Device: X_U1.xbl1.x1.o6
+  Voltage V(X_U1.xbl1.x1.67,X_U1.57)= 30.0080 is beyond the ranges defined in model X_U1.xbl1.x1.compwm
+
+
+DIGITAL Message ID#93 (SERIOUS):
+DIGITAL INPUT VOLTAGE Hazard at time 9.2001356ms
+  Device: X_U1.xbl1.x1.o6
+  Voltage V(X_U1.xbl1.x1.67,X_U1.57)= 30.0050 is beyond the ranges defined in model X_U1.xbl1.x1.compwm
+
+
+DIGITAL Message ID#94 (SERIOUS):
+DIGITAL INPUT VOLTAGE Hazard at time 9.3001357ms
+  Device: X_U1.xbl1.x1.o6
+  Voltage V(X_U1.xbl1.x1.67,X_U1.57)= 30.0060 is beyond the ranges defined in model X_U1.xbl1.x1.compwm
+
+
+DIGITAL Message ID#95 (SERIOUS):
+DIGITAL INPUT VOLTAGE Hazard at time 9.4001357ms
+  Device: X_U1.xbl1.x1.o6
+  Voltage V(X_U1.xbl1.x1.67,X_U1.57)= 30.0050 is beyond the ranges defined in model X_U1.xbl1.x1.compwm
+
+
+DIGITAL Message ID#96 (SERIOUS):
+DIGITAL INPUT VOLTAGE Hazard at time 9.5001356ms
+  Device: X_U1.xbl1.x1.o6
+  Voltage V(X_U1.xbl1.x1.67,X_U1.57)= 30.0070 is beyond the ranges defined in model X_U1.xbl1.x1.compwm
+
+
+DIGITAL Message ID#97 (SERIOUS):
+DIGITAL INPUT VOLTAGE Hazard at time 9.6001356ms
+  Device: X_U1.xbl1.x1.o6
+  Voltage V(X_U1.xbl1.x1.67,X_U1.57)= 30.0060 is beyond the ranges defined in model X_U1.xbl1.x1.compwm
+
+
+DIGITAL Message ID#98 (SERIOUS):
+DIGITAL INPUT VOLTAGE Hazard at time 9.7001357ms
+  Device: X_U1.xbl1.x1.o6
+  Voltage V(X_U1.xbl1.x1.67,X_U1.57)= 30.0070 is beyond the ranges defined in model X_U1.xbl1.x1.compwm
+
+
+DIGITAL Message ID#99 (SERIOUS):
+DIGITAL INPUT VOLTAGE Hazard at time 9.8001356ms
+  Device: X_U1.xbl1.x1.o6
+  Voltage V(X_U1.xbl1.x1.67,X_U1.57)= 30.0060 is beyond the ranges defined in model X_U1.xbl1.x1.compwm
+
+
+DIGITAL Message ID#100 (SERIOUS):
+DIGITAL INPUT VOLTAGE Hazard at time 9.9001356ms
+  Device: X_U1.xbl1.x1.o6
+  Voltage V(X_U1.xbl1.x1.67,X_U1.57)= 30.0070 is beyond the ranges defined in model X_U1.xbl1.x1.compwm
+
+
+DIGITAL Message ID#101 (SERIOUS):
+DIGITAL INPUT VOLTAGE Hazard at time 10.0001356ms
+  Device: X_U1.xbl1.x1.o6
+  Voltage V(X_U1.xbl1.x1.67,X_U1.57)= 30.0080 is beyond the ranges defined in model X_U1.xbl1.x1.compwm
+
+
+DIGITAL Message ID#102 (SERIOUS):
+DIGITAL INPUT VOLTAGE Hazard at time 10.1001356ms
+  Device: X_U1.xbl1.x1.o6
+  Voltage V(X_U1.xbl1.x1.67,X_U1.57)= 30.0060 is beyond the ranges defined in model X_U1.xbl1.x1.compwm
+
+
+DIGITAL Message ID#103 (SERIOUS):
+DIGITAL INPUT VOLTAGE Hazard at time 10.2001356ms
+  Device: X_U1.xbl1.x1.o6
+  Voltage V(X_U1.xbl1.x1.67,X_U1.57)= 30.0060 is beyond the ranges defined in model X_U1.xbl1.x1.compwm
+
+
+DIGITAL Message ID#104 (SERIOUS):
+DIGITAL INPUT VOLTAGE Hazard at time 10.3001356ms
+  Device: X_U1.xbl1.x1.o6
+  Voltage V(X_U1.xbl1.x1.67,X_U1.57)= 30.0060 is beyond the ranges defined in model X_U1.xbl1.x1.compwm
+
+
+DIGITAL Message ID#105 (SERIOUS):
+DIGITAL INPUT VOLTAGE Hazard at time 10.4001356ms
+  Device: X_U1.xbl1.x1.o6
+  Voltage V(X_U1.xbl1.x1.67,X_U1.57)= 30.0070 is beyond the ranges defined in model X_U1.xbl1.x1.compwm
+
+
+DIGITAL Message ID#106 (SERIOUS):
+DIGITAL INPUT VOLTAGE Hazard at time 10.5001356ms
+  Device: X_U1.xbl1.x1.o6
+  Voltage V(X_U1.xbl1.x1.67,X_U1.57)= 30.0070 is beyond the ranges defined in model X_U1.xbl1.x1.compwm
+
+
+DIGITAL Message ID#107 (SERIOUS):
+DIGITAL INPUT VOLTAGE Hazard at time 10.6001356ms
+  Device: X_U1.xbl1.x1.o6
+  Voltage V(X_U1.xbl1.x1.67,X_U1.57)= 30.0060 is beyond the ranges defined in model X_U1.xbl1.x1.compwm
+
+
+DIGITAL Message ID#108 (SERIOUS):
+DIGITAL INPUT VOLTAGE Hazard at time 10.7001356ms
+  Device: X_U1.xbl1.x1.o6
+  Voltage V(X_U1.xbl1.x1.67,X_U1.57)= 30.0070 is beyond the ranges defined in model X_U1.xbl1.x1.compwm
+
+
+DIGITAL Message ID#109 (SERIOUS):
+DIGITAL INPUT VOLTAGE Hazard at time 10.8001356ms
+  Device: X_U1.xbl1.x1.o6
+  Voltage V(X_U1.xbl1.x1.67,X_U1.57)= 30.0070 is beyond the ranges defined in model X_U1.xbl1.x1.compwm
+
+
+DIGITAL Message ID#110 (SERIOUS):
+DIGITAL INPUT VOLTAGE Hazard at time 10.9001356ms
+  Device: X_U1.xbl1.x1.o6
+  Voltage V(X_U1.xbl1.x1.67,X_U1.57)= 30.0080 is beyond the ranges defined in model X_U1.xbl1.x1.compwm
+
+
+DIGITAL Message ID#111 (SERIOUS):
+DIGITAL INPUT VOLTAGE Hazard at time 11.0001356ms
+  Device: X_U1.xbl1.x1.o6
+  Voltage V(X_U1.xbl1.x1.67,X_U1.57)= 30.0070 is beyond the ranges defined in model X_U1.xbl1.x1.compwm
+
+
+DIGITAL Message ID#112 (SERIOUS):
+DIGITAL INPUT VOLTAGE Hazard at time 11.1001356ms
+  Device: X_U1.xbl1.x1.o6
+  Voltage V(X_U1.xbl1.x1.67,X_U1.57)= 30.0070 is beyond the ranges defined in model X_U1.xbl1.x1.compwm
+
+
+DIGITAL Message ID#113 (SERIOUS):
+DIGITAL INPUT VOLTAGE Hazard at time 11.2001357ms
+  Device: X_U1.xbl1.x1.o6
+  Voltage V(X_U1.xbl1.x1.67,X_U1.57)= 30.0060 is beyond the ranges defined in model X_U1.xbl1.x1.compwm
+
+
+DIGITAL Message ID#114 (SERIOUS):
+DIGITAL INPUT VOLTAGE Hazard at time 11.3001356ms
+  Device: X_U1.xbl1.x1.o6
+  Voltage V(X_U1.xbl1.x1.67,X_U1.57)= 30.0060 is beyond the ranges defined in model X_U1.xbl1.x1.compwm
+
+
+DIGITAL Message ID#115 (SERIOUS):
+DIGITAL INPUT VOLTAGE Hazard at time 11.4001356ms
+  Device: X_U1.xbl1.x1.o6
+  Voltage V(X_U1.xbl1.x1.67,X_U1.57)= 30.0070 is beyond the ranges defined in model X_U1.xbl1.x1.compwm
+
+
+DIGITAL Message ID#116 (SERIOUS):
+DIGITAL INPUT VOLTAGE Hazard at time 11.5001356ms
+  Device: X_U1.xbl1.x1.o6
+  Voltage V(X_U1.xbl1.x1.67,X_U1.57)= 30.0060 is beyond the ranges defined in model X_U1.xbl1.x1.compwm
+
+
+DIGITAL Message ID#117 (SERIOUS):
+DIGITAL INPUT VOLTAGE Hazard at time 11.6001356ms
+  Device: X_U1.xbl1.x1.o6
+  Voltage V(X_U1.xbl1.x1.67,X_U1.57)= 30.0060 is beyond the ranges defined in model X_U1.xbl1.x1.compwm
+
+
+DIGITAL Message ID#118 (SERIOUS):
+DIGITAL INPUT VOLTAGE Hazard at time 11.7001356ms
+  Device: X_U1.xbl1.x1.o6
+  Voltage V(X_U1.xbl1.x1.67,X_U1.57)= 30.0070 is beyond the ranges defined in model X_U1.xbl1.x1.compwm
+
+
+DIGITAL Message ID#119 (SERIOUS):
+DIGITAL INPUT VOLTAGE Hazard at time 11.8001356ms
+  Device: X_U1.xbl1.x1.o6
+  Voltage V(X_U1.xbl1.x1.67,X_U1.57)= 30.0070 is beyond the ranges defined in model X_U1.xbl1.x1.compwm
+
+
+DIGITAL Message ID#120 (SERIOUS):
+DIGITAL INPUT VOLTAGE Hazard at time 11.9001356ms
+  Device: X_U1.xbl1.x1.o6
+  Voltage V(X_U1.xbl1.x1.67,X_U1.57)= 30.0070 is beyond the ranges defined in model X_U1.xbl1.x1.compwm
+
+
+DIGITAL Message ID#121 (SERIOUS):
+DIGITAL INPUT VOLTAGE Hazard at time 12.0001356ms
+  Device: X_U1.xbl1.x1.o6
+  Voltage V(X_U1.xbl1.x1.67,X_U1.57)= 30.0070 is beyond the ranges defined in model X_U1.xbl1.x1.compwm
+
+
+DIGITAL Message ID#122 (SERIOUS):
+DIGITAL INPUT VOLTAGE Hazard at time 12.1001356ms
+  Device: X_U1.xbl1.x1.o6
+  Voltage V(X_U1.xbl1.x1.67,X_U1.57)= 30.0070 is beyond the ranges defined in model X_U1.xbl1.x1.compwm
+
+
+DIGITAL Message ID#123 (SERIOUS):
+DIGITAL INPUT VOLTAGE Hazard at time 12.2001356ms
+  Device: X_U1.xbl1.x1.o6
+  Voltage V(X_U1.xbl1.x1.67,X_U1.57)= 30.0070 is beyond the ranges defined in model X_U1.xbl1.x1.compwm
+
+
+DIGITAL Message ID#124 (SERIOUS):
+DIGITAL INPUT VOLTAGE Hazard at time 12.3001356ms
+  Device: X_U1.xbl1.x1.o6
+  Voltage V(X_U1.xbl1.x1.67,X_U1.57)= 30.0070 is beyond the ranges defined in model X_U1.xbl1.x1.compwm
+
+
+DIGITAL Message ID#125 (SERIOUS):
+DIGITAL INPUT VOLTAGE Hazard at time 12.4001356ms
+  Device: X_U1.xbl1.x1.o6
+  Voltage V(X_U1.xbl1.x1.67,X_U1.57)= 30.0060 is beyond the ranges defined in model X_U1.xbl1.x1.compwm
+
+
+DIGITAL Message ID#126 (SERIOUS):
+DIGITAL INPUT VOLTAGE Hazard at time 12.5001356ms
+  Device: X_U1.xbl1.x1.o6
+  Voltage V(X_U1.xbl1.x1.67,X_U1.57)= 30.0090 is beyond the ranges defined in model X_U1.xbl1.x1.compwm
+
+
+DIGITAL Message ID#127 (SERIOUS):
+DIGITAL INPUT VOLTAGE Hazard at time 12.6001356ms
+  Device: X_U1.xbl1.x1.o6
+  Voltage V(X_U1.xbl1.x1.67,X_U1.57)= 30.0080 is beyond the ranges defined in model X_U1.xbl1.x1.compwm
+
+
+DIGITAL Message ID#128 (SERIOUS):
+DIGITAL INPUT VOLTAGE Hazard at time 12.7001356ms
+  Device: X_U1.xbl1.x1.o6
+  Voltage V(X_U1.xbl1.x1.67,X_U1.57)= 30.0070 is beyond the ranges defined in model X_U1.xbl1.x1.compwm
+
+
+DIGITAL Message ID#129 (SERIOUS):
+DIGITAL INPUT VOLTAGE Hazard at time 12.8001356ms
+  Device: X_U1.xbl1.x1.o6
+  Voltage V(X_U1.xbl1.x1.67,X_U1.57)= 30.0070 is beyond the ranges defined in model X_U1.xbl1.x1.compwm
+
+
+DIGITAL Message ID#130 (SERIOUS):
+DIGITAL INPUT VOLTAGE Hazard at time 12.9001356ms
+  Device: X_U1.xbl1.x1.o6
+  Voltage V(X_U1.xbl1.x1.67,X_U1.57)= 30.0080 is beyond the ranges defined in model X_U1.xbl1.x1.compwm
+
+
+DIGITAL Message ID#131 (SERIOUS):
+DIGITAL INPUT VOLTAGE Hazard at time 13.0001356ms
+  Device: X_U1.xbl1.x1.o6
+  Voltage V(X_U1.xbl1.x1.67,X_U1.57)= 30.0080 is beyond the ranges defined in model X_U1.xbl1.x1.compwm
+
+
+DIGITAL Message ID#132 (SERIOUS):
+DIGITAL INPUT VOLTAGE Hazard at time 13.1001356ms
+  Device: X_U1.xbl1.x1.o6
+  Voltage V(X_U1.xbl1.x1.67,X_U1.57)= 30.0090 is beyond the ranges defined in model X_U1.xbl1.x1.compwm
+
+
+DIGITAL Message ID#133 (SERIOUS):
+DIGITAL INPUT VOLTAGE Hazard at time 13.2001356ms
+  Device: X_U1.xbl1.x1.o6
+  Voltage V(X_U1.xbl1.x1.67,X_U1.57)= 30.0080 is beyond the ranges defined in model X_U1.xbl1.x1.compwm
+
+
+DIGITAL Message ID#134 (SERIOUS):
+DIGITAL INPUT VOLTAGE Hazard at time 13.3001357ms
+  Device: X_U1.xbl1.x1.o6
+  Voltage V(X_U1.xbl1.x1.67,X_U1.57)= 30.0070 is beyond the ranges defined in model X_U1.xbl1.x1.compwm
+
+
+DIGITAL Message ID#135 (SERIOUS):
+DIGITAL INPUT VOLTAGE Hazard at time 13.4001357ms
+  Device: X_U1.xbl1.x1.o6
+  Voltage V(X_U1.xbl1.x1.67,X_U1.57)= 30.0070 is beyond the ranges defined in model X_U1.xbl1.x1.compwm
+
+
+DIGITAL Message ID#136 (SERIOUS):
+DIGITAL INPUT VOLTAGE Hazard at time 13.5001356ms
+  Device: X_U1.xbl1.x1.o6
+  Voltage V(X_U1.xbl1.x1.67,X_U1.57)= 30.0080 is beyond the ranges defined in model X_U1.xbl1.x1.compwm
+
+
+DIGITAL Message ID#137 (SERIOUS):
+DIGITAL INPUT VOLTAGE Hazard at time 13.6001356ms
+  Device: X_U1.xbl1.x1.o6
+  Voltage V(X_U1.xbl1.x1.67,X_U1.57)= 30.0070 is beyond the ranges defined in model X_U1.xbl1.x1.compwm
+
+
+DIGITAL Message ID#138 (SERIOUS):
+DIGITAL INPUT VOLTAGE Hazard at time 13.7001356ms
+  Device: X_U1.xbl1.x1.o6
+  Voltage V(X_U1.xbl1.x1.67,X_U1.57)= 30.0080 is beyond the ranges defined in model X_U1.xbl1.x1.compwm
+
+
+DIGITAL Message ID#139 (SERIOUS):
+DIGITAL INPUT VOLTAGE Hazard at time 13.8001356ms
+  Device: X_U1.xbl1.x1.o6
+  Voltage V(X_U1.xbl1.x1.67,X_U1.57)= 30.0070 is beyond the ranges defined in model X_U1.xbl1.x1.compwm
+
+
+DIGITAL Message ID#140 (SERIOUS):
+DIGITAL INPUT VOLTAGE Hazard at time 13.9001356ms
+  Device: X_U1.xbl1.x1.o6
+  Voltage V(X_U1.xbl1.x1.67,X_U1.57)= 30.0080 is beyond the ranges defined in model X_U1.xbl1.x1.compwm
+
+
+DIGITAL Message ID#141 (SERIOUS):
+DIGITAL INPUT VOLTAGE Hazard at time 14.0001356ms
+  Device: X_U1.xbl1.x1.o6
+  Voltage V(X_U1.xbl1.x1.67,X_U1.57)= 30.0080 is beyond the ranges defined in model X_U1.xbl1.x1.compwm
+
+
+DIGITAL Message ID#142 (SERIOUS):
+DIGITAL INPUT VOLTAGE Hazard at time 14.1001356ms
+  Device: X_U1.xbl1.x1.o6
+  Voltage V(X_U1.xbl1.x1.67,X_U1.57)= 30.0080 is beyond the ranges defined in model X_U1.xbl1.x1.compwm
+
+
+DIGITAL Message ID#143 (SERIOUS):
+DIGITAL INPUT VOLTAGE Hazard at time 14.2001356ms
+  Device: X_U1.xbl1.x1.o6
+  Voltage V(X_U1.xbl1.x1.67,X_U1.57)= 30.0080 is beyond the ranges defined in model X_U1.xbl1.x1.compwm
+
+
+DIGITAL Message ID#144 (SERIOUS):
+DIGITAL INPUT VOLTAGE Hazard at time 14.3001356ms
+  Device: X_U1.xbl1.x1.o6
+  Voltage V(X_U1.xbl1.x1.67,X_U1.57)= 30.0080 is beyond the ranges defined in model X_U1.xbl1.x1.compwm
+
+
+DIGITAL Message ID#145 (SERIOUS):
+DIGITAL INPUT VOLTAGE Hazard at time 14.4001356ms
+  Device: X_U1.xbl1.x1.o6
+  Voltage V(X_U1.xbl1.x1.67,X_U1.57)= 30.0080 is beyond the ranges defined in model X_U1.xbl1.x1.compwm
+
+
+DIGITAL Message ID#146 (SERIOUS):
+DIGITAL INPUT VOLTAGE Hazard at time 14.5001356ms
+  Device: X_U1.xbl1.x1.o6
+  Voltage V(X_U1.xbl1.x1.67,X_U1.57)= 30.0080 is beyond the ranges defined in model X_U1.xbl1.x1.compwm
+
+
+DIGITAL Message ID#147 (SERIOUS):
+DIGITAL INPUT VOLTAGE Hazard at time 14.6001356ms
+  Device: X_U1.xbl1.x1.o6
+  Voltage V(X_U1.xbl1.x1.67,X_U1.57)= 30.0090 is beyond the ranges defined in model X_U1.xbl1.x1.compwm
+
+
+DIGITAL Message ID#148 (SERIOUS):
+DIGITAL INPUT VOLTAGE Hazard at time 14.7001356ms
+  Device: X_U1.xbl1.x1.o6
+  Voltage V(X_U1.xbl1.x1.67,X_U1.57)= 30.0100 is beyond the ranges defined in model X_U1.xbl1.x1.compwm
+
+
+DIGITAL Message ID#149 (SERIOUS):
+DIGITAL INPUT VOLTAGE Hazard at time 14.8001356ms
+  Device: X_U1.xbl1.x1.o6
+  Voltage V(X_U1.xbl1.x1.67,X_U1.57)= 30.0090 is beyond the ranges defined in model X_U1.xbl1.x1.compwm
+
+
+DIGITAL Message ID#150 (SERIOUS):
+DIGITAL INPUT VOLTAGE Hazard at time 14.9001356ms
+  Device: X_U1.xbl1.x1.o6
+  Voltage V(X_U1.xbl1.x1.67,X_U1.57)= 30.0090 is beyond the ranges defined in model X_U1.xbl1.x1.compwm
+
+
+DIGITAL Message ID#151 (SERIOUS):
+DIGITAL INPUT VOLTAGE Hazard at time 15.0001357ms
+  Device: X_U1.xbl1.x1.o6
+  Voltage V(X_U1.xbl1.x1.67,X_U1.57)= 30.0080 is beyond the ranges defined in model X_U1.xbl1.x1.compwm
+
+
+DIGITAL Message ID#152 (SERIOUS):
+DIGITAL INPUT VOLTAGE Hazard at time 15.1001356ms
+  Device: X_U1.xbl1.x1.o6
+  Voltage V(X_U1.xbl1.x1.67,X_U1.57)= 30.0080 is beyond the ranges defined in model X_U1.xbl1.x1.compwm
+
+
+DIGITAL Message ID#153 (SERIOUS):
+DIGITAL INPUT VOLTAGE Hazard at time 15.2001356ms
+  Device: X_U1.xbl1.x1.o6
+  Voltage V(X_U1.xbl1.x1.67,X_U1.57)= 30.0080 is beyond the ranges defined in model X_U1.xbl1.x1.compwm
+
+
+DIGITAL Message ID#154 (SERIOUS):
+DIGITAL INPUT VOLTAGE Hazard at time 15.3001356ms
+  Device: X_U1.xbl1.x1.o6
+  Voltage V(X_U1.xbl1.x1.67,X_U1.57)= 30.0080 is beyond the ranges defined in model X_U1.xbl1.x1.compwm
+
+
+DIGITAL Message ID#155 (SERIOUS):
+DIGITAL INPUT VOLTAGE Hazard at time 15.4001356ms
+  Device: X_U1.xbl1.x1.o6
+  Voltage V(X_U1.xbl1.x1.67,X_U1.57)= 30.0090 is beyond the ranges defined in model X_U1.xbl1.x1.compwm
+
+
+DIGITAL Message ID#156 (SERIOUS):
+DIGITAL INPUT VOLTAGE Hazard at time 15.5001356ms
+  Device: X_U1.xbl1.x1.o6
+  Voltage V(X_U1.xbl1.x1.67,X_U1.57)= 30.0080 is beyond the ranges defined in model X_U1.xbl1.x1.compwm
+
+
+DIGITAL Message ID#157 (SERIOUS):
+DIGITAL INPUT VOLTAGE Hazard at time 15.6001356ms
+  Device: X_U1.xbl1.x1.o6
+  Voltage V(X_U1.xbl1.x1.67,X_U1.57)= 30.0080 is beyond the ranges defined in model X_U1.xbl1.x1.compwm
+
+
+DIGITAL Message ID#158 (SERIOUS):
+DIGITAL INPUT VOLTAGE Hazard at time 15.7001356ms
+  Device: X_U1.xbl1.x1.o6
+  Voltage V(X_U1.xbl1.x1.67,X_U1.57)= 30.0100 is beyond the ranges defined in model X_U1.xbl1.x1.compwm
+
+
+DIGITAL Message ID#159 (SERIOUS):
+DIGITAL INPUT VOLTAGE Hazard at time 15.8001356ms
+  Device: X_U1.xbl1.x1.o6
+  Voltage V(X_U1.xbl1.x1.67,X_U1.57)= 30.0080 is beyond the ranges defined in model X_U1.xbl1.x1.compwm
+
+
+DIGITAL Message ID#160 (SERIOUS):
+DIGITAL INPUT VOLTAGE Hazard at time 15.9001356ms
+  Device: X_U1.xbl1.x1.o6
+  Voltage V(X_U1.xbl1.x1.67,X_U1.57)= 30.0070 is beyond the ranges defined in model X_U1.xbl1.x1.compwm
+
+
+DIGITAL Message ID#161 (SERIOUS):
+DIGITAL INPUT VOLTAGE Hazard at time 16.0001356ms
+  Device: X_U1.xbl1.x1.o6
+  Voltage V(X_U1.xbl1.x1.67,X_U1.57)= 30.0080 is beyond the ranges defined in model X_U1.xbl1.x1.compwm
+
+
+DIGITAL Message ID#162 (SERIOUS):
+DIGITAL INPUT VOLTAGE Hazard at time 16.1001356ms
+  Device: X_U1.xbl1.x1.o6
+  Voltage V(X_U1.xbl1.x1.67,X_U1.57)= 30.0080 is beyond the ranges defined in model X_U1.xbl1.x1.compwm
+
+
+DIGITAL Message ID#163 (SERIOUS):
+DIGITAL INPUT VOLTAGE Hazard at time 16.2001356ms
+  Device: X_U1.xbl1.x1.o6
+  Voltage V(X_U1.xbl1.x1.67,X_U1.57)= 30.0080 is beyond the ranges defined in model X_U1.xbl1.x1.compwm
+
+
+DIGITAL Message ID#164 (SERIOUS):
+DIGITAL INPUT VOLTAGE Hazard at time 16.3001356ms
+  Device: X_U1.xbl1.x1.o6
+  Voltage V(X_U1.xbl1.x1.67,X_U1.57)= 30.0080 is beyond the ranges defined in model X_U1.xbl1.x1.compwm
+
+
+DIGITAL Message ID#165 (SERIOUS):
+DIGITAL INPUT VOLTAGE Hazard at time 16.4001356ms
+  Device: X_U1.xbl1.x1.o6
+  Voltage V(X_U1.xbl1.x1.67,X_U1.57)= 30.0100 is beyond the ranges defined in model X_U1.xbl1.x1.compwm
+
+
+DIGITAL Message ID#166 (SERIOUS):
+DIGITAL INPUT VOLTAGE Hazard at time 16.5001356ms
+  Device: X_U1.xbl1.x1.o6
+  Voltage V(X_U1.xbl1.x1.67,X_U1.57)= 30.0040 is beyond the ranges defined in model X_U1.xbl1.x1.compwm
+
+
+DIGITAL Message ID#167 (SERIOUS):
+DIGITAL INPUT VOLTAGE Hazard at time 16.6001356ms
+  Device: X_U1.xbl1.x1.o6
+  Voltage V(X_U1.xbl1.x1.67,X_U1.57)= 30.0090 is beyond the ranges defined in model X_U1.xbl1.x1.compwm
+
+
+DIGITAL Message ID#168 (SERIOUS):
+DIGITAL INPUT VOLTAGE Hazard at time 16.7001356ms
+  Device: X_U1.xbl1.x1.o6
+  Voltage V(X_U1.xbl1.x1.67,X_U1.57)= 30.0080 is beyond the ranges defined in model X_U1.xbl1.x1.compwm
+
+
+DIGITAL Message ID#169 (SERIOUS):
+DIGITAL INPUT VOLTAGE Hazard at time 16.8001356ms
+  Device: X_U1.xbl1.x1.o6
+  Voltage V(X_U1.xbl1.x1.67,X_U1.57)= 30.0090 is beyond the ranges defined in model X_U1.xbl1.x1.compwm
+
+
+DIGITAL Message ID#170 (SERIOUS):
+DIGITAL INPUT VOLTAGE Hazard at time 16.9001356ms
+  Device: X_U1.xbl1.x1.o6
+  Voltage V(X_U1.xbl1.x1.67,X_U1.57)= 30.0080 is beyond the ranges defined in model X_U1.xbl1.x1.compwm
+
+
+DIGITAL Message ID#171 (SERIOUS):
+DIGITAL INPUT VOLTAGE Hazard at time 17.0001356ms
+  Device: X_U1.xbl1.x1.o6
+  Voltage V(X_U1.xbl1.x1.67,X_U1.57)= 30.0090 is beyond the ranges defined in model X_U1.xbl1.x1.compwm
+
+
+DIGITAL Message ID#172 (SERIOUS):
+DIGITAL INPUT VOLTAGE Hazard at time 17.1001356ms
+  Device: X_U1.xbl1.x1.o6
+  Voltage V(X_U1.xbl1.x1.67,X_U1.57)= 30.0090 is beyond the ranges defined in model X_U1.xbl1.x1.compwm
+
+
+DIGITAL Message ID#173 (SERIOUS):
+DIGITAL INPUT VOLTAGE Hazard at time 17.2001356ms
+  Device: X_U1.xbl1.x1.o6
+  Voltage V(X_U1.xbl1.x1.67,X_U1.57)= 30.0090 is beyond the ranges defined in model X_U1.xbl1.x1.compwm
+
+
+DIGITAL Message ID#174 (SERIOUS):
+DIGITAL INPUT VOLTAGE Hazard at time 17.3001356ms
+  Device: X_U1.xbl1.x1.o6
+  Voltage V(X_U1.xbl1.x1.67,X_U1.57)= 30.0080 is beyond the ranges defined in model X_U1.xbl1.x1.compwm
+
+
+DIGITAL Message ID#175 (SERIOUS):
+DIGITAL INPUT VOLTAGE Hazard at time 17.4001356ms
+  Device: X_U1.xbl1.x1.o6
+  Voltage V(X_U1.xbl1.x1.67,X_U1.57)= 30.0080 is beyond the ranges defined in model X_U1.xbl1.x1.compwm
+
+
+DIGITAL Message ID#176 (SERIOUS):
+DIGITAL INPUT VOLTAGE Hazard at time 17.5001356ms
+  Device: X_U1.xbl1.x1.o6
+  Voltage V(X_U1.xbl1.x1.67,X_U1.57)= 30.0090 is beyond the ranges defined in model X_U1.xbl1.x1.compwm
+
+
+DIGITAL Message ID#177 (SERIOUS):
+DIGITAL INPUT VOLTAGE Hazard at time 17.6001356ms
+  Device: X_U1.xbl1.x1.o6
+  Voltage V(X_U1.xbl1.x1.67,X_U1.57)= 30.0080 is beyond the ranges defined in model X_U1.xbl1.x1.compwm
+
+
+DIGITAL Message ID#178 (SERIOUS):
+DIGITAL INPUT VOLTAGE Hazard at time 17.7001356ms
+  Device: X_U1.xbl1.x1.o6
+  Voltage V(X_U1.xbl1.x1.67,X_U1.57)= 30.0080 is beyond the ranges defined in model X_U1.xbl1.x1.compwm
+
+
+DIGITAL Message ID#179 (SERIOUS):
+DIGITAL INPUT VOLTAGE Hazard at time 17.8001356ms
+  Device: X_U1.xbl1.x1.o6
+  Voltage V(X_U1.xbl1.x1.67,X_U1.57)= 30.0090 is beyond the ranges defined in model X_U1.xbl1.x1.compwm
+
+
+DIGITAL Message ID#180 (SERIOUS):
+DIGITAL INPUT VOLTAGE Hazard at time 17.9001356ms
+  Device: X_U1.xbl1.x1.o6
+  Voltage V(X_U1.xbl1.x1.67,X_U1.57)= 30.0090 is beyond the ranges defined in model X_U1.xbl1.x1.compwm
+
+
+DIGITAL Message ID#181 (SERIOUS):
+DIGITAL INPUT VOLTAGE Hazard at time 18.0001356ms
+  Device: X_U1.xbl1.x1.o6
+  Voltage V(X_U1.xbl1.x1.67,X_U1.57)= 30.0080 is beyond the ranges defined in model X_U1.xbl1.x1.compwm
+
+
+DIGITAL Message ID#182 (SERIOUS):
+DIGITAL INPUT VOLTAGE Hazard at time 18.1001356ms
+  Device: X_U1.xbl1.x1.o6
+  Voltage V(X_U1.xbl1.x1.67,X_U1.57)= 30.0100 is beyond the ranges defined in model X_U1.xbl1.x1.compwm
+
+
+DIGITAL Message ID#183 (SERIOUS):
+DIGITAL INPUT VOLTAGE Hazard at time 18.2001356ms
+  Device: X_U1.xbl1.x1.o6
+  Voltage V(X_U1.xbl1.x1.67,X_U1.57)= 30.0100 is beyond the ranges defined in model X_U1.xbl1.x1.compwm
+
+
+DIGITAL Message ID#184 (SERIOUS):
+DIGITAL INPUT VOLTAGE Hazard at time 18.3001356ms
+  Device: X_U1.xbl1.x1.o6
+  Voltage V(X_U1.xbl1.x1.67,X_U1.57)= 30.0080 is beyond the ranges defined in model X_U1.xbl1.x1.compwm
+
+
+DIGITAL Message ID#185 (SERIOUS):
+DIGITAL INPUT VOLTAGE Hazard at time 18.4001356ms
+  Device: X_U1.xbl1.x1.o6
+  Voltage V(X_U1.xbl1.x1.67,X_U1.57)= 30.0090 is beyond the ranges defined in model X_U1.xbl1.x1.compwm
+
+
+DIGITAL Message ID#186 (SERIOUS):
+DIGITAL INPUT VOLTAGE Hazard at time 18.5001356ms
+  Device: X_U1.xbl1.x1.o6
+  Voltage V(X_U1.xbl1.x1.67,X_U1.57)= 30.0080 is beyond the ranges defined in model X_U1.xbl1.x1.compwm
+
+
+DIGITAL Message ID#187 (SERIOUS):
+DIGITAL INPUT VOLTAGE Hazard at time 18.6001356ms
+  Device: X_U1.xbl1.x1.o6
+  Voltage V(X_U1.xbl1.x1.67,X_U1.57)= 30.0090 is beyond the ranges defined in model X_U1.xbl1.x1.compwm
+
+
+DIGITAL Message ID#188 (SERIOUS):
+DIGITAL INPUT VOLTAGE Hazard at time 18.7001356ms
+  Device: X_U1.xbl1.x1.o6
+  Voltage V(X_U1.xbl1.x1.67,X_U1.57)= 30.0080 is beyond the ranges defined in model X_U1.xbl1.x1.compwm
+
+
+DIGITAL Message ID#189 (SERIOUS):
+DIGITAL INPUT VOLTAGE Hazard at time 18.8001356ms
+  Device: X_U1.xbl1.x1.o6
+  Voltage V(X_U1.xbl1.x1.67,X_U1.57)= 30.0090 is beyond the ranges defined in model X_U1.xbl1.x1.compwm
+
+
+DIGITAL Message ID#190 (SERIOUS):
+DIGITAL INPUT VOLTAGE Hazard at time 18.9001356ms
+  Device: X_U1.xbl1.x1.o6
+  Voltage V(X_U1.xbl1.x1.67,X_U1.57)= 30.0090 is beyond the ranges defined in model X_U1.xbl1.x1.compwm
+
+
+DIGITAL Message ID#191 (SERIOUS):
+DIGITAL INPUT VOLTAGE Hazard at time 19.0001356ms
+  Device: X_U1.xbl1.x1.o6
+  Voltage V(X_U1.xbl1.x1.67,X_U1.57)= 30.0090 is beyond the ranges defined in model X_U1.xbl1.x1.compwm
+
+
+DIGITAL Message ID#192 (SERIOUS):
+DIGITAL INPUT VOLTAGE Hazard at time 19.1001356ms
+  Device: X_U1.xbl1.x1.o6
+  Voltage V(X_U1.xbl1.x1.67,X_U1.57)= 30.0090 is beyond the ranges defined in model X_U1.xbl1.x1.compwm
+
+
+DIGITAL Message ID#193 (SERIOUS):
+DIGITAL INPUT VOLTAGE Hazard at time 19.2001356ms
+  Device: X_U1.xbl1.x1.o6
+  Voltage V(X_U1.xbl1.x1.67,X_U1.57)= 30.0090 is beyond the ranges defined in model X_U1.xbl1.x1.compwm
+
+
+DIGITAL Message ID#194 (SERIOUS):
+DIGITAL INPUT VOLTAGE Hazard at time 19.3001356ms
+  Device: X_U1.xbl1.x1.o6
+  Voltage V(X_U1.xbl1.x1.67,X_U1.57)= 30.0090 is beyond the ranges defined in model X_U1.xbl1.x1.compwm
+
+
+DIGITAL Message ID#195 (SERIOUS):
+DIGITAL INPUT VOLTAGE Hazard at time 19.4001356ms
+  Device: X_U1.xbl1.x1.o6
+  Voltage V(X_U1.xbl1.x1.67,X_U1.57)= 30.0090 is beyond the ranges defined in model X_U1.xbl1.x1.compwm
+
+
+DIGITAL Message ID#196 (SERIOUS):
+DIGITAL INPUT VOLTAGE Hazard at time 19.5001356ms
+  Device: X_U1.xbl1.x1.o6
+  Voltage V(X_U1.xbl1.x1.67,X_U1.57)= 30.0080 is beyond the ranges defined in model X_U1.xbl1.x1.compwm
+
+
+DIGITAL Message ID#197 (SERIOUS):
+DIGITAL INPUT VOLTAGE Hazard at time 19.6001356ms
+  Device: X_U1.xbl1.x1.o6
+  Voltage V(X_U1.xbl1.x1.67,X_U1.57)= 30.0100 is beyond the ranges defined in model X_U1.xbl1.x1.compwm
+
+
+DIGITAL Message ID#198 (SERIOUS):
+DIGITAL INPUT VOLTAGE Hazard at time 19.7001357ms
+  Device: X_U1.xbl1.x1.o6
+  Voltage V(X_U1.xbl1.x1.67,X_U1.57)= 30.0090 is beyond the ranges defined in model X_U1.xbl1.x1.compwm
+
+
+DIGITAL Message ID#199 (SERIOUS):
+DIGITAL INPUT VOLTAGE Hazard at time 19.8001356ms
+  Device: X_U1.xbl1.x1.o6
+  Voltage V(X_U1.xbl1.x1.67,X_U1.57)= 30.0090 is beyond the ranges defined in model X_U1.xbl1.x1.compwm
+
+
+DIGITAL Message ID#200 (SERIOUS):
+DIGITAL INPUT VOLTAGE Hazard at time 19.9001356ms
+  Device: X_U1.xbl1.x1.o6
+  Voltage V(X_U1.xbl1.x1.67,X_U1.57)= 30.0090 is beyond the ranges defined in model X_U1.xbl1.x1.compwm
+
+
+DIGITAL Message ID#201 (SERIOUS):
+DIGITAL INPUT VOLTAGE Hazard at time 20.0001356ms
+  Device: X_U1.xbl1.x1.o6
+  Voltage V(X_U1.xbl1.x1.67,X_U1.57)= 30.0110 is beyond the ranges defined in model X_U1.xbl1.x1.compwm
+
+
+DIGITAL Message ID#202 (SERIOUS):
+DIGITAL INPUT VOLTAGE Hazard at time 20.1001356ms
+  Device: X_U1.xbl1.x1.o6
+  Voltage V(X_U1.xbl1.x1.67,X_U1.57)= 30.0080 is beyond the ranges defined in model X_U1.xbl1.x1.compwm
+
+
+DIGITAL Message ID#203 (SERIOUS):
+DIGITAL INPUT VOLTAGE Hazard at time 20.2001356ms
+  Device: X_U1.xbl1.x1.o6
+  Voltage V(X_U1.xbl1.x1.67,X_U1.57)= 30.0090 is beyond the ranges defined in model X_U1.xbl1.x1.compwm
+
+
+DIGITAL Message ID#204 (SERIOUS):
+DIGITAL INPUT VOLTAGE Hazard at time 20.3001356ms
+  Device: X_U1.xbl1.x1.o6
+  Voltage V(X_U1.xbl1.x1.67,X_U1.57)= 30.0090 is beyond the ranges defined in model X_U1.xbl1.x1.compwm
+
+
+DIGITAL Message ID#205 (SERIOUS):
+DIGITAL INPUT VOLTAGE Hazard at time 20.4001356ms
+  Device: X_U1.xbl1.x1.o6
+  Voltage V(X_U1.xbl1.x1.67,X_U1.57)= 30.0080 is beyond the ranges defined in model X_U1.xbl1.x1.compwm
+
+
+DIGITAL Message ID#206 (SERIOUS):
+DIGITAL INPUT VOLTAGE Hazard at time 20.5001356ms
+  Device: X_U1.xbl1.x1.o6
+  Voltage V(X_U1.xbl1.x1.67,X_U1.57)= 30.0080 is beyond the ranges defined in model X_U1.xbl1.x1.compwm
+
+
+DIGITAL Message ID#207 (SERIOUS):
+DIGITAL INPUT VOLTAGE Hazard at time 20.6001356ms
+  Device: X_U1.xbl1.x1.o6
+  Voltage V(X_U1.xbl1.x1.67,X_U1.57)= 30.0100 is beyond the ranges defined in model X_U1.xbl1.x1.compwm
+
+
+DIGITAL Message ID#208 (SERIOUS):
+DIGITAL INPUT VOLTAGE Hazard at time 20.7001356ms
+  Device: X_U1.xbl1.x1.o6
+  Voltage V(X_U1.xbl1.x1.67,X_U1.57)= 30.0100 is beyond the ranges defined in model X_U1.xbl1.x1.compwm
+
+
+DIGITAL Message ID#209 (SERIOUS):
+DIGITAL INPUT VOLTAGE Hazard at time 20.8001356ms
+  Device: X_U1.xbl1.x1.o6
+  Voltage V(X_U1.xbl1.x1.67,X_U1.57)= 30.0090 is beyond the ranges defined in model X_U1.xbl1.x1.compwm
+
+
+DIGITAL Message ID#210 (SERIOUS):
+DIGITAL INPUT VOLTAGE Hazard at time 20.9001356ms
+  Device: X_U1.xbl1.x1.o6
+  Voltage V(X_U1.xbl1.x1.67,X_U1.57)= 30.0100 is beyond the ranges defined in model X_U1.xbl1.x1.compwm
+
+
+DIGITAL Message ID#211 (SERIOUS):
+DIGITAL INPUT VOLTAGE Hazard at time 21.0001356ms
+  Device: X_U1.xbl1.x1.o6
+  Voltage V(X_U1.xbl1.x1.67,X_U1.57)= 30.0100 is beyond the ranges defined in model X_U1.xbl1.x1.compwm
+
+
+DIGITAL Message ID#212 (SERIOUS):
+DIGITAL INPUT VOLTAGE Hazard at time 21.1001356ms
+  Device: X_U1.xbl1.x1.o6
+  Voltage V(X_U1.xbl1.x1.67,X_U1.57)= 30.0100 is beyond the ranges defined in model X_U1.xbl1.x1.compwm
+
+
+DIGITAL Message ID#213 (SERIOUS):
+DIGITAL INPUT VOLTAGE Hazard at time 21.2001356ms
+  Device: X_U1.xbl1.x1.o6
+  Voltage V(X_U1.xbl1.x1.67,X_U1.57)= 30.0090 is beyond the ranges defined in model X_U1.xbl1.x1.compwm
+
+
+DIGITAL Message ID#214 (SERIOUS):
+DIGITAL INPUT VOLTAGE Hazard at time 21.3001357ms
+  Device: X_U1.xbl1.x1.o6
+  Voltage V(X_U1.xbl1.x1.67,X_U1.57)= 30.0090 is beyond the ranges defined in model X_U1.xbl1.x1.compwm
+
+
+DIGITAL Message ID#215 (SERIOUS):
+DIGITAL INPUT VOLTAGE Hazard at time 21.4001356ms
+  Device: X_U1.xbl1.x1.o6
+  Voltage V(X_U1.xbl1.x1.67,X_U1.57)= 30.0100 is beyond the ranges defined in model X_U1.xbl1.x1.compwm
+
+
+DIGITAL Message ID#216 (SERIOUS):
+DIGITAL INPUT VOLTAGE Hazard at time 21.5001357ms
+  Device: X_U1.xbl1.x1.o6
+  Voltage V(X_U1.xbl1.x1.67,X_U1.57)= 30.0100 is beyond the ranges defined in model X_U1.xbl1.x1.compwm
+
+
+DIGITAL Message ID#217 (SERIOUS):
+DIGITAL INPUT VOLTAGE Hazard at time 21.6001356ms
+  Device: X_U1.xbl1.x1.o6
+  Voltage V(X_U1.xbl1.x1.67,X_U1.57)= 30.0090 is beyond the ranges defined in model X_U1.xbl1.x1.compwm
+
+
+DIGITAL Message ID#218 (SERIOUS):
+DIGITAL INPUT VOLTAGE Hazard at time 21.7001356ms
+  Device: X_U1.xbl1.x1.o6
+  Voltage V(X_U1.xbl1.x1.67,X_U1.57)= 30.0110 is beyond the ranges defined in model X_U1.xbl1.x1.compwm
+
+
+DIGITAL Message ID#219 (SERIOUS):
+DIGITAL INPUT VOLTAGE Hazard at time 21.8001356ms
+  Device: X_U1.xbl1.x1.o6
+  Voltage V(X_U1.xbl1.x1.67,X_U1.57)= 30.0090 is beyond the ranges defined in model X_U1.xbl1.x1.compwm
+
+
+DIGITAL Message ID#220 (SERIOUS):
+DIGITAL INPUT VOLTAGE Hazard at time 21.9001356ms
+  Device: X_U1.xbl1.x1.o6
+  Voltage V(X_U1.xbl1.x1.67,X_U1.57)= 30.0100 is beyond the ranges defined in model X_U1.xbl1.x1.compwm
+
+
+DIGITAL Message ID#221 (SERIOUS):
+DIGITAL INPUT VOLTAGE Hazard at time 22.0001356ms
+  Device: X_U1.xbl1.x1.o6
+  Voltage V(X_U1.xbl1.x1.67,X_U1.57)= 30.0090 is beyond the ranges defined in model X_U1.xbl1.x1.compwm
+
+
+DIGITAL Message ID#222 (SERIOUS):
+DIGITAL INPUT VOLTAGE Hazard at time 22.1001356ms
+  Device: X_U1.xbl1.x1.o6
+  Voltage V(X_U1.xbl1.x1.67,X_U1.57)= 30.0100 is beyond the ranges defined in model X_U1.xbl1.x1.compwm
+
+
+DIGITAL Message ID#223 (SERIOUS):
+DIGITAL INPUT VOLTAGE Hazard at time 22.2001356ms
+  Device: X_U1.xbl1.x1.o6
+  Voltage V(X_U1.xbl1.x1.67,X_U1.57)= 30.0090 is beyond the ranges defined in model X_U1.xbl1.x1.compwm
+
+
+DIGITAL Message ID#224 (SERIOUS):
+DIGITAL INPUT VOLTAGE Hazard at time 22.3001356ms
+  Device: X_U1.xbl1.x1.o6
+  Voltage V(X_U1.xbl1.x1.67,X_U1.57)= 30.0090 is beyond the ranges defined in model X_U1.xbl1.x1.compwm
+
+
+DIGITAL Message ID#225 (SERIOUS):
+DIGITAL INPUT VOLTAGE Hazard at time 22.4001356ms
+  Device: X_U1.xbl1.x1.o6
+  Voltage V(X_U1.xbl1.x1.67,X_U1.57)= 30.0100 is beyond the ranges defined in model X_U1.xbl1.x1.compwm
+
+
+DIGITAL Message ID#226 (SERIOUS):
+DIGITAL INPUT VOLTAGE Hazard at time 22.5001356ms
+  Device: X_U1.xbl1.x1.o6
+  Voltage V(X_U1.xbl1.x1.67,X_U1.57)= 30.0090 is beyond the ranges defined in model X_U1.xbl1.x1.compwm
+
+
+DIGITAL Message ID#227 (SERIOUS):
+DIGITAL INPUT VOLTAGE Hazard at time 22.6001357ms
+  Device: X_U1.xbl1.x1.o6
+  Voltage V(X_U1.xbl1.x1.67,X_U1.57)= 30.0090 is beyond the ranges defined in model X_U1.xbl1.x1.compwm
+
+
+DIGITAL Message ID#228 (SERIOUS):
+DIGITAL INPUT VOLTAGE Hazard at time 22.7001356ms
+  Device: X_U1.xbl1.x1.o6
+  Voltage V(X_U1.xbl1.x1.67,X_U1.57)= 30.0100 is beyond the ranges defined in model X_U1.xbl1.x1.compwm
+
+
+DIGITAL Message ID#229 (SERIOUS):
+DIGITAL INPUT VOLTAGE Hazard at time 22.8001356ms
+  Device: X_U1.xbl1.x1.o6
+  Voltage V(X_U1.xbl1.x1.67,X_U1.57)= 30.0100 is beyond the ranges defined in model X_U1.xbl1.x1.compwm
+
+
+DIGITAL Message ID#230 (SERIOUS):
+DIGITAL INPUT VOLTAGE Hazard at time 22.9001356ms
+  Device: X_U1.xbl1.x1.o6
+  Voltage V(X_U1.xbl1.x1.67,X_U1.57)= 30.0100 is beyond the ranges defined in model X_U1.xbl1.x1.compwm
+
+
+DIGITAL Message ID#231 (SERIOUS):
+DIGITAL INPUT VOLTAGE Hazard at time 23.0001356ms
+  Device: X_U1.xbl1.x1.o6
+  Voltage V(X_U1.xbl1.x1.67,X_U1.57)= 30.0100 is beyond the ranges defined in model X_U1.xbl1.x1.compwm
+
+
+DIGITAL Message ID#232 (SERIOUS):
+DIGITAL INPUT VOLTAGE Hazard at time 23.1001356ms
+  Device: X_U1.xbl1.x1.o6
+  Voltage V(X_U1.xbl1.x1.67,X_U1.57)= 30.0100 is beyond the ranges defined in model X_U1.xbl1.x1.compwm
+
+
+DIGITAL Message ID#233 (SERIOUS):
+DIGITAL INPUT VOLTAGE Hazard at time 23.2001356ms
+  Device: X_U1.xbl1.x1.o6
+  Voltage V(X_U1.xbl1.x1.67,X_U1.57)= 30.0090 is beyond the ranges defined in model X_U1.xbl1.x1.compwm
+
+
+DIGITAL Message ID#234 (SERIOUS):
+DIGITAL INPUT VOLTAGE Hazard at time 23.3001356ms
+  Device: X_U1.xbl1.x1.o6
+  Voltage V(X_U1.xbl1.x1.67,X_U1.57)= 30.0100 is beyond the ranges defined in model X_U1.xbl1.x1.compwm
+
+
+DIGITAL Message ID#235 (SERIOUS):
+DIGITAL INPUT VOLTAGE Hazard at time 23.4001356ms
+  Device: X_U1.xbl1.x1.o6
+  Voltage V(X_U1.xbl1.x1.67,X_U1.57)= 30.0100 is beyond the ranges defined in model X_U1.xbl1.x1.compwm
+
+
+DIGITAL Message ID#236 (SERIOUS):
+DIGITAL INPUT VOLTAGE Hazard at time 23.5001356ms
+  Device: X_U1.xbl1.x1.o6
+  Voltage V(X_U1.xbl1.x1.67,X_U1.57)= 30.0100 is beyond the ranges defined in model X_U1.xbl1.x1.compwm
+
+
+DIGITAL Message ID#237 (SERIOUS):
+DIGITAL INPUT VOLTAGE Hazard at time 23.6001356ms
+  Device: X_U1.xbl1.x1.o6
+  Voltage V(X_U1.xbl1.x1.67,X_U1.57)= 30.0090 is beyond the ranges defined in model X_U1.xbl1.x1.compwm
+
+
+DIGITAL Message ID#238 (SERIOUS):
+DIGITAL INPUT VOLTAGE Hazard at time 23.7001356ms
+  Device: X_U1.xbl1.x1.o6
+  Voltage V(X_U1.xbl1.x1.67,X_U1.57)= 30.0100 is beyond the ranges defined in model X_U1.xbl1.x1.compwm
+
+
+DIGITAL Message ID#239 (SERIOUS):
+DIGITAL INPUT VOLTAGE Hazard at time 23.8001356ms
+  Device: X_U1.xbl1.x1.o6
+  Voltage V(X_U1.xbl1.x1.67,X_U1.57)= 30.0100 is beyond the ranges defined in model X_U1.xbl1.x1.compwm
+
+
+DIGITAL Message ID#240 (SERIOUS):
+DIGITAL INPUT VOLTAGE Hazard at time 23.9001356ms
+  Device: X_U1.xbl1.x1.o6
+  Voltage V(X_U1.xbl1.x1.67,X_U1.57)= 30.0100 is beyond the ranges defined in model X_U1.xbl1.x1.compwm
+
+
+DIGITAL Message ID#241 (SERIOUS):
+DIGITAL INPUT VOLTAGE Hazard at time 24.0001356ms
+  Device: X_U1.xbl1.x1.o6
+  Voltage V(X_U1.xbl1.x1.67,X_U1.57)= 30.0100 is beyond the ranges defined in model X_U1.xbl1.x1.compwm
+
+
+DIGITAL Message ID#242 (SERIOUS):
+DIGITAL INPUT VOLTAGE Hazard at time 24.1001356ms
+  Device: X_U1.xbl1.x1.o6
+  Voltage V(X_U1.xbl1.x1.67,X_U1.57)= 30.0100 is beyond the ranges defined in model X_U1.xbl1.x1.compwm
+
+
+DIGITAL Message ID#243 (SERIOUS):
+DIGITAL INPUT VOLTAGE Hazard at time 24.2001356ms
+  Device: X_U1.xbl1.x1.o6
+  Voltage V(X_U1.xbl1.x1.67,X_U1.57)= 30.0100 is beyond the ranges defined in model X_U1.xbl1.x1.compwm
+
+
+DIGITAL Message ID#244 (SERIOUS):
+DIGITAL INPUT VOLTAGE Hazard at time 24.3001356ms
+  Device: X_U1.xbl1.x1.o6
+  Voltage V(X_U1.xbl1.x1.67,X_U1.57)= 30.0100 is beyond the ranges defined in model X_U1.xbl1.x1.compwm
+
+
+DIGITAL Message ID#245 (SERIOUS):
+DIGITAL INPUT VOLTAGE Hazard at time 24.4001356ms
+  Device: X_U1.xbl1.x1.o6
+  Voltage V(X_U1.xbl1.x1.67,X_U1.57)= 30.0100 is beyond the ranges defined in model X_U1.xbl1.x1.compwm
+
+
+DIGITAL Message ID#246 (SERIOUS):
+DIGITAL INPUT VOLTAGE Hazard at time 24.5001356ms
+  Device: X_U1.xbl1.x1.o6
+  Voltage V(X_U1.xbl1.x1.67,X_U1.57)= 30.0090 is beyond the ranges defined in model X_U1.xbl1.x1.compwm
+
+
+DIGITAL Message ID#247 (SERIOUS):
+DIGITAL INPUT VOLTAGE Hazard at time 24.6001356ms
+  Device: X_U1.xbl1.x1.o6
+  Voltage V(X_U1.xbl1.x1.67,X_U1.57)= 30.0090 is beyond the ranges defined in model X_U1.xbl1.x1.compwm
+
+
+DIGITAL Message ID#248 (SERIOUS):
+DIGITAL INPUT VOLTAGE Hazard at time 24.7001356ms
+  Device: X_U1.xbl1.x1.o6
+  Voltage V(X_U1.xbl1.x1.67,X_U1.57)= 30.0100 is beyond the ranges defined in model X_U1.xbl1.x1.compwm
+
+
+DIGITAL Message ID#249 (SERIOUS):
+DIGITAL INPUT VOLTAGE Hazard at time 24.8001356ms
+  Device: X_U1.xbl1.x1.o6
+  Voltage V(X_U1.xbl1.x1.67,X_U1.57)= 30.0120 is beyond the ranges defined in model X_U1.xbl1.x1.compwm
+
+
+DIGITAL Message ID#250 (SERIOUS):
+DIGITAL INPUT VOLTAGE Hazard at time 24.9001356ms
+  Device: X_U1.xbl1.x1.o6
+  Voltage V(X_U1.xbl1.x1.67,X_U1.57)= 30.0100 is beyond the ranges defined in model X_U1.xbl1.x1.compwm
+
+
+DIGITAL Message ID#251 (SERIOUS):
+DIGITAL INPUT VOLTAGE Hazard at time 25.0001356ms
+  Device: X_U1.xbl1.x1.o6
+  Voltage V(X_U1.xbl1.x1.67,X_U1.57)= 30.0110 is beyond the ranges defined in model X_U1.xbl1.x1.compwm
+
+
+DIGITAL Message ID#252 (SERIOUS):
+DIGITAL INPUT VOLTAGE Hazard at time 25.1001356ms
+  Device: X_U1.xbl1.x1.o6
+  Voltage V(X_U1.xbl1.x1.67,X_U1.57)= 30.0100 is beyond the ranges defined in model X_U1.xbl1.x1.compwm
+
+
+DIGITAL Message ID#253 (SERIOUS):
+DIGITAL INPUT VOLTAGE Hazard at time 25.2001356ms
+  Device: X_U1.xbl1.x1.o6
+  Voltage V(X_U1.xbl1.x1.67,X_U1.57)= 30.0100 is beyond the ranges defined in model X_U1.xbl1.x1.compwm
+
+
+DIGITAL Message ID#254 (SERIOUS):
+DIGITAL INPUT VOLTAGE Hazard at time 25.3001356ms
+  Device: X_U1.xbl1.x1.o6
+  Voltage V(X_U1.xbl1.x1.67,X_U1.57)= 30.0100 is beyond the ranges defined in model X_U1.xbl1.x1.compwm
+
+
+DIGITAL Message ID#255 (SERIOUS):
+DIGITAL INPUT VOLTAGE Hazard at time 25.4001357ms
+  Device: X_U1.xbl1.x1.o6
+  Voltage V(X_U1.xbl1.x1.67,X_U1.57)= 30.0100 is beyond the ranges defined in model X_U1.xbl1.x1.compwm
+
+
+DIGITAL Message ID#256 (SERIOUS):
+DIGITAL INPUT VOLTAGE Hazard at time 25.5001356ms
+  Device: X_U1.xbl1.x1.o6
+  Voltage V(X_U1.xbl1.x1.67,X_U1.57)= 30.0110 is beyond the ranges defined in model X_U1.xbl1.x1.compwm
+
+
+DIGITAL Message ID#257 (SERIOUS):
+DIGITAL INPUT VOLTAGE Hazard at time 25.6001356ms
+  Device: X_U1.xbl1.x1.o6
+  Voltage V(X_U1.xbl1.x1.67,X_U1.57)= 30.0100 is beyond the ranges defined in model X_U1.xbl1.x1.compwm
+
+
+DIGITAL Message ID#258 (SERIOUS):
+DIGITAL INPUT VOLTAGE Hazard at time 25.7001356ms
+  Device: X_U1.xbl1.x1.o6
+  Voltage V(X_U1.xbl1.x1.67,X_U1.57)= 30.0110 is beyond the ranges defined in model X_U1.xbl1.x1.compwm
+
+
+DIGITAL Message ID#259 (SERIOUS):
+DIGITAL INPUT VOLTAGE Hazard at time 25.8001356ms
+  Device: X_U1.xbl1.x1.o6
+  Voltage V(X_U1.xbl1.x1.67,X_U1.57)= 30.0110 is beyond the ranges defined in model X_U1.xbl1.x1.compwm
+
+
+DIGITAL Message ID#260 (SERIOUS):
+DIGITAL INPUT VOLTAGE Hazard at time 25.9001356ms
+  Device: X_U1.xbl1.x1.o6
+  Voltage V(X_U1.xbl1.x1.67,X_U1.57)= 30.0100 is beyond the ranges defined in model X_U1.xbl1.x1.compwm
+
+
+DIGITAL Message ID#261 (SERIOUS):
+DIGITAL INPUT VOLTAGE Hazard at time 26.0001356ms
+  Device: X_U1.xbl1.x1.o6
+  Voltage V(X_U1.xbl1.x1.67,X_U1.57)= 30.0100 is beyond the ranges defined in model X_U1.xbl1.x1.compwm
+
+
+DIGITAL Message ID#262 (SERIOUS):
+DIGITAL INPUT VOLTAGE Hazard at time 26.1001356ms
+  Device: X_U1.xbl1.x1.o6
+  Voltage V(X_U1.xbl1.x1.67,X_U1.57)= 30.0110 is beyond the ranges defined in model X_U1.xbl1.x1.compwm
+
+
+DIGITAL Message ID#263 (SERIOUS):
+DIGITAL INPUT VOLTAGE Hazard at time 26.2001356ms
+  Device: X_U1.xbl1.x1.o6
+  Voltage V(X_U1.xbl1.x1.67,X_U1.57)= 30.0120 is beyond the ranges defined in model X_U1.xbl1.x1.compwm
+
+
+DIGITAL Message ID#264 (SERIOUS):
+DIGITAL INPUT VOLTAGE Hazard at time 26.3001356ms
+  Device: X_U1.xbl1.x1.o6
+  Voltage V(X_U1.xbl1.x1.67,X_U1.57)= 30.0100 is beyond the ranges defined in model X_U1.xbl1.x1.compwm
+
+
+DIGITAL Message ID#265 (SERIOUS):
+DIGITAL INPUT VOLTAGE Hazard at time 26.4001356ms
+  Device: X_U1.xbl1.x1.o6
+  Voltage V(X_U1.xbl1.x1.67,X_U1.57)= 30.0100 is beyond the ranges defined in model X_U1.xbl1.x1.compwm
+
+
+DIGITAL Message ID#266 (SERIOUS):
+DIGITAL INPUT VOLTAGE Hazard at time 26.5001356ms
+  Device: X_U1.xbl1.x1.o6
+  Voltage V(X_U1.xbl1.x1.67,X_U1.57)= 30.0120 is beyond the ranges defined in model X_U1.xbl1.x1.compwm
+
+
+DIGITAL Message ID#267 (SERIOUS):
+DIGITAL INPUT VOLTAGE Hazard at time 26.6001356ms
+  Device: X_U1.xbl1.x1.o6
+  Voltage V(X_U1.xbl1.x1.67,X_U1.57)= 30.0100 is beyond the ranges defined in model X_U1.xbl1.x1.compwm
+
+
+DIGITAL Message ID#268 (SERIOUS):
+DIGITAL INPUT VOLTAGE Hazard at time 26.7001357ms
+  Device: X_U1.xbl1.x1.o6
+  Voltage V(X_U1.xbl1.x1.67,X_U1.57)= 30.0110 is beyond the ranges defined in model X_U1.xbl1.x1.compwm
+
+
+DIGITAL Message ID#269 (SERIOUS):
+DIGITAL INPUT VOLTAGE Hazard at time 26.8001356ms
+  Device: X_U1.xbl1.x1.o6
+  Voltage V(X_U1.xbl1.x1.67,X_U1.57)= 30.0110 is beyond the ranges defined in model X_U1.xbl1.x1.compwm
+
+
+DIGITAL Message ID#270 (SERIOUS):
+DIGITAL INPUT VOLTAGE Hazard at time 26.9001356ms
+  Device: X_U1.xbl1.x1.o6
+  Voltage V(X_U1.xbl1.x1.67,X_U1.57)= 30.0100 is beyond the ranges defined in model X_U1.xbl1.x1.compwm
+
+
+DIGITAL Message ID#271 (SERIOUS):
+DIGITAL INPUT VOLTAGE Hazard at time 27.0001356ms
+  Device: X_U1.xbl1.x1.o6
+  Voltage V(X_U1.xbl1.x1.67,X_U1.57)= 30.0110 is beyond the ranges defined in model X_U1.xbl1.x1.compwm
+
+
+DIGITAL Message ID#272 (SERIOUS):
+DIGITAL INPUT VOLTAGE Hazard at time 27.1001356ms
+  Device: X_U1.xbl1.x1.o6
+  Voltage V(X_U1.xbl1.x1.67,X_U1.57)= 30.0120 is beyond the ranges defined in model X_U1.xbl1.x1.compwm
+
+
+DIGITAL Message ID#273 (SERIOUS):
+DIGITAL INPUT VOLTAGE Hazard at time 27.2001356ms
+  Device: X_U1.xbl1.x1.o6
+  Voltage V(X_U1.xbl1.x1.67,X_U1.57)= 30.0100 is beyond the ranges defined in model X_U1.xbl1.x1.compwm
+
+
+DIGITAL Message ID#274 (SERIOUS):
+DIGITAL INPUT VOLTAGE Hazard at time 27.3001356ms
+  Device: X_U1.xbl1.x1.o6
+  Voltage V(X_U1.xbl1.x1.67,X_U1.57)= 30.0130 is beyond the ranges defined in model X_U1.xbl1.x1.compwm
+
+
+DIGITAL Message ID#275 (SERIOUS):
+DIGITAL INPUT VOLTAGE Hazard at time 27.4001356ms
+  Device: X_U1.xbl1.x1.o6
+  Voltage V(X_U1.xbl1.x1.67,X_U1.57)= 30.0100 is beyond the ranges defined in model X_U1.xbl1.x1.compwm
+
+
+DIGITAL Message ID#276 (SERIOUS):
+DIGITAL INPUT VOLTAGE Hazard at time 27.5001356ms
+  Device: X_U1.xbl1.x1.o6
+  Voltage V(X_U1.xbl1.x1.67,X_U1.57)= 30.0110 is beyond the ranges defined in model X_U1.xbl1.x1.compwm
+
+
+DIGITAL Message ID#277 (SERIOUS):
+DIGITAL INPUT VOLTAGE Hazard at time 27.6001356ms
+  Device: X_U1.xbl1.x1.o6
+  Voltage V(X_U1.xbl1.x1.67,X_U1.57)= 30.0100 is beyond the ranges defined in model X_U1.xbl1.x1.compwm
+
+
+DIGITAL Message ID#278 (SERIOUS):
+DIGITAL INPUT VOLTAGE Hazard at time 27.7001356ms
+  Device: X_U1.xbl1.x1.o6
+  Voltage V(X_U1.xbl1.x1.67,X_U1.57)= 30.0110 is beyond the ranges defined in model X_U1.xbl1.x1.compwm
+
+
+DIGITAL Message ID#279 (SERIOUS):
+DIGITAL INPUT VOLTAGE Hazard at time 27.8001356ms
+  Device: X_U1.xbl1.x1.o6
+  Voltage V(X_U1.xbl1.x1.67,X_U1.57)= 30.0110 is beyond the ranges defined in model X_U1.xbl1.x1.compwm
+
+
+DIGITAL Message ID#280 (SERIOUS):
+DIGITAL INPUT VOLTAGE Hazard at time 27.9001357ms
+  Device: X_U1.xbl1.x1.o6
+  Voltage V(X_U1.xbl1.x1.67,X_U1.57)= 30.0110 is beyond the ranges defined in model X_U1.xbl1.x1.compwm
+
+
+DIGITAL Message ID#281 (SERIOUS):
+DIGITAL INPUT VOLTAGE Hazard at time 28.0001356ms
+  Device: X_U1.xbl1.x1.o6
+  Voltage V(X_U1.xbl1.x1.67,X_U1.57)= 30.0100 is beyond the ranges defined in model X_U1.xbl1.x1.compwm
+
+
+DIGITAL Message ID#282 (SERIOUS):
+DIGITAL INPUT VOLTAGE Hazard at time 28.1001356ms
+  Device: X_U1.xbl1.x1.o6
+  Voltage V(X_U1.xbl1.x1.67,X_U1.57)= 30.0110 is beyond the ranges defined in model X_U1.xbl1.x1.compwm
+
+
+DIGITAL Message ID#283 (SERIOUS):
+DIGITAL INPUT VOLTAGE Hazard at time 28.2001357ms
+  Device: X_U1.xbl1.x1.o6
+  Voltage V(X_U1.xbl1.x1.67,X_U1.57)= 30.0110 is beyond the ranges defined in model X_U1.xbl1.x1.compwm
+
+
+DIGITAL Message ID#284 (SERIOUS):
+DIGITAL INPUT VOLTAGE Hazard at time 28.3001356ms
+  Device: X_U1.xbl1.x1.o6
+  Voltage V(X_U1.xbl1.x1.67,X_U1.57)= 30.0100 is beyond the ranges defined in model X_U1.xbl1.x1.compwm
+
+
+DIGITAL Message ID#285 (SERIOUS):
+DIGITAL INPUT VOLTAGE Hazard at time 28.4001357ms
+  Device: X_U1.xbl1.x1.o6
+  Voltage V(X_U1.xbl1.x1.67,X_U1.57)= 30.0120 is beyond the ranges defined in model X_U1.xbl1.x1.compwm
+
+
+DIGITAL Message ID#286 (SERIOUS):
+DIGITAL INPUT VOLTAGE Hazard at time 28.5001357ms
+  Device: X_U1.xbl1.x1.o6
+  Voltage V(X_U1.xbl1.x1.67,X_U1.57)= 30.0110 is beyond the ranges defined in model X_U1.xbl1.x1.compwm
+
+
+DIGITAL Message ID#287 (SERIOUS):
+DIGITAL INPUT VOLTAGE Hazard at time 28.6001356ms
+  Device: X_U1.xbl1.x1.o6
+  Voltage V(X_U1.xbl1.x1.67,X_U1.57)= 30.0120 is beyond the ranges defined in model X_U1.xbl1.x1.compwm
+
+
+DIGITAL Message ID#288 (SERIOUS):
+DIGITAL INPUT VOLTAGE Hazard at time 28.7001356ms
+  Device: X_U1.xbl1.x1.o6
+  Voltage V(X_U1.xbl1.x1.67,X_U1.57)= 30.0110 is beyond the ranges defined in model X_U1.xbl1.x1.compwm
+
+
+DIGITAL Message ID#289 (SERIOUS):
+DIGITAL INPUT VOLTAGE Hazard at time 28.8001356ms
+  Device: X_U1.xbl1.x1.o6
+  Voltage V(X_U1.xbl1.x1.67,X_U1.57)= 30.0130 is beyond the ranges defined in model X_U1.xbl1.x1.compwm
+
+
+DIGITAL Message ID#290 (SERIOUS):
+DIGITAL INPUT VOLTAGE Hazard at time 28.9001356ms
+  Device: X_U1.xbl1.x1.o6
+  Voltage V(X_U1.xbl1.x1.67,X_U1.57)= 30.0100 is beyond the ranges defined in model X_U1.xbl1.x1.compwm
+
+
+DIGITAL Message ID#291 (SERIOUS):
+DIGITAL INPUT VOLTAGE Hazard at time 29.0001357ms
+  Device: X_U1.xbl1.x1.o6
+  Voltage V(X_U1.xbl1.x1.67,X_U1.57)= 30.0110 is beyond the ranges defined in model X_U1.xbl1.x1.compwm
+
+
+DIGITAL Message ID#292 (SERIOUS):
+DIGITAL INPUT VOLTAGE Hazard at time 29.1001356ms
+  Device: X_U1.xbl1.x1.o6
+  Voltage V(X_U1.xbl1.x1.67,X_U1.57)= 30.0100 is beyond the ranges defined in model X_U1.xbl1.x1.compwm
+
+
+DIGITAL Message ID#293 (SERIOUS):
+DIGITAL INPUT VOLTAGE Hazard at time 29.2001356ms
+  Device: X_U1.xbl1.x1.o6
+  Voltage V(X_U1.xbl1.x1.67,X_U1.57)= 30.0110 is beyond the ranges defined in model X_U1.xbl1.x1.compwm
+
+
+DIGITAL Message ID#294 (SERIOUS):
+DIGITAL INPUT VOLTAGE Hazard at time 29.3001356ms
+  Device: X_U1.xbl1.x1.o6
+  Voltage V(X_U1.xbl1.x1.67,X_U1.57)= 30.0100 is beyond the ranges defined in model X_U1.xbl1.x1.compwm
+
+
+DIGITAL Message ID#295 (SERIOUS):
+DIGITAL INPUT VOLTAGE Hazard at time 29.4001357ms
+  Device: X_U1.xbl1.x1.o6
+  Voltage V(X_U1.xbl1.x1.67,X_U1.57)= 30.0110 is beyond the ranges defined in model X_U1.xbl1.x1.compwm
+
+
+DIGITAL Message ID#296 (SERIOUS):
+DIGITAL INPUT VOLTAGE Hazard at time 29.5001356ms
+  Device: X_U1.xbl1.x1.o6
+  Voltage V(X_U1.xbl1.x1.67,X_U1.57)= 30.0120 is beyond the ranges defined in model X_U1.xbl1.x1.compwm
+
+
+DIGITAL Message ID#297 (SERIOUS):
+DIGITAL INPUT VOLTAGE Hazard at time 29.6001356ms
+  Device: X_U1.xbl1.x1.o6
+  Voltage V(X_U1.xbl1.x1.67,X_U1.57)= 30.0120 is beyond the ranges defined in model X_U1.xbl1.x1.compwm
+
+
+DIGITAL Message ID#298 (SERIOUS):
+DIGITAL INPUT VOLTAGE Hazard at time 29.7001356ms
+  Device: X_U1.xbl1.x1.o6
+  Voltage V(X_U1.xbl1.x1.67,X_U1.57)= 30.0110 is beyond the ranges defined in model X_U1.xbl1.x1.compwm
+
+
+DIGITAL Message ID#299 (SERIOUS):
+DIGITAL INPUT VOLTAGE Hazard at time 29.8001356ms
+  Device: X_U1.xbl1.x1.o6
+  Voltage V(X_U1.xbl1.x1.67,X_U1.57)= 30.0130 is beyond the ranges defined in model X_U1.xbl1.x1.compwm
+
+
+DIGITAL Message ID#300 (SERIOUS):
+DIGITAL INPUT VOLTAGE Hazard at time 29.9001356ms
+  Device: X_U1.xbl1.x1.o6
+  Voltage V(X_U1.xbl1.x1.67,X_U1.57)= 30.0130 is beyond the ranges defined in model X_U1.xbl1.x1.compwm
+
+
+DIGITAL Message ID#301 (SERIOUS):
+DIGITAL INPUT VOLTAGE Hazard at time 30.0001356ms
+  Device: X_U1.xbl1.x1.o6
+  Voltage V(X_U1.xbl1.x1.67,X_U1.57)= 30.0120 is beyond the ranges defined in model X_U1.xbl1.x1.compwm
+
+
+DIGITAL Message ID#302 (SERIOUS):
+DIGITAL INPUT VOLTAGE Hazard at time 30.1001356ms
+  Device: X_U1.xbl1.x1.o6
+  Voltage V(X_U1.xbl1.x1.67,X_U1.57)= 30.0110 is beyond the ranges defined in model X_U1.xbl1.x1.compwm
+
+
+DIGITAL Message ID#303 (SERIOUS):
+DIGITAL INPUT VOLTAGE Hazard at time 30.2001356ms
+  Device: X_U1.xbl1.x1.o6
+  Voltage V(X_U1.xbl1.x1.67,X_U1.57)= 30.0110 is beyond the ranges defined in model X_U1.xbl1.x1.compwm
+
+
+DIGITAL Message ID#304 (SERIOUS):
+DIGITAL INPUT VOLTAGE Hazard at time 30.3001356ms
+  Device: X_U1.xbl1.x1.o6
+  Voltage V(X_U1.xbl1.x1.67,X_U1.57)= 30.0130 is beyond the ranges defined in model X_U1.xbl1.x1.compwm
+
+
+DIGITAL Message ID#305 (SERIOUS):
+DIGITAL INPUT VOLTAGE Hazard at time 30.4001356ms
+  Device: X_U1.xbl1.x1.o6
+  Voltage V(X_U1.xbl1.x1.67,X_U1.57)= 30.0120 is beyond the ranges defined in model X_U1.xbl1.x1.compwm
+
+
+DIGITAL Message ID#306 (SERIOUS):
+DIGITAL INPUT VOLTAGE Hazard at time 30.5001356ms
+  Device: X_U1.xbl1.x1.o6
+  Voltage V(X_U1.xbl1.x1.67,X_U1.57)= 30.0130 is beyond the ranges defined in model X_U1.xbl1.x1.compwm
+
+
+DIGITAL Message ID#307 (SERIOUS):
+DIGITAL INPUT VOLTAGE Hazard at time 30.6001356ms
+  Device: X_U1.xbl1.x1.o6
+  Voltage V(X_U1.xbl1.x1.67,X_U1.57)= 30.0140 is beyond the ranges defined in model X_U1.xbl1.x1.compwm
+
+
+DIGITAL Message ID#308 (SERIOUS):
+DIGITAL INPUT VOLTAGE Hazard at time 30.7001356ms
+  Device: X_U1.xbl1.x1.o6
+  Voltage V(X_U1.xbl1.x1.67,X_U1.57)= 30.0130 is beyond the ranges defined in model X_U1.xbl1.x1.compwm
+
+
+DIGITAL Message ID#309 (SERIOUS):
+DIGITAL INPUT VOLTAGE Hazard at time 30.8001356ms
+  Device: X_U1.xbl1.x1.o6
+  Voltage V(X_U1.xbl1.x1.67,X_U1.57)= 30.0130 is beyond the ranges defined in model X_U1.xbl1.x1.compwm
+
+
+DIGITAL Message ID#310 (SERIOUS):
+DIGITAL INPUT VOLTAGE Hazard at time 30.9001356ms
+  Device: X_U1.xbl1.x1.o6
+  Voltage V(X_U1.xbl1.x1.67,X_U1.57)= 30.0110 is beyond the ranges defined in model X_U1.xbl1.x1.compwm
+
+
+DIGITAL Message ID#311 (SERIOUS):
+DIGITAL INPUT VOLTAGE Hazard at time 31.0001356ms
+  Device: X_U1.xbl1.x1.o6
+  Voltage V(X_U1.xbl1.x1.67,X_U1.57)= 30.0130 is beyond the ranges defined in model X_U1.xbl1.x1.compwm
+
+
+DIGITAL Message ID#312 (SERIOUS):
+DIGITAL INPUT VOLTAGE Hazard at time 31.1001356ms
+  Device: X_U1.xbl1.x1.o6
+  Voltage V(X_U1.xbl1.x1.67,X_U1.57)= 30.0120 is beyond the ranges defined in model X_U1.xbl1.x1.compwm
+
+
+DIGITAL Message ID#313 (SERIOUS):
+DIGITAL INPUT VOLTAGE Hazard at time 31.2001356ms
+  Device: X_U1.xbl1.x1.o6
+  Voltage V(X_U1.xbl1.x1.67,X_U1.57)= 30.0120 is beyond the ranges defined in model X_U1.xbl1.x1.compwm
+
+
+DIGITAL Message ID#314 (SERIOUS):
+DIGITAL INPUT VOLTAGE Hazard at time 31.3001356ms
+  Device: X_U1.xbl1.x1.o6
+  Voltage V(X_U1.xbl1.x1.67,X_U1.57)= 30.0120 is beyond the ranges defined in model X_U1.xbl1.x1.compwm
+
+
+DIGITAL Message ID#315 (SERIOUS):
+DIGITAL INPUT VOLTAGE Hazard at time 31.4001356ms
+  Device: X_U1.xbl1.x1.o6
+  Voltage V(X_U1.xbl1.x1.67,X_U1.57)= 30.0110 is beyond the ranges defined in model X_U1.xbl1.x1.compwm
+
+
+DIGITAL Message ID#316 (SERIOUS):
+DIGITAL INPUT VOLTAGE Hazard at time 31.5001356ms
+  Device: X_U1.xbl1.x1.o6
+  Voltage V(X_U1.xbl1.x1.67,X_U1.57)= 30.0120 is beyond the ranges defined in model X_U1.xbl1.x1.compwm
+
+
+DIGITAL Message ID#317 (SERIOUS):
+DIGITAL INPUT VOLTAGE Hazard at time 31.6001356ms
+  Device: X_U1.xbl1.x1.o6
+  Voltage V(X_U1.xbl1.x1.67,X_U1.57)= 30.0140 is beyond the ranges defined in model X_U1.xbl1.x1.compwm
+
+
+DIGITAL Message ID#318 (SERIOUS):
+DIGITAL INPUT VOLTAGE Hazard at time 31.7001356ms
+  Device: X_U1.xbl1.x1.o6
+  Voltage V(X_U1.xbl1.x1.67,X_U1.57)= 30.0120 is beyond the ranges defined in model X_U1.xbl1.x1.compwm
+
+
+DIGITAL Message ID#319 (SERIOUS):
+DIGITAL INPUT VOLTAGE Hazard at time 31.8001356ms
+  Device: X_U1.xbl1.x1.o6
+  Voltage V(X_U1.xbl1.x1.67,X_U1.57)= 30.0130 is beyond the ranges defined in model X_U1.xbl1.x1.compwm
+
+
+DIGITAL Message ID#320 (SERIOUS):
+DIGITAL INPUT VOLTAGE Hazard at time 31.9001356ms
+  Device: X_U1.xbl1.x1.o6
+  Voltage V(X_U1.xbl1.x1.67,X_U1.57)= 30.0140 is beyond the ranges defined in model X_U1.xbl1.x1.compwm
+
+
+DIGITAL Message ID#321 (SERIOUS):
+DIGITAL INPUT VOLTAGE Hazard at time 32.0001356ms
+  Device: X_U1.xbl1.x1.o6
+  Voltage V(X_U1.xbl1.x1.67,X_U1.57)= 30.0140 is beyond the ranges defined in model X_U1.xbl1.x1.compwm
+
+
+DIGITAL Message ID#322 (SERIOUS):
+DIGITAL INPUT VOLTAGE Hazard at time 32.1001356ms
+  Device: X_U1.xbl1.x1.o6
+  Voltage V(X_U1.xbl1.x1.67,X_U1.57)= 30.0120 is beyond the ranges defined in model X_U1.xbl1.x1.compwm
+
+
+DIGITAL Message ID#323 (SERIOUS):
+DIGITAL INPUT VOLTAGE Hazard at time 32.2001356ms
+  Device: X_U1.xbl1.x1.o6
+  Voltage V(X_U1.xbl1.x1.67,X_U1.57)= 30.0120 is beyond the ranges defined in model X_U1.xbl1.x1.compwm
+
+
+DIGITAL Message ID#324 (SERIOUS):
+DIGITAL INPUT VOLTAGE Hazard at time 32.3001357ms
+  Device: X_U1.xbl1.x1.o6
+  Voltage V(X_U1.xbl1.x1.67,X_U1.57)= 30.0130 is beyond the ranges defined in model X_U1.xbl1.x1.compwm
+
+
+DIGITAL Message ID#325 (SERIOUS):
+DIGITAL INPUT VOLTAGE Hazard at time 32.4001356ms
+  Device: X_U1.xbl1.x1.o6
+  Voltage V(X_U1.xbl1.x1.67,X_U1.57)= 30.0140 is beyond the ranges defined in model X_U1.xbl1.x1.compwm
+
+
+DIGITAL Message ID#326 (SERIOUS):
+DIGITAL INPUT VOLTAGE Hazard at time 32.5001356ms
+  Device: X_U1.xbl1.x1.o6
+  Voltage V(X_U1.xbl1.x1.67,X_U1.57)= 30.0130 is beyond the ranges defined in model X_U1.xbl1.x1.compwm
+
+
+DIGITAL Message ID#327 (SERIOUS):
+DIGITAL INPUT VOLTAGE Hazard at time 32.6001356ms
+  Device: X_U1.xbl1.x1.o6
+  Voltage V(X_U1.xbl1.x1.67,X_U1.57)= 30.0140 is beyond the ranges defined in model X_U1.xbl1.x1.compwm
+
+
+DIGITAL Message ID#328 (SERIOUS):
+DIGITAL INPUT VOLTAGE Hazard at time 32.7001356ms
+  Device: X_U1.xbl1.x1.o6
+  Voltage V(X_U1.xbl1.x1.67,X_U1.57)= 30.0120 is beyond the ranges defined in model X_U1.xbl1.x1.compwm
+
+
+DIGITAL Message ID#329 (SERIOUS):
+DIGITAL INPUT VOLTAGE Hazard at time 32.8001356ms
+  Device: X_U1.xbl1.x1.o6
+  Voltage V(X_U1.xbl1.x1.67,X_U1.57)= 30.0140 is beyond the ranges defined in model X_U1.xbl1.x1.compwm
+
+
+DIGITAL Message ID#330 (SERIOUS):
+DIGITAL INPUT VOLTAGE Hazard at time 32.9001356ms
+  Device: X_U1.xbl1.x1.o6
+  Voltage V(X_U1.xbl1.x1.67,X_U1.57)= 30.0140 is beyond the ranges defined in model X_U1.xbl1.x1.compwm
+
+
+DIGITAL Message ID#331 (SERIOUS):
+DIGITAL INPUT VOLTAGE Hazard at time 33.0001356ms
+  Device: X_U1.xbl1.x1.o6
+  Voltage V(X_U1.xbl1.x1.67,X_U1.57)= 30.0120 is beyond the ranges defined in model X_U1.xbl1.x1.compwm
+
+
+DIGITAL Message ID#332 (SERIOUS):
+DIGITAL INPUT VOLTAGE Hazard at time 33.1001356ms
+  Device: X_U1.xbl1.x1.o6
+  Voltage V(X_U1.xbl1.x1.67,X_U1.57)= 30.0140 is beyond the ranges defined in model X_U1.xbl1.x1.compwm
+
+
+DIGITAL Message ID#333 (SERIOUS):
+DIGITAL INPUT VOLTAGE Hazard at time 33.2001356ms
+  Device: X_U1.xbl1.x1.o6
+  Voltage V(X_U1.xbl1.x1.67,X_U1.57)= 30.0140 is beyond the ranges defined in model X_U1.xbl1.x1.compwm
+
+
+DIGITAL Message ID#334 (SERIOUS):
+DIGITAL INPUT VOLTAGE Hazard at time 33.3001356ms
+  Device: X_U1.xbl1.x1.o6
+  Voltage V(X_U1.xbl1.x1.67,X_U1.57)= 30.0140 is beyond the ranges defined in model X_U1.xbl1.x1.compwm
+
+
+DIGITAL Message ID#335 (SERIOUS):
+DIGITAL INPUT VOLTAGE Hazard at time 33.4001356ms
+  Device: X_U1.xbl1.x1.o6
+  Voltage V(X_U1.xbl1.x1.67,X_U1.57)= 30.0140 is beyond the ranges defined in model X_U1.xbl1.x1.compwm
+
+
+DIGITAL Message ID#336 (SERIOUS):
+DIGITAL INPUT VOLTAGE Hazard at time 33.5001357ms
+  Device: X_U1.xbl1.x1.o6
+  Voltage V(X_U1.xbl1.x1.67,X_U1.57)= 30.0140 is beyond the ranges defined in model X_U1.xbl1.x1.compwm
+
+
+DIGITAL Message ID#337 (SERIOUS):
+DIGITAL INPUT VOLTAGE Hazard at time 33.6001356ms
+  Device: X_U1.xbl1.x1.o6
+  Voltage V(X_U1.xbl1.x1.67,X_U1.57)= 30.0120 is beyond the ranges defined in model X_U1.xbl1.x1.compwm
+
+
+DIGITAL Message ID#338 (SERIOUS):
+DIGITAL INPUT VOLTAGE Hazard at time 33.7001356ms
+  Device: X_U1.xbl1.x1.o6
+  Voltage V(X_U1.xbl1.x1.67,X_U1.57)= 30.0130 is beyond the ranges defined in model X_U1.xbl1.x1.compwm
+
+
+DIGITAL Message ID#339 (SERIOUS):
+DIGITAL INPUT VOLTAGE Hazard at time 33.8001356ms
+  Device: X_U1.xbl1.x1.o6
+  Voltage V(X_U1.xbl1.x1.67,X_U1.57)= 30.0140 is beyond the ranges defined in model X_U1.xbl1.x1.compwm
+
+
+DIGITAL Message ID#340 (SERIOUS):
+DIGITAL INPUT VOLTAGE Hazard at time 33.9001357ms
+  Device: X_U1.xbl1.x1.o6
+  Voltage V(X_U1.xbl1.x1.67,X_U1.57)= 30.0130 is beyond the ranges defined in model X_U1.xbl1.x1.compwm
+
+
+DIGITAL Message ID#341 (SERIOUS):
+DIGITAL INPUT VOLTAGE Hazard at time 34.0001356ms
+  Device: X_U1.xbl1.x1.o6
+  Voltage V(X_U1.xbl1.x1.67,X_U1.57)= 30.0130 is beyond the ranges defined in model X_U1.xbl1.x1.compwm
+
+
+DIGITAL Message ID#342 (SERIOUS):
+DIGITAL INPUT VOLTAGE Hazard at time 34.1001356ms
+  Device: X_U1.xbl1.x1.o6
+  Voltage V(X_U1.xbl1.x1.67,X_U1.57)= 30.0120 is beyond the ranges defined in model X_U1.xbl1.x1.compwm
+
+
+DIGITAL Message ID#343 (SERIOUS):
+DIGITAL INPUT VOLTAGE Hazard at time 34.2001356ms
+  Device: X_U1.xbl1.x1.o6
+  Voltage V(X_U1.xbl1.x1.67,X_U1.57)= 30.0130 is beyond the ranges defined in model X_U1.xbl1.x1.compwm
+
+
+DIGITAL Message ID#344 (SERIOUS):
+DIGITAL INPUT VOLTAGE Hazard at time 34.3001356ms
+  Device: X_U1.xbl1.x1.o6
+  Voltage V(X_U1.xbl1.x1.67,X_U1.57)= 30.0140 is beyond the ranges defined in model X_U1.xbl1.x1.compwm
+
+
+DIGITAL Message ID#345 (SERIOUS):
+DIGITAL INPUT VOLTAGE Hazard at time 34.4001356ms
+  Device: X_U1.xbl1.x1.o6
+  Voltage V(X_U1.xbl1.x1.67,X_U1.57)= 30.0130 is beyond the ranges defined in model X_U1.xbl1.x1.compwm
+
+
+DIGITAL Message ID#346 (SERIOUS):
+DIGITAL INPUT VOLTAGE Hazard at time 34.5001356ms
+  Device: X_U1.xbl1.x1.o6
+  Voltage V(X_U1.xbl1.x1.67,X_U1.57)= 30.0120 is beyond the ranges defined in model X_U1.xbl1.x1.compwm
+
+
+DIGITAL Message ID#347 (SERIOUS):
+DIGITAL INPUT VOLTAGE Hazard at time 34.6001356ms
+  Device: X_U1.xbl1.x1.o6
+  Voltage V(X_U1.xbl1.x1.67,X_U1.57)= 30.0130 is beyond the ranges defined in model X_U1.xbl1.x1.compwm
+
+
+DIGITAL Message ID#348 (SERIOUS):
+DIGITAL INPUT VOLTAGE Hazard at time 34.7001356ms
+  Device: X_U1.xbl1.x1.o6
+  Voltage V(X_U1.xbl1.x1.67,X_U1.57)= 30.0120 is beyond the ranges defined in model X_U1.xbl1.x1.compwm
+
+
+DIGITAL Message ID#349 (SERIOUS):
+DIGITAL INPUT VOLTAGE Hazard at time 34.8001356ms
+  Device: X_U1.xbl1.x1.o6
+  Voltage V(X_U1.xbl1.x1.67,X_U1.57)= 30.0120 is beyond the ranges defined in model X_U1.xbl1.x1.compwm
+
+
+DIGITAL Message ID#350 (SERIOUS):
+DIGITAL INPUT VOLTAGE Hazard at time 34.9001356ms
+  Device: X_U1.xbl1.x1.o6
+  Voltage V(X_U1.xbl1.x1.67,X_U1.57)= 30.0140 is beyond the ranges defined in model X_U1.xbl1.x1.compwm
+
+
+DIGITAL Message ID#351 (SERIOUS):
+DIGITAL INPUT VOLTAGE Hazard at time 35.0001356ms
+  Device: X_U1.xbl1.x1.o6
+  Voltage V(X_U1.xbl1.x1.67,X_U1.57)= 30.0120 is beyond the ranges defined in model X_U1.xbl1.x1.compwm
+
+
+DIGITAL Message ID#352 (SERIOUS):
+DIGITAL INPUT VOLTAGE Hazard at time 35.1001356ms
+  Device: X_U1.xbl1.x1.o6
+  Voltage V(X_U1.xbl1.x1.67,X_U1.57)= 30.0140 is beyond the ranges defined in model X_U1.xbl1.x1.compwm
+
+
+DIGITAL Message ID#353 (SERIOUS):
+DIGITAL INPUT VOLTAGE Hazard at time 35.2001356ms
+  Device: X_U1.xbl1.x1.o6
+  Voltage V(X_U1.xbl1.x1.67,X_U1.57)= 30.0120 is beyond the ranges defined in model X_U1.xbl1.x1.compwm
+
+
+DIGITAL Message ID#354 (SERIOUS):
+DIGITAL INPUT VOLTAGE Hazard at time 35.3001356ms
+  Device: X_U1.xbl1.x1.o6
+  Voltage V(X_U1.xbl1.x1.67,X_U1.57)= 30.0120 is beyond the ranges defined in model X_U1.xbl1.x1.compwm
+
+
+          JOB ABORTED
+
+          TOTAL JOB TIME          223.19
+
