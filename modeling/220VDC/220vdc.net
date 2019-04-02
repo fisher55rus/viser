@@ -1,0 +1,13 @@
+* Schematics Netlist *
+
+
+
+D_D2         0 $N_0001 Dbreak 
+D_D3         $N_0002 $N_0003 Dbreak 
+D_D1         $N_0001 $N_0003 Dbreak 
+R_R1         0 $N_0004  1k  
+D_D4         0 $N_0002 Dbreak 
+V_V1         $N_0001 $N_0002  
++SIN 0 310 50 0 0 0
+L_L1         $N_0003 $N_0004  1m  
+C_C1         0 $N_0004  10u  

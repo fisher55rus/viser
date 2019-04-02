@@ -1,0 +1,77 @@
+
+**** 03/21/19 11:29:40 ********* PSpice 9.2 (Mar 2000) ******** ID# 1 ********
+
+ * D:\GIT\MAI\viser\modeling\220VDC\220vdc.sch
+
+
+ ****     CIRCUIT DESCRIPTION
+
+
+******************************************************************************
+
+
+
+
+* Schematics Version 9.2
+* Thu Mar 21 11:29:38 2019
+
+
+
+** Analysis setup **
+.tran 0ns 1 0 1m SKIPBP
+
+
+* From [PSPICE NETLIST] section of d:\Program Files\Orcad\PSpice\PSpice.ini:
+.lib "D:\Program Files\Orcad\PSpice\UserLib\OPA_2.lib"
+.lib "D:\Program Files\Orcad\PSpice\UserLib\MyLib.lib"
+.lib "nom.lib"
+
+.INC "220vdc.net"
+
+
+
+**** INCLUDING 220vdc.net ****
+* Schematics Netlist *
+
+
+
+D_D2         0 $N_0001 Dbreak 
+D_D3         $N_0002 $N_0003 Dbreak 
+D_D1         $N_0001 $N_0003 Dbreak 
+R_R1         0 $N_0004  1k  
+D_D4         0 $N_0002 Dbreak 
+V_V1         $N_0001 $N_0002  
++SIN 0 310 50 0 0 0
+L_L1         $N_0003 $N_0004  1m  
+C_C1         0 $N_0004  10u  
+
+**** RESUMING 220vdc.cir ****
+.PROBE V(*) I(*) W(*) D(*) NOISE(*) 
+
+
+.END
+
+**** 03/21/19 11:29:40 ********* PSpice 9.2 (Mar 2000) ******** ID# 1 ********
+
+ * D:\GIT\MAI\viser\modeling\220VDC\220vdc.sch
+
+
+ ****     Diode MODEL PARAMETERS
+
+
+******************************************************************************
+
+
+
+
+               Dbreak          
+          IS   10.000000E-15 
+          RS     .1          
+         CJO  100.000000E-15 
+
+
+
+          JOB CONCLUDED
+
+          TOTAL JOB TIME           47.88
+

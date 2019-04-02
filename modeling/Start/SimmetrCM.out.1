@@ -1,7 +1,7 @@
 
-**** 02/04/19 15:07:24 ********* PSpice 9.2 (Mar 2000) ******** ID# 1 ********
+**** 03/21/19 09:04:04 ********* PSpice 9.2 (Mar 2000) ******** ID# 1 ********
 
- * C:\Workspace_MAI\DCDC\PSE38\SimmetrCM.sch
+ * D:\GIT\MAI\viser\modeling\Start\SimmetrCM.sch
 
 
  ****     CIRCUIT DESCRIPTION
@@ -13,15 +13,20 @@
 
 
 * Schematics Version 9.2
-* Mon Feb 04 15:07:22 2019
+* Thu Mar 21 09:04:02 2019
 
 
 
 ** Analysis setup **
-.tran 0ns 100m
+.tran 0ns 200m SKIPBP
+.OPTIONS ABSTOL=1uA
+.OPTIONS ITL4=70
+.OPTIONS RELTOL=0.01
 
 
-* From [PSPICE NETLIST] section of C:\Program Files\Orcad\PSpice\PSpice.ini:
+* From [PSPICE NETLIST] section of d:\Program Files\Orcad\PSpice\PSpice.ini:
+.lib "D:\Program Files\Orcad\PSpice\UserLib\OPA_2.lib"
+.lib "D:\Program Files\Orcad\PSpice\UserLib\MyLib.lib"
 .lib "nom.lib"
 
 .INC "SimmetrCM.net"
@@ -43,7 +48,6 @@ X_S2    AA2 0 $N_0001 I_sence SimmetrCM_S2
 X_S3    AA2 0 $N_0004 $N_0002 SimmetrCM_S3 
 X_S4    AA1 0 $N_0002 I_sence SimmetrCM_S4 
 R_R2         $N_0005 I_sence  1k  
-R_R1         0 I_sence  0.1  
 V_V1         $N_0003 0 DC=300V
 V_V2         $N_0006 0 DC=15V
 C_C1         0 $N_0005  0.5n  
@@ -52,29 +56,30 @@ C_C2         0 $N_0007  100p
 C_C3         0 $N_0008  1n  
 C_C4         0 $N_0009  1n  
 R_R3         $N_0010 0  500k  
-C_C5         0 $N_0011  500p  
-R_R5         I_sence $N_0011  1k  
-R_R4         $N_0011 $N_0008  4k  
-R_R6         $N_0013 $N_0012  50k  
-C_C7         $N_0014 $N_0013  1n  
-X_U1         $N_0014 $N_0008 $N_0012 $N_0010 $N_0009 $N_0011 $N_0007 $N_0005 0
+R_R6         $N_0012 $N_0011  50k  
+C_C7         $N_0013 $N_0012  1n  
+C_C6         $N_0013 $N_0011  100p  
+D_D6         0 $N_0014 Dbreak 
+R_R7         $N_0015 $N_0013  5k  
+C_C8         0 $N_0016  100u  
+C_C9         $N_0017 $N_0016  300p  
+D_D5         0 $N_0018 Dbreak 
+D_D7         $N_0018 $N_0016 Dbreak 
+D_D8         $N_0014 $N_0016 Dbreak 
+L_L2         $N_0019 $N_0018  160  
+R_R12         $N_0014 $N_0019  1m  
+Kn_K1         L_L1 L_L2     1
+C_C5         0 $N_0020  500p  
+X_U1         $N_0013 $N_0008 $N_0011 $N_0010 $N_0009 $N_0020 $N_0007 $N_0005 0
 +  AA1 0 $N_0006 AA2 $N_0006 $N_0008 SG1825 
 + PARAMS: PERIOD={1/10k} DEADTIME=5e-8
-C_C6         $N_0014 $N_0012  100p  
-R_R9         $N_0017 $N_0016  10k  
-R_R11         $N_0016 0  5k  
-D_D6         0 $N_0018 Dbreak 
-R_R7         $N_0016 $N_0014  5k  
-R_R8         $N_0019 0  10  
-C_C8         0 $N_0019  100u  
-R_R10         $N_0019 $N_0016  100k  
-C_C9         $N_0017 $N_0019  300p  
-D_D5         0 $N_0020 Dbreak 
-D_D7         $N_0020 $N_0019 Dbreak 
-D_D8         $N_0018 $N_0019 Dbreak 
-L_L2         $N_0021 $N_0020  160  
-R_R12         $N_0018 $N_0021  1m  
-Kn_K1         L_L1 L_L2     1
+R_R9         $N_0017 $N_0015  10k  
+R_R14         $N_0016 $N_0020  80k  
+R_R13         $N_0020 0  20k  
+R_R10         $N_0016 $N_0015  80k  
+R_R11         $N_0015 0  20k  
+R_R8         $N_0016 0  0.1  
+R_R1         0 I_sence  100m  
 
 .subckt SimmetrCM_S1 1 2 3 4  
 S_S1         3 4 1 2 _S1
@@ -181,9 +186,9 @@ X$X_U1.45_DtoA1
 
 X$DIGIFPWR 0 DIGIFPWR
 
-**** 02/04/19 15:07:24 ********* PSpice 9.2 (Mar 2000) ******** ID# 1 ********
+**** 03/21/19 09:04:04 ********* PSpice 9.2 (Mar 2000) ******** ID# 1 ********
 
- * C:\Workspace_MAI\DCDC\PSE38\SimmetrCM.sch
+ * D:\GIT\MAI\viser\modeling\Start\SimmetrCM.sch
 
 
  ****     Diode MODEL PARAMETERS
@@ -200,9 +205,9 @@ X$DIGIFPWR 0 DIGIFPWR
          CJO  100.000000E-15                 
 
 
-**** 02/04/19 15:07:24 ********* PSpice 9.2 (Mar 2000) ******** ID# 1 ********
+**** 03/21/19 09:04:04 ********* PSpice 9.2 (Mar 2000) ******** ID# 1 ********
 
- * C:\Workspace_MAI\DCDC\PSE38\SimmetrCM.sch
+ * D:\GIT\MAI\viser\modeling\Start\SimmetrCM.sch
 
 
  ****     BJT MODEL PARAMETERS
@@ -240,9 +245,9 @@ X$DIGIFPWR 0 DIGIFPWR
            D     .87             .87         
 
 
-**** 02/04/19 15:07:24 ********* PSpice 9.2 (Mar 2000) ******** ID# 1 ********
+**** 03/21/19 09:04:04 ********* PSpice 9.2 (Mar 2000) ******** ID# 1 ********
 
- * C:\Workspace_MAI\DCDC\PSE38\SimmetrCM.sch
+ * D:\GIT\MAI\viser\modeling\Start\SimmetrCM.sch
 
 
  ****     Voltage Controlled Switch MODEL PARAMETERS
@@ -267,9 +272,9 @@ X$DIGIFPWR 0 DIGIFPWR
         VOFF   12                .7          
 
 
-**** 02/04/19 15:07:24 ********* PSpice 9.2 (Mar 2000) ******** ID# 1 ********
+**** 03/21/19 09:04:04 ********* PSpice 9.2 (Mar 2000) ******** ID# 1 ********
 
- * C:\Workspace_MAI\DCDC\PSE38\SimmetrCM.sch
+ * D:\GIT\MAI\viser\modeling\Start\SimmetrCM.sch
 
 
  ****     Current Controlled Switch MODEL PARAMETERS
@@ -287,9 +292,9 @@ X$DIGIFPWR 0 DIGIFPWR
         IOFF    1.3          
 
 
-**** 02/04/19 15:07:24 ********* PSpice 9.2 (Mar 2000) ******** ID# 1 ********
+**** 03/21/19 09:04:04 ********* PSpice 9.2 (Mar 2000) ******** ID# 1 ********
 
- * C:\Workspace_MAI\DCDC\PSE38\SimmetrCM.sch
+ * D:\GIT\MAI\viser\modeling\Start\SimmetrCM.sch
 
 
  ****     Digital Input MODEL PARAMETERS
@@ -332,9 +337,9 @@ X$DIGIFPWR 0 DIGIFPWR
        S5RHI  200.000000E+03  200.000000E+03   98.4          
 
 
-**** 02/04/19 15:07:24 ********* PSpice 9.2 (Mar 2000) ******** ID# 1 ********
+**** 03/21/19 09:04:04 ********* PSpice 9.2 (Mar 2000) ******** ID# 1 ********
 
- * C:\Workspace_MAI\DCDC\PSE38\SimmetrCM.sch
+ * D:\GIT\MAI\viser\modeling\Start\SimmetrCM.sch
 
 
  ****     Digital Output MODEL PARAMETERS
@@ -369,9 +374,9 @@ X$DIGIFPWR 0 DIGIFPWR
        S1VHI   20.000000E+03   30            
 
 
-**** 02/04/19 15:07:24 ********* PSpice 9.2 (Mar 2000) ******** ID# 1 ********
+**** 03/21/19 09:04:04 ********* PSpice 9.2 (Mar 2000) ******** ID# 1 ********
 
- * C:\Workspace_MAI\DCDC\PSE38\SimmetrCM.sch
+ * D:\GIT\MAI\viser\modeling\Start\SimmetrCM.sch
 
 
  ****     Digital Gate MODEL PARAMETERS
@@ -391,9 +396,9 @@ X$DIGIFPWR 0 DIGIFPWR
       TPHLMX    0            
 
 
-**** 02/04/19 15:07:24 ********* PSpice 9.2 (Mar 2000) ******** ID# 1 ********
+**** 03/21/19 09:04:04 ********* PSpice 9.2 (Mar 2000) ******** ID# 1 ********
 
- * C:\Workspace_MAI\DCDC\PSE38\SimmetrCM.sch
+ * D:\GIT\MAI\viser\modeling\Start\SimmetrCM.sch
 
 
  ****     Digital Edge Triggered FF MODEL PARAMETERS
@@ -443,9 +448,9 @@ X$DIGIFPWR 0 DIGIFPWR
    THCECLKMX    0            
 
 
-**** 02/04/19 15:07:24 ********* PSpice 9.2 (Mar 2000) ******** ID# 1 ********
+**** 03/21/19 09:04:04 ********* PSpice 9.2 (Mar 2000) ******** ID# 1 ********
 
- * C:\Workspace_MAI\DCDC\PSE38\SimmetrCM.sch
+ * D:\GIT\MAI\viser\modeling\Start\SimmetrCM.sch
 
 
  ****     Digital Gated FF MODEL PARAMETERS
@@ -492,9 +497,9 @@ X$DIGIFPWR 0 DIGIFPWR
       THDGMX    0            
 
 
-**** 02/04/19 15:07:24 ********* PSpice 9.2 (Mar 2000) ******** ID# 1 ********
+**** 03/21/19 09:04:04 ********* PSpice 9.2 (Mar 2000) ******** ID# 1 ********
 
- * C:\Workspace_MAI\DCDC\PSE38\SimmetrCM.sch
+ * D:\GIT\MAI\viser\modeling\Start\SimmetrCM.sch
 
 
  ****     Digital Delay Line MODEL PARAMETERS
@@ -511,9 +516,9 @@ X$DIGIFPWR 0 DIGIFPWR
        DLYMX   70.000000E-09 
 
 
-**** 02/04/19 15:07:24 ********* PSpice 9.2 (Mar 2000) ******** ID# 1 ********
+**** 03/21/19 09:04:04 ********* PSpice 9.2 (Mar 2000) ******** ID# 1 ********
 
- * C:\Workspace_MAI\DCDC\PSE38\SimmetrCM.sch
+ * D:\GIT\MAI\viser\modeling\Start\SimmetrCM.sch
 
 
  ****     Digital IO  MODEL PARAMETERS
@@ -546,162 +551,9 @@ X$DIGIFPWR 0 DIGIFPWR
        TPWRT  100.000000E+03  100.000000E+03  100.000000E+03  100.000000E+03 
 
 
-**** 02/04/19 15:07:24 ********* PSpice 9.2 (Mar 2000) ******** ID# 1 ********
+**** 03/21/19 09:04:04 ********* PSpice 9.2 (Mar 2000) ******** ID# 1 ********
 
- * C:\Workspace_MAI\DCDC\PSE38\SimmetrCM.sch
-
-
- ****     INITIAL TRANSIENT SOLUTION       TEMPERATURE =   27.000 DEG C
-
-
-******************************************************************************
-
-
-
- NODE   VOLTAGE     NODE   VOLTAGE     NODE   VOLTAGE     NODE   VOLTAGE
-
-
-(  AA1)     .0054  (  AA2)     .0054  ($G_DGND)    0.0000                       
-
-($G_DPWR)    5.0000                   ($N_0001) 162.7E-06                       
-
-($N_0002) 162.7E-06                   ($N_0003)  300.0000                       
-
-($N_0004)  300.0000                   ($N_0005) 162.1E-06                       
-
-($N_0006)   15.0000                   ($N_0007)   12.3130                       
-
-($N_0008)    5.0980                   ($N_0009)    1.0000                       
-
-($N_0010)    3.4998                   ($N_0011)    1.0197                       
-
-($N_0012)    4.6957                   ($N_0013)    4.6957                       
-
-($N_0014) 50.18E-09                   ($N_0016) 24.48E-09                       
-
-($N_0017) 24.48E-09                   ($N_0018) 1.235E-12                       
-
-($N_0019) 2.447E-12                   ($N_0020) 1.235E-12                       
-
-($N_0021) 1.235E-12                   (I_sence) 162.1E-06                       
-
-(X_U1.45)     .0900                   (X_U1.57)    4.6957                       
-
-(X_U1.11a)     .0054                  (X_U1.14a)     .0054                      
-
-(X_U1.16a)    5.1000                  (X_U1.16b)    5.1000                      
-
-(X_U1.one)    1.0000                  (X_U1.1111)    1.0000                     
-
-(X_U1.1144)    1.4000                 (X_U1.conv)    1.0000                     
-
-(X_U1.DGND)    0.0000                 (X_U1.DPWR)    5.0000                     
-
-(X_U1.check)     .0020                (X_U1.uvcompaa) 999.0E-06                 
-
-(X_U1.x15.offs) 100.0E-06             (X_U1.x15.ramp1)    1.0000                
-
-(X_U1.xoutst.14)   15.0000            (X_U1.xoutst.31)     .1486                
-
-(X_U1.xoutst.32)     .1486            (X_U1.xoutst.33)   12.9840                
-
-(X_U1.xoutst.34)   12.9840            (X_U1.xbl1.x1.67)    2.2697               
-
-(X_U1.xbl1.x2.77)    5.0980           (X_U1.x15.pos_neg) 100.0E-06              
-
-(X_U1.xbl1.x2.110)    1.1700          (X_U1.xbl1.x2.x1.6)  -12.0610             
-
-(X_U1.xbl1.x2.x1.7)    4.7022         (X_U1.xbl1.x2.x1.8)    4.7022             
-
-(X_U1.xbl1.x2.x1.9)    0.0000         (X_U1.xbl1.x2.x1.10)    4.1353            
-
-(X_U1.xbl1.x2.x1.11)    5.0980        (X_U1.xbl1.x2.x1.12)    4.7489            
-
-(X_U1.xbl1.x2.x1.13)    4.1353        (X_U1.xbl1.x2.x1.14)    4.4322            
-
-(X_U1.xbl1.x2.x1.53)    4.0280        (X_U1.xbl1.x2.x1.54)    1.1700            
-
-(X_U1.xbl1.x2.x1.90)     .1303        (X_U1.xbl1.x2.x1.91)    2.5000            
-
-(X_U1.xbl1.x2.x1.92)    -.7000        (X_U1.xbl1.x2.x1.99)    3.1340            
-
-(X_U1.xoutst.x2.140)     .0054        (X_U1.xoutst.x2.141)     .0054            
-
-(X_U1.xoutst.x2.143)    0.0000        (X_U1.xoutst.x2.144)    0.0000            
-
-(X_U1.xoutst.x2.731)     .1486        (X_U1.xoutst.x2.732)     .1486            
-
-(X_U1.xoutst.x2.733)    2.9106        (X_U1.xoutst.x2.734)    2.9106            
-
-(X_U1.xoutst.x2.735)   14.0000        (X_U1.xbl1.x2.x2.440)    1.0000           
-
-(X_U1.xbl1.x2.x2.550)    0.0000       (X_U1.xbl1.x2.x2.conv)    1.0000      
-
-
-
- DGTL NODE : STATE  DGTL NODE : STATE  DGTL NODE : STATE  DGTL NODE : STATE
-
-
-(X_U1.xoutst.33$DtoA) : Z             ( X_U1.46) : 0     ( X_U1.20) : 1         
-
-( X_U1.49) : 0     ( X_U1.73) : 1     (X_U1.xoutst.34$DtoA) : Z                 
-
-( X_U1.21) : 0     ($N_0010$DtoA) : 1                    (X_U1.xlog.17) : 1     
-
-(X_U1.xoutst.31$DtoA) : 0             (X_U1.xlog.18) : 0                        
-
-(X_U1.xlog.2) : 1  (X_U1.xlog.73z) : 1                                          
-
-(X_U1.xoutst.32$DtoA) : 0             (X_U1.dclk) : 1    (X_U1.10011) : 1       
-
-(X_U1.10012) : 1   ( X_U1.44) : 0     (X_U1.xbl1.x1.39) : 0                     
-
-(X_U1.45$DtoA) : 0                    (X_U1.xlog.87) : 0                        
-
-(X_U1.1001) : 0    
-
-
-
-
-    VOLTAGE SOURCE CURRENTS
-    NAME         CURRENT
-
-    V_V1        -3.005E-04
-    V_V2        -2.210E-02
-    V_V3        -3.005E-04
-    X_U1.v1     -9.990E-04
-    X_U1.vconv  -1.000E-03
-    X_U1.vsens   1.021E-03
-    X_U1.v_clkset  -1.000E-05
-    X_U1.vtrig1  -9.998E-13
-    X_U1.vtrig2  -1.400E-12
-    X_U1.xdigpwr.VDPWR  -2.102E-02
-    X_U1.xdigpwr.VDGND   2.992E+00
-    X_U1.x15.vser   0.000E+00
-    X_U1.x15.vofset  -1.000E-04
-    X_U1.xbl1.x1.vadd   2.426E-12
-    X_U1.xbl1.x2.vgndamp   1.492E-03
-    X_U1.xoutst.x2.vs1   1.891E-11
-    X_U1.xoutst.x2.vs2   1.891E-11
-    X_U1.xoutst.x2.vs3   2.015E-01
-    X_U1.xoutst.x2.vs4   2.015E-01
-    X_U1.xoutst.x2.vdrop   3.688E-11
-    X_U1.xbl1.x2.x1.vb  -1.206E-04
-    X_U1.xbl1.x2.x1.vc  -1.303E-04
-    X_U1.xbl1.x2.x1.ve   3.526E-12
-    X_U1.xbl1.x2.x1.vlim   1.303E-04
-    X_U1.xbl1.x2.x1.vlp  -2.371E-12
-    X_U1.xbl1.x2.x1.vln  -8.311E-13
-    X_U1.xbl1.x2.x2.vconv  -1.000E-03
-    X$DIGIFPWR.VDPWR  -5.000E-06
-    X$DIGIFPWR.VDGND  -5.000E-06
-
-    TOTAL POWER DISSIPATION   6.18E-01  WATTS
-
-
-**** 02/04/19 15:07:24 ********* PSpice 9.2 (Mar 2000) ******** ID# 1 ********
-
- * C:\Workspace_MAI\DCDC\PSE38\SimmetrCM.sch
+ * D:\GIT\MAI\viser\modeling\Start\SimmetrCM.sch
 
 
  ****     SIMULATION ERRORS
@@ -713,16 +565,19 @@ X$DIGIFPWR 0 DIGIFPWR
 
 
 DIGITAL Message ID#1 (SERIOUS):
-DIGITAL INPUT VOLTAGE Hazard at time 129.5ns
-  Device: X_U1.xbl1.x1.o6
-  Voltage V(X_U1.xbl1.x1.67,X_U1.57)= 30.0220 is beyond the ranges defined in model X_U1.xbl1.x1.compwm
+DIGITAL INPUT VOLTAGE Hazard at time 0s
+  Device: X_U1.x15.ocmp1
+  Voltage V(X_U1.x15.pos_neg,0)=-10.00E+06 is beyond the ranges defined in model X_U1.x15.cmp
 
 
-ERROR -- Convergence problem in transient analysis at Time =  142.1E-09
-         Time step =  13.08E-15, minimum allowable step size =  100.0E-15
+ERROR -- Convergence problem in transient analysis at Time =  .063
+         Time step =  6.686E-15, minimum allowable step size =  20.00E-15
 
-  These devices failed to converge:
-    X_U1.xoutst.x2.qo3 
+  These supply currents failed to converge:
+
+    I(L_L1)                   =   484.97uA  \   104.45uA
+    I(L_L2)                   =  -184.37uA  \   196.15uA
+    I(V_V1)                   =  -313.94uA  \  -287.22uA
 
 
 
@@ -731,33 +586,33 @@ ERROR -- Convergence problem in transient analysis at Time =  142.1E-09
  NODE   VOLTAGE     NODE   VOLTAGE     NODE   VOLTAGE     NODE   VOLTAGE
 
 
-(  AA1)     .0054  (  AA2)     .5563  ($G_DGND)    0.0000                       
+(  AA1)     .0054  (  AA2)     .0054  ($G_DGND)    0.0000                       
 
-($G_DPWR)    5.0000                   ($N_0001)    5.4267                       
+($G_DPWR)    5.0000                   ($N_0001)    -.0148                       
 
-($N_0002)    5.3938                   ($N_0003)  300.0000                       
+($N_0002) 250.6E-06                   ($N_0003)  300.0000                       
 
-($N_0004)  300.0000                   ($N_0005)   39.4420                       
+($N_0004)  300.0000                   ($N_0005)    1.8843                       
 
-($N_0006)   15.0000                   ($N_0007)   10.7830                       
+($N_0006)   15.0000                   ($N_0007)    3.9977                       
 
-($N_0008)    5.1000                   ($N_0009)    1.0028                       
+($N_0008)    5.1000                   ($N_0009)    1.0104                       
 
-($N_0010)     .0900                   ($N_0011)   39.7770                       
+($N_0010)     .0900                   ($N_0011)    4.6977                       
 
-($N_0012)    4.6977                   ($N_0013)    4.6976                       
+($N_0012)    4.7376                   ($N_0013)     .0404                       
 
-($N_0014)     .0019                   ($N_0016)     .0017                       
+($N_0014)     .0943                   ($N_0015)     .0808                       
 
-($N_0017)     .0042                   ($N_0018)     .0190                       
+($N_0016)     .2035                   ($N_0017)     .1868                       
 
-($N_0019)     .0042                   ($N_0020)    -.0149                       
+($N_0018)     .1092                   ($N_0019)     .0943                       
 
-($N_0021)     .0191                   (I_sence)    5.3405                       
+($N_0020)     .0020                   (I_sence) 249.8E-06                       
 
-(X_U1.45)    3.5008                   (X_U1.57)    4.6977                       
+(X_U1.45)    3.5008                   (X_U1.57)     .3699                       
 
-(X_U1.11a)     .0054                  (X_U1.14a)   13.8820                      
+(X_U1.11a)     .0054                  (X_U1.14a)     .0054                      
 
 (X_U1.16a)    5.1000                  (X_U1.16b)    5.1000                      
 
@@ -767,21 +622,21 @@ ERROR -- Convergence problem in transient analysis at Time =  142.1E-09
 
 (X_U1.DGND)    0.0000                 (X_U1.DPWR)    5.0000                     
 
-(X_U1.check)    0.0000                (X_U1.uvcompaa) 999.0E-06                 
+(X_U1.check) 2.434E-06                (X_U1.uvcompaa) 999.0E-06                 
 
-(X_U1.x15.offs) 100.0E-06             (X_U1.x15.ramp1)    1.0028                
+(X_U1.x15.offs) 100.0E-06             (X_U1.x15.ramp1)    1.0104                
 
 (X_U1.xoutst.14)   15.0000            (X_U1.xoutst.31)     .1486                
 
-(X_U1.xoutst.32)     .1502            (X_U1.xoutst.33)   12.9840                
+(X_U1.xoutst.32)     .1486            (X_U1.xoutst.33)   12.9840                
 
-(X_U1.xoutst.34)   12.9730            (X_U1.xbl1.x1.67)   41.0270               
+(X_U1.xoutst.34)   12.9840            (X_U1.xbl1.x1.67)    1.2520               
 
 (X_U1.xbl1.x2.77)    5.1000           (X_U1.x15.pos_neg)    -.2000              
 
-(X_U1.xbl1.x2.110)    1.1700          (X_U1.xbl1.x2.x1.6)  -12.0600             
+(X_U1.xbl1.x2.110)    1.1700          (X_U1.xbl1.x2.x1.6)  -12.0620             
 
-(X_U1.xbl1.x2.x1.7)    4.7042         (X_U1.xbl1.x2.x1.8)    4.7042             
+(X_U1.xbl1.x2.x1.7)    4.7038         (X_U1.xbl1.x2.x1.8)    4.7038             
 
 (X_U1.xbl1.x2.x1.9)    0.0000         (X_U1.xbl1.x2.x1.10)    4.1373            
 
@@ -791,19 +646,19 @@ ERROR -- Convergence problem in transient analysis at Time =  142.1E-09
 
 (X_U1.xbl1.x2.x1.53)    4.0300        (X_U1.xbl1.x2.x1.54)    1.1700            
 
-(X_U1.xbl1.x2.x1.90)     .1303        (X_U1.xbl1.x2.x1.91)    2.5000            
+(X_U1.xbl1.x2.x1.90)     .1222        (X_U1.xbl1.x2.x1.91)    2.5000            
 
 (X_U1.xbl1.x2.x1.92)    -.7000        (X_U1.xbl1.x2.x1.99)    3.1350            
 
-(X_U1.xoutst.x2.140)     .0054        (X_U1.xoutst.x2.141)     .5563            
+(X_U1.xoutst.x2.140)     .0054        (X_U1.xoutst.x2.141)     .0054            
 
 (X_U1.xoutst.x2.143)    0.0000        (X_U1.xoutst.x2.144)    0.0000            
 
-(X_U1.xoutst.x2.731)     .1486        (X_U1.xoutst.x2.732)     .9943            
+(X_U1.xoutst.x2.731)     .1485        (X_U1.xoutst.x2.732)     .1486            
 
-(X_U1.xoutst.x2.733)    2.9106        (X_U1.xoutst.x2.734)    2.8436            
+(X_U1.xoutst.x2.733)    2.9106        (X_U1.xoutst.x2.734)    2.9106            
 
-(X_U1.xoutst.x2.735)   14.0000        (X_U1.xbl1.x2.x2.440)    1.0000           
+(X_U1.xoutst.x2.735)   14.0000        (X_U1.xbl1.x2.x2.440)     .0787           
 
 (X_U1.xbl1.x2.x2.550)    0.0000       (X_U1.xbl1.x2.x2.conv)    1.0000      
 
@@ -812,11 +667,11 @@ ERROR -- Convergence problem in transient analysis at Time =  142.1E-09
  DGTL NODE : STATE  DGTL NODE : STATE  DGTL NODE : STATE  DGTL NODE : STATE
 
 
-(X_U1.xoutst.33$DtoA) : Z             ( X_U1.46) : 1     ( X_U1.20) : 0         
+(X_U1.xoutst.33$DtoA) : Z             ( X_U1.46) : 1     ( X_U1.20) : 1         
 
 ( X_U1.49) : 1     ( X_U1.73) : 1     (X_U1.xoutst.34$DtoA) : Z                 
 
-( X_U1.21) : 1     ($N_0010$DtoA) : 0                    (X_U1.xlog.17) : 0     
+( X_U1.21) : 0     ($N_0010$DtoA) : 0                    (X_U1.xlog.17) : 0     
 
 (X_U1.xoutst.31$DtoA) : 0             (X_U1.xlog.18) : 1                        
 
@@ -824,9 +679,137 @@ ERROR -- Convergence problem in transient analysis at Time =  142.1E-09
 
 (X_U1.xoutst.32$DtoA) : 0             (X_U1.dclk) : 0    (X_U1.10011) : 1       
 
-(X_U1.10012) : 1   ( X_U1.44) : 1     (X_U1.xbl1.x1.39) : 1                     
+(X_U1.10012) : 1   ( X_U1.44) : 1     (X_U1.xbl1.x1.39) : 0                     
 
 (X_U1.45$DtoA) : 1                    (X_U1.xlog.87) : 1                        
+
+(X_U1.1001) : 0    
+
+
+ **** Runtime Parameters
+                              
+      ABSTOL =      1.0000E-03
+        GMIN =      1.0000E-12
+        ITL1 =      1.5000E+02
+        ITL2 =      2.0000E+01
+        ITL4 =      7.0000E+01
+      RELTOL =      1.0000E-02
+      RUNFOR =      0.0000E+00
+        TMAX =      0.0000E+00
+       TSTOP =      2.0000E-01
+       VNTOL =      1.0000E-03
+              
+               
+
+ERROR -- Convergence problem in transient analysis at Time =  .089
+         Time step =  12.21E-15, minimum allowable step size =  20.00E-15
+
+  These devices failed to converge:
+    X_U1.xbl1.x2.x2.eg1 X_U1.xbl1.x2.x2.eg2 
+
+
+
+  Last node voltages tried were:
+
+ NODE   VOLTAGE     NODE   VOLTAGE     NODE   VOLTAGE     NODE   VOLTAGE
+
+
+(  AA1)     .0054  (  AA2)     .0052  ($G_DGND)    0.0000                       
+
+($G_DPWR)    5.0000                   ($N_0001)    -.4563                       
+
+($N_0002)-141.7E-06                   ($N_0003)  300.0000                       
+
+($N_0004)  300.0000                   ($N_0005) 319.5E-06                       
+
+($N_0006)   15.0000                   ($N_0007)    3.9987                       
+
+($N_0008)    5.1000                   ($N_0009)    1.2422                       
+
+($N_0010)     .0900                   ($N_0011)    4.6978                       
+
+($N_0012)    4.6916                   ($N_0013)     .0020                       
+
+($N_0014)    -.1970                   ($N_0015) 675.9E-06                       
+
+($N_0016)     .0623                   ($N_0017)    -.0094                       
+
+($N_0018)     .2593                   ($N_0019)    -.1970                       
+
+($N_0020)     .0174                   (I_sence)-140.5E-06                       
+
+(X_U1.45)     .0900                   (X_U1.57)    -.0847                       
+
+(X_U1.11a)     .0054                  (X_U1.14a)     .0054                      
+
+(X_U1.16a)    5.1000                  (X_U1.16b)    5.1000                      
+
+(X_U1.one)    1.0000                  (X_U1.1111)    1.0000                     
+
+(X_U1.1144)    1.4000                 (X_U1.conv)    1.0000                     
+
+(X_U1.DGND)    0.0000                 (X_U1.DPWR)    5.0000                     
+
+(X_U1.check) 2.434E-06                (X_U1.uvcompaa) 999.0E-06                 
+
+(X_U1.x15.offs) 100.0E-06             (X_U1.x15.ramp1)    1.2422                
+
+(X_U1.xoutst.14)   15.0000            (X_U1.xoutst.31)     .1486                
+
+(X_U1.xoutst.32)     .1486            (X_U1.xoutst.33)   12.9840                
+
+(X_U1.xoutst.34)   12.9840            (X_U1.xbl1.x1.67)    1.2674               
+
+(X_U1.xbl1.x2.77)    5.1000           (X_U1.x15.pos_neg)    -.2000              
+
+(X_U1.xbl1.x2.110)    1.1700          (X_U1.xbl1.x2.x1.6)  -12.0620             
+
+(X_U1.xbl1.x2.x1.7)    4.7043         (X_U1.xbl1.x2.x1.8)    4.7043             
+
+(X_U1.xbl1.x2.x1.9)    0.0000         (X_U1.xbl1.x2.x1.10)    4.1368            
+
+(X_U1.xbl1.x2.x1.11)    5.1000        (X_U1.xbl1.x2.x1.12)    4.7510            
+
+(X_U1.xbl1.x2.x1.13)    4.1368        (X_U1.xbl1.x2.x1.14)    4.4338            
+
+(X_U1.xbl1.x2.x1.53)    4.0300        (X_U1.xbl1.x2.x1.54)    1.1700            
+
+(X_U1.xbl1.x2.x1.90)     .1306        (X_U1.xbl1.x2.x1.91)    2.5000            
+
+(X_U1.xbl1.x2.x1.92)    -.7000        (X_U1.xbl1.x2.x1.99)    3.1350            
+
+(X_U1.xoutst.x2.140)     .0054        (X_U1.xoutst.x2.141)     .0052            
+
+(X_U1.xoutst.x2.143)    0.0000        (X_U1.xoutst.x2.144)    0.0000            
+
+(X_U1.xoutst.x2.731)     .1486        (X_U1.xoutst.x2.732)     .1501            
+
+(X_U1.xoutst.x2.733)    2.9106        (X_U1.xoutst.x2.734)    2.9106            
+
+(X_U1.xoutst.x2.735)   14.0000        (X_U1.xbl1.x2.x2.440)   92.0410           
+
+(X_U1.xbl1.x2.x2.550)  -92.0410       (X_U1.xbl1.x2.x2.conv)    1.0000      
+
+
+
+ DGTL NODE : STATE  DGTL NODE : STATE  DGTL NODE : STATE  DGTL NODE : STATE
+
+
+(X_U1.xoutst.33$DtoA) : Z             ( X_U1.46) : 0     ( X_U1.20) : 1         
+
+( X_U1.49) : 0     ( X_U1.73) : 1     (X_U1.xoutst.34$DtoA) : Z                 
+
+( X_U1.21) : 0     ($N_0010$DtoA) : 0                    (X_U1.xlog.17) : 0     
+
+(X_U1.xoutst.31$DtoA) : 0             (X_U1.xlog.18) : 1                        
+
+(X_U1.xlog.2) : 1  (X_U1.xlog.73z) : 1                                          
+
+(X_U1.xoutst.32$DtoA) : 0             (X_U1.dclk) : 0    (X_U1.10011) : 1       
+
+(X_U1.10012) : 1   ( X_U1.44) : 0     (X_U1.xbl1.x1.39) : 0                     
+
+(X_U1.45$DtoA) : 0                    (X_U1.xlog.87) : 1                        
 
 (X_U1.1001) : 0    
 

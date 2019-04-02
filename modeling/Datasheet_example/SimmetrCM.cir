@@ -1,26 +1,28 @@
-* C:\Workspace_git\Mostovoy_DC\Modelirovanie\Datasheet_example\SimmetrCM.sch
+* D:\GIT\MAI\viser\modeling\Datasheet_example\SimmetrCM.sch
 
 * Schematics Version 9.2
-* Thu Feb 14 15:17:12 2019
+* Thu Mar 21 17:24:09 2019
 
 
 
 ** Analysis setup **
-.tran 0ns 160m 0 10u SKIPBP
+.tran 0ns 400m 0 1.57u SKIPBP
 .OPTIONS ABSTOL=1uA
+.OPTIONS DIGINITSTATE=2
+.OPTIONS DIGIOLVL=1
 .OPTIONS ITL4=70
 .OPTIONS RELTOL=0.01
 
 
-* From [PSPICE NETLIST] section of C:\Program Files\Orcad\PSpice\PSpice.ini:
+* From [PSPICE NETLIST] section of d:\Program Files\Orcad\PSpice\PSpice.ini:
+.lib "D:\Program Files\Orcad\PSpice\UserLib\OPA_2.lib"
+.lib "D:\Program Files\Orcad\PSpice\UserLib\MyLib.lib"
 .lib "nom.lib"
 
 .INC "SimmetrCM.net"
 
 
-.PROBE D(*) 
-.probe N($N_0009) 
-.probe I(R_R8) 
+.PROBE V(*) I(*) D(*) 
 
 
 .END

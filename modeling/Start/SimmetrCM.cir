@@ -1,15 +1,20 @@
-* C:\Workspace_MAI\DCDC\PSE38\SimmetrCM.sch
+* D:\GIT\MAI\viser\modeling\Start\SimmetrCM.sch
 
 * Schematics Version 9.2
-* Mon Feb 04 15:07:22 2019
+* Thu Mar 21 09:07:24 2019
 
 
 
 ** Analysis setup **
-.tran 0ns 100m
+.tran 0ns 200m SKIPBP
+.OPTIONS ABSTOL=1uA
+.OPTIONS ITL4=70
+.OPTIONS RELTOL=0.01
 
 
-* From [PSPICE NETLIST] section of C:\Program Files\Orcad\PSpice\PSpice.ini:
+* From [PSPICE NETLIST] section of d:\Program Files\Orcad\PSpice\PSpice.ini:
+.lib "D:\Program Files\Orcad\PSpice\UserLib\OPA_2.lib"
+.lib "D:\Program Files\Orcad\PSpice\UserLib\MyLib.lib"
 .lib "nom.lib"
 
 .INC "SimmetrCM.net"

@@ -1,0 +1,18 @@
+ lib=D:\GIT\MAI\viser\modeling\half_bridge\model\shemapokursovomubezkz.lib, offset=0, size=51
+ lib="d:\Program Files\Orcad\Capture\Library\PSpice\pwrmos.lib", offset=69444, size=336
+ lib="d:\Program Files\Orcad\Capture\Library\PSpice\anl_misc.lib", offset=20942, size=481
+ lib="d:\Program Files\Orcad\Capture\Library\PSpice\swit_reg.lib", offset=46911, size=2011
+ lib="d:\Program Files\Orcad\Capture\Library\PSpice\dig_io.lib", offset=34857, size=390
+ lib="d:\Program Files\Orcad\Capture\Library\PSpice\dig_io.lib", offset=9827, size=145
+ lib="d:\Program Files\Orcad\Capture\Library\PSpice\dig_io.lib", offset=12383, size=304
+ lib="d:\Program Files\Orcad\Capture\Library\PSpice\dig_io.lib", offset=12266, size=118
+ lib="d:\Program Files\Orcad\Capture\Library\PSpice\dig_io.lib", offset=7572, size=261
+ lib="d:\Program Files\Orcad\Capture\Library\PSpice\swit_reg.lib", offset=73629, size=109
+ lib="d:\Program Files\Orcad\Capture\Library\PSpice\swit_reg.lib", offset=73201, size=429
+ lib="d:\Program Files\Orcad\Capture\Library\PSpice\swit_reg.lib", offset=77491, size=356
+ lib="d:\Program Files\Orcad\Capture\Library\PSpice\swit_reg.lib", offset=69293, size=398
+ lib="d:\Program Files\Orcad\Capture\Library\PSpice\swit_reg.lib", offset=79700, size=165
+ lib="d:\Program Files\Orcad\Capture\Library\PSpice\swit_reg.lib", offset=79864, size=529
+ lib="d:\Program Files\Orcad\Capture\Library\PSpice\swit_reg.lib", offset=79437, size=197
+ lib="d:\Program Files\Orcad\Capture\Library\PSpice\swit_reg.lib", offset=70077, size=325
+ lib="d:\Program Files\Orcad\Capture\Library\PSpice\dig_io.lib", offset=12017, size=118

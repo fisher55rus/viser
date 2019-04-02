@@ -1,0 +1,27 @@
+* D:\GIT\MAI\viser\modeling\half_bridge\model\shemapokursovomubezkz.sch
+
+* Schematics Version 9.2
+* Fri Mar 29 22:18:50 2019
+
+
+
+** Analysis setup **
+.tran 0.1ms 25ms
+.OPTIONS ABSTOL=100uA
+.OPTIONS ITL4=40
+.OPTIONS VNTOL=100uV
+.LIB "D:\GIT\MAI\viser\modeling\half_bridge\model\shemapokursovomubezkz.lib"
+
+
+* From [PSPICE NETLIST] section of d:\Program Files\Orcad\PSpice\PSpice.ini:
+.lib "D:\Program Files\Orcad\PSpice\UserLib\OPA_2.lib"
+.lib "D:\Program Files\Orcad\PSpice\UserLib\MyLib.lib"
+.lib "nom.lib"
+
+.INC "shemapokursovomubezkz.net"
+
+
+.PROBE V(*) I(*) W(*) D(*) NOISE(*) 
+
+
+.END
