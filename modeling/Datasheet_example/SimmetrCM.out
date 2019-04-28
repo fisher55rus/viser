@@ -1,5 +1,5 @@
 
-**** 03/21/19 17:24:13 ********* PSpice 9.2 (Mar 2000) ******** ID# 1 ********
+**** 04/16/19 15:24:39 ********* PSpice 9.2 (Mar 2000) ******** ID# 1 ********
 
  * D:\GIT\MAI\viser\modeling\Datasheet_example\SimmetrCM.sch
 
@@ -13,7 +13,7 @@
 
 
 * Schematics Version 9.2
-* Thu Mar 21 17:24:09 2019
+* Tue Apr 16 15:24:38 2019
 
 
 
@@ -47,42 +47,40 @@ D_D6         0 $N_0003 Dbreak
 D_D5         0 $N_0004 Dbreak 
 D_D7         $N_0004 $N_0005 Dbreak 
 X_S4    AA1 0 $N_0001 I_sence SimmetrCM_S4 
-R_R9         $N_0007 $N_0006  10k  
-R_R6         $N_0009 $N_0008  50k  
-C_C7         $N_0010 $N_0009  1n  
-C_C6         $N_0010 $N_0008  100p  
-R_R7         $N_0006 $N_0010  5k  
-R_R2         $N_0011 I_sence  1k  
-C_C1         0 $N_0011  0.5n  
-X_U1         $N_0010 $N_0016 $N_0008 $N_0013 $N_0014 $N_0015 $N_0017 $N_0011 0
-+  AA1 0 $N_0012 AA2 $N_0012 $N_0016 SG1825 
-+ PARAMS: PERIOD={1/20k} DEADTIME=5e-8
-C_C2         0 $N_0017  100p  
-C_C3         0 $N_0016  1u  
-C_C4         0 $N_0014  1n  
+R_R6         $N_0007 $N_0006  50k  
+C_C7         $N_0008 $N_0007  1n  
+C_C6         $N_0008 $N_0006  100p  
+R_R2         $N_0009 I_sence  1k  
+C_C1         0 $N_0009  0.5n  
+C_C2         0 $N_0010  100p  
+C_C3         0 $N_0011  1u  
+C_C4         0 $N_0012  1n  
 R_R3         $N_0013 0  500k  
-C_C5         0 $N_0015  500p  
-C_C10         0 $N_0010  1n  
-R_R10         $N_0019 $N_0006  80k  
-C_C9         $N_0007 $N_0019  300p  
-C_C8         0 $N_0019  100u  
-L_L5         $N_0019 $N_0005  20m  
+C_C10         0 $N_0008  1n  
+C_C9         $N_0014 $N_0015  300p  
+C_C8         0 $N_0015  100u  
 D_D8         $N_0003 $N_0005 Dbreak 
-V_V3         $N_0002 0 242
-R_80k         $N_0006 0  40k  
-L_L2         $N_0003 $N_0004  150m  
-R_R19         $N_0019 $N_0015  10k  
-R_R18         $N_0015 0  95k  
-L_L1         $N_0020 $N_0001  40  
-D_D2         I_sence $N_0020 Dbreak 
-D_D1         $N_0020 $N_0021 Dbreak 
-X_S1    AA1 0 $N_0021 $N_0020 SimmetrCM_S1 
-X_S2    AA2 0 $N_0020 I_sence SimmetrCM_S2 
-V_V1         $N_0021 0 242
-R_R1         0 I_sence  350m  
-R_R8         $N_0019 0  0.05  
-V_V2         $N_0012 0 15
+D_D2         I_sence $N_0016 Dbreak 
+D_D1         $N_0016 $N_0017 Dbreak 
+X_S1    AA1 0 $N_0017 $N_0016 SimmetrCM_S1 
+X_S2    AA2 0 $N_0016 I_sence SimmetrCM_S2 
+V_V2         $N_0018 0 15
 Kn_K1         L_L1 L_L2     1
+L_L1         $N_0016 $N_0001  12m  
+V_V1         $N_0017 0 240
+C_C5         0 I_sence  500p  
+X_U1         $N_0008 $N_0011 $N_0006 $N_0013 $N_0012 I_sence $N_0010 $N_0009 0
++  AA1 0 $N_0018 AA2 $N_0018 $N_0011 SG1825 
++ PARAMS: PERIOD={1/20k} DEADTIME=5e-8
+R_R9         $N_0014 $N_0020  10k  
+R_R7         $N_0020 $N_0008  5k  
+R_R19         $N_0015 $N_0020  32k  
+R_R18         $N_0020 0  5k  
+V_V3         $N_0002 0 240
+L_L2         $N_0003 $N_0004  0.75m  
+R_R1         0 I_sence  650m  
+L_L5         $N_0015 $N_0005  1m  
+R_R8         $N_0015 0  5  
 
 .subckt SimmetrCM_S3 1 2 3 4  
 S_S3         3 4 1 2 _S3
@@ -189,7 +187,7 @@ X$X_U1.45_DtoA1
 
 X$DIGIFPWR 0 DIGIFPWR
 
-**** 03/21/19 17:24:13 ********* PSpice 9.2 (Mar 2000) ******** ID# 1 ********
+**** 04/16/19 15:24:39 ********* PSpice 9.2 (Mar 2000) ******** ID# 1 ********
 
  * D:\GIT\MAI\viser\modeling\Datasheet_example\SimmetrCM.sch
 
@@ -208,7 +206,7 @@ X$DIGIFPWR 0 DIGIFPWR
          CJO  100.000000E-15                 
 
 
-**** 03/21/19 17:24:13 ********* PSpice 9.2 (Mar 2000) ******** ID# 1 ********
+**** 04/16/19 15:24:39 ********* PSpice 9.2 (Mar 2000) ******** ID# 1 ********
 
  * D:\GIT\MAI\viser\modeling\Datasheet_example\SimmetrCM.sch
 
@@ -248,7 +246,7 @@ X$DIGIFPWR 0 DIGIFPWR
            D     .87             .87         
 
 
-**** 03/21/19 17:24:13 ********* PSpice 9.2 (Mar 2000) ******** ID# 1 ********
+**** 04/16/19 15:24:39 ********* PSpice 9.2 (Mar 2000) ******** ID# 1 ********
 
  * D:\GIT\MAI\viser\modeling\Datasheet_example\SimmetrCM.sch
 
@@ -275,7 +273,7 @@ X$DIGIFPWR 0 DIGIFPWR
         VOFF   12                .7          
 
 
-**** 03/21/19 17:24:13 ********* PSpice 9.2 (Mar 2000) ******** ID# 1 ********
+**** 04/16/19 15:24:39 ********* PSpice 9.2 (Mar 2000) ******** ID# 1 ********
 
  * D:\GIT\MAI\viser\modeling\Datasheet_example\SimmetrCM.sch
 
@@ -295,7 +293,7 @@ X$DIGIFPWR 0 DIGIFPWR
         IOFF    1.3          
 
 
-**** 03/21/19 17:24:13 ********* PSpice 9.2 (Mar 2000) ******** ID# 1 ********
+**** 04/16/19 15:24:39 ********* PSpice 9.2 (Mar 2000) ******** ID# 1 ********
 
  * D:\GIT\MAI\viser\modeling\Datasheet_example\SimmetrCM.sch
 
@@ -340,7 +338,7 @@ X$DIGIFPWR 0 DIGIFPWR
        S5RHI  200.000000E+03  200.000000E+03   98.4          
 
 
-**** 03/21/19 17:24:13 ********* PSpice 9.2 (Mar 2000) ******** ID# 1 ********
+**** 04/16/19 15:24:39 ********* PSpice 9.2 (Mar 2000) ******** ID# 1 ********
 
  * D:\GIT\MAI\viser\modeling\Datasheet_example\SimmetrCM.sch
 
@@ -377,7 +375,7 @@ X$DIGIFPWR 0 DIGIFPWR
        S1VHI   20.000000E+03   30            
 
 
-**** 03/21/19 17:24:13 ********* PSpice 9.2 (Mar 2000) ******** ID# 1 ********
+**** 04/16/19 15:24:39 ********* PSpice 9.2 (Mar 2000) ******** ID# 1 ********
 
  * D:\GIT\MAI\viser\modeling\Datasheet_example\SimmetrCM.sch
 
@@ -399,7 +397,7 @@ X$DIGIFPWR 0 DIGIFPWR
       TPHLMX    0            
 
 
-**** 03/21/19 17:24:13 ********* PSpice 9.2 (Mar 2000) ******** ID# 1 ********
+**** 04/16/19 15:24:39 ********* PSpice 9.2 (Mar 2000) ******** ID# 1 ********
 
  * D:\GIT\MAI\viser\modeling\Datasheet_example\SimmetrCM.sch
 
@@ -451,7 +449,7 @@ X$DIGIFPWR 0 DIGIFPWR
    THCECLKMX    0            
 
 
-**** 03/21/19 17:24:13 ********* PSpice 9.2 (Mar 2000) ******** ID# 1 ********
+**** 04/16/19 15:24:39 ********* PSpice 9.2 (Mar 2000) ******** ID# 1 ********
 
  * D:\GIT\MAI\viser\modeling\Datasheet_example\SimmetrCM.sch
 
@@ -500,7 +498,7 @@ X$DIGIFPWR 0 DIGIFPWR
       THDGMX    0            
 
 
-**** 03/21/19 17:24:13 ********* PSpice 9.2 (Mar 2000) ******** ID# 1 ********
+**** 04/16/19 15:24:39 ********* PSpice 9.2 (Mar 2000) ******** ID# 1 ********
 
  * D:\GIT\MAI\viser\modeling\Datasheet_example\SimmetrCM.sch
 
@@ -519,7 +517,7 @@ X$DIGIFPWR 0 DIGIFPWR
        DLYMX   70.000000E-09 
 
 
-**** 03/21/19 17:24:13 ********* PSpice 9.2 (Mar 2000) ******** ID# 1 ********
+**** 04/16/19 15:24:39 ********* PSpice 9.2 (Mar 2000) ******** ID# 1 ********
 
  * D:\GIT\MAI\viser\modeling\Datasheet_example\SimmetrCM.sch
 
@@ -554,7 +552,7 @@ X$DIGIFPWR 0 DIGIFPWR
        TPWRT  100.000000E+03  100.000000E+03  100.000000E+03  100.000000E+03 
 
 
-**** 03/21/19 17:24:13 ********* PSpice 9.2 (Mar 2000) ******** ID# 1 ********
+**** 04/16/19 15:24:39 ********* PSpice 9.2 (Mar 2000) ******** ID# 1 ********
 
  * D:\GIT\MAI\viser\modeling\Datasheet_example\SimmetrCM.sch
 
@@ -573,132 +571,14 @@ DIGITAL INPUT VOLTAGE Hazard at time 0s
   Voltage V(X_U1.x15.pos_neg,0)=-10.00E+06 is beyond the ranges defined in model X_U1.x15.cmp
 
 
-ERROR -- Convergence problem in transient analysis at Time =  .042
-         Time step =  21.00E-15, minimum allowable step size =  40.00E-15
+DIGITAL Message ID#2 (SERIOUS):
+DIGITAL INPUT VOLTAGE Hazard at time 0s
+  Device: X_U1.xbl1.x1.o6
+  Voltage V(X_U1.xbl1.x1.67,X_U1.57)= 181.7300 is beyond the ranges defined in model X_U1.xbl1.x1.compwm
 
 
 
-  Last node voltages tried were:
+          JOB CONCLUDED
 
- NODE   VOLTAGE     NODE   VOLTAGE     NODE   VOLTAGE     NODE   VOLTAGE
-
-
-(  AA1)     .0054  (  AA2)   14.0280  ($G_DGND)    0.0000                       
-
-($G_DPWR)    5.0000                   ($N_0001)  242.0000                       
-
-($N_0002)  242.0000                   ($N_0003)   -3.0449                       
-
-($N_0004)   11.7490                   ($N_0005)    8.7036                       
-
-($N_0006)     .3551                   ($N_0007)     .3551                       
-
-($N_0008)    4.6977                   ($N_0009)    4.6980                       
-
-($N_0010)     .3550                   ($N_0011)     .4571                       
-
-($N_0012)   15.0000                   ($N_0013)    3.4998                       
-
-($N_0014)    1.0000                   ($N_0015)     .9643                       
-
-($N_0016)    5.1000                   ($N_0017)   12.3130                       
-
-($N_0019)    1.0659                   ($N_0020)     .4584                       
-
-($N_0021)  242.0000                   (I_sence)     .4571                       
-
-(X_U1.45)     .0900                   (X_U1.57)    4.6977                       
-
-(X_U1.11a)     .0054                  (X_U1.14a)   14.0280                      
-
-(X_U1.16a)    5.1000                  (X_U1.16b)    5.1000                      
-
-(X_U1.one)    1.0000                  (X_U1.1111)    1.0000                     
-
-(X_U1.1144)    1.4000                 (X_U1.conv)    1.0000                     
-
-(X_U1.DGND)    0.0000                 (X_U1.DPWR)    5.0000                     
-
-(X_U1.check) 2.434E-06                (X_U1.uvcompaa) 999.0E-06                 
-
-(X_U1.x15.offs) 100.0E-06             (X_U1.x15.ramp1)    1.0000                
-
-(X_U1.xoutst.14)   15.0000            (X_U1.xoutst.31)     .1486                
-
-(X_U1.xoutst.32)   14.9710            (X_U1.xoutst.33)   12.9840                
-
-(X_U1.xoutst.34)     .1486            (X_U1.xbl1.x1.67)    2.2143               
-
-(X_U1.xbl1.x2.77)    5.1000           (X_U1.x15.pos_neg)    -.4003              
-
-(X_U1.xbl1.x2.110)    1.1700          (X_U1.xbl1.x2.x1.6)  -12.0610             
-
-(X_U1.xbl1.x2.x1.7)    4.7042         (X_U1.xbl1.x2.x1.8)    4.7042             
-
-(X_U1.xbl1.x2.x1.9)    0.0000         (X_U1.xbl1.x2.x1.10)    4.1373            
-
-(X_U1.xbl1.x2.x1.11)    5.1000        (X_U1.xbl1.x2.x1.12)    4.7510            
-
-(X_U1.xbl1.x2.x1.13)    4.1373        (X_U1.xbl1.x2.x1.14)    4.4343            
-
-(X_U1.xbl1.x2.x1.53)    4.0300        (X_U1.xbl1.x2.x1.54)    1.1700            
-
-(X_U1.xbl1.x2.x1.90)     .1303        (X_U1.xbl1.x2.x1.91)    2.5000            
-
-(X_U1.xbl1.x2.x1.92)    -.7000        (X_U1.xbl1.x2.x1.99)    3.1350            
-
-(X_U1.xoutst.x2.140)     .0054        (X_U1.xoutst.x2.141)   14.0280            
-
-(X_U1.xoutst.x2.143)    0.0000        (X_U1.xoutst.x2.144)    0.0000            
-
-(X_U1.xoutst.x2.731)     .1486        (X_U1.xoutst.x2.732)   14.8300            
-
-(X_U1.xoutst.x2.733)    2.9106        (X_U1.xoutst.x2.734)     .1486            
-
-(X_U1.xoutst.x2.735)   14.0000        (X_U1.xbl1.x2.x2.440)    1.0000           
-
-(X_U1.xbl1.x2.x2.550)    0.0000       (X_U1.xbl1.x2.x2.conv)    1.0000      
-
-
-
- DGTL NODE : STATE  DGTL NODE : STATE  DGTL NODE : STATE  DGTL NODE : STATE
-
-
-(X_U1.xoutst.33$DtoA) : Z             ( X_U1.46) : 0     ( X_U1.20) : 1         
-
-( X_U1.49) : 0     ( X_U1.73) : 0     (X_U1.xoutst.34$DtoA) : 0                 
-
-( X_U1.21) : 0     (X_U1.xlog.17) : 1                                           
-
-(X_U1.xoutst.31$DtoA) : 0             (X_U1.xlog.18) : 0                        
-
-(X_U1.xlog.2) : 1  (X_U1.xlog.73z) : 0                                          
-
-(X_U1.xoutst.32$DtoA) : Z             (X_U1.dclk) : 0    (X_U1.10011) : 1       
-
-(X_U1.10012) : 1   ( X_U1.44) : 0     (X_U1.xbl1.x1.39) : 0                     
-
-($N_0013$DtoA) : 0                    (X_U1.45$DtoA) : 0                        
-
-(X_U1.xlog.87) : 1                    (X_U1.1001) : 0    
-
-
- **** Runtime Parameters
-                              
-      ABSTOL =      1.0000E-03
-        GMIN =      1.0000E-12
-        ITL1 =      1.5000E+02
-        ITL2 =      2.0000E+01
-        ITL4 =      7.0000E+01
-      RELTOL =      1.0000E-02
-      RUNFOR =      0.0000E+00
-        TMAX =      1.5700E-06
-       TSTOP =      4.0000E-01
-       VNTOL =      1.0000E-03
-              
-               
-
-          JOB ABORTED
-
-          TOTAL JOB TIME          343.48
+          TOTAL JOB TIME          423.73
 

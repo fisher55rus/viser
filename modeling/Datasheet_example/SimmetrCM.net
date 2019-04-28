@@ -9,42 +9,40 @@ D_D6         0 $N_0003 Dbreak
 D_D5         0 $N_0004 Dbreak 
 D_D7         $N_0004 $N_0005 Dbreak 
 X_S4    AA1 0 $N_0001 I_sence SimmetrCM_S4 
-R_R9         $N_0007 $N_0006  10k  
-R_R6         $N_0009 $N_0008  50k  
-C_C7         $N_0010 $N_0009  1n  
-C_C6         $N_0010 $N_0008  100p  
-R_R7         $N_0006 $N_0010  5k  
-R_R2         $N_0011 I_sence  1k  
-C_C1         0 $N_0011  0.5n  
-X_U1         $N_0010 $N_0016 $N_0008 $N_0013 $N_0014 $N_0015 $N_0017 $N_0011 0
-+  AA1 0 $N_0012 AA2 $N_0012 $N_0016 SG1825 
-+ PARAMS: PERIOD={1/20k} DEADTIME=5e-8
-C_C2         0 $N_0017  100p  
-C_C3         0 $N_0016  1u  
-C_C4         0 $N_0014  1n  
+R_R6         $N_0007 $N_0006  50k  
+C_C7         $N_0008 $N_0007  1n  
+C_C6         $N_0008 $N_0006  100p  
+R_R2         $N_0009 I_sence  1k  
+C_C1         0 $N_0009  0.5n  
+C_C2         0 $N_0010  100p  
+C_C3         0 $N_0011  1u  
+C_C4         0 $N_0012  1n  
 R_R3         $N_0013 0  500k  
-C_C5         0 $N_0015  500p  
-C_C10         0 $N_0010  1n  
-R_R10         $N_0019 $N_0006  80k  
-C_C9         $N_0007 $N_0019  300p  
-C_C8         0 $N_0019  100u  
-L_L5         $N_0019 $N_0005  20m  
+C_C10         0 $N_0008  1n  
+C_C9         $N_0014 $N_0015  300p  
+C_C8         0 $N_0015  100u  
 D_D8         $N_0003 $N_0005 Dbreak 
-V_V3         $N_0002 0 242
-R_80k         $N_0006 0  40k  
-L_L2         $N_0003 $N_0004  150m  
-R_R19         $N_0019 $N_0015  10k  
-R_R18         $N_0015 0  95k  
-L_L1         $N_0020 $N_0001  40  
-D_D2         I_sence $N_0020 Dbreak 
-D_D1         $N_0020 $N_0021 Dbreak 
-X_S1    AA1 0 $N_0021 $N_0020 SimmetrCM_S1 
-X_S2    AA2 0 $N_0020 I_sence SimmetrCM_S2 
-V_V1         $N_0021 0 242
-R_R1         0 I_sence  350m  
-R_R8         $N_0019 0  0.05  
-V_V2         $N_0012 0 15
+D_D2         I_sence $N_0016 Dbreak 
+D_D1         $N_0016 $N_0017 Dbreak 
+X_S1    AA1 0 $N_0017 $N_0016 SimmetrCM_S1 
+X_S2    AA2 0 $N_0016 I_sence SimmetrCM_S2 
+V_V2         $N_0018 0 15
 Kn_K1         L_L1 L_L2     1
+L_L1         $N_0016 $N_0001  12m  
+V_V1         $N_0017 0 240
+C_C5         0 I_sence  500p  
+X_U1         $N_0008 $N_0011 $N_0006 $N_0013 $N_0012 I_sence $N_0010 $N_0009 0
++  AA1 0 $N_0018 AA2 $N_0018 $N_0011 SG1825 
++ PARAMS: PERIOD={1/20k} DEADTIME=5e-8
+R_R9         $N_0014 $N_0020  10k  
+R_R7         $N_0020 $N_0008  5k  
+R_R19         $N_0015 $N_0020  32k  
+R_R18         $N_0020 0  5k  
+V_V3         $N_0002 0 240
+L_L2         $N_0003 $N_0004  0.75m  
+R_R1         0 I_sence  650m  
+L_L5         $N_0015 $N_0005  1m  
+R_R8         $N_0015 0  5  
 
 .subckt SimmetrCM_S3 1 2 3 4  
 S_S3         3 4 1 2 _S3

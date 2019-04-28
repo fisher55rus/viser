@@ -1,0 +1,38 @@
+* Schematics Netlist *
+
+
+
+R_R1         $N_0002 $N_0001  10  
+R_R2         $N_0004 $N_0003  10  
+E_E1         $N_0001 $N_0005 aa 0 1
+M_M1         $N_0006 $N_0002 $N_0005 $N_0005 IRF255
+E_E2         $N_0003 $N_0007 bb 0 1
+M_M2         $N_0005 $N_0004 $N_0007 $N_0007 IRF255
+M_M3         $N_0006 $N_0009 $N_0008 $N_0008 IRF255
+M_M4         $N_0008 $N_0010 $N_0007 $N_0007 IRF255
+E_E3         $N_0011 $N_0008 bb 0 1
+E_E4         $N_0012 $N_0007 aa 0 1
+R_R4         $N_0010 $N_0012  10  
+R_R5         $N_0009 $N_0011  10  
+C_C1         $N_0013 0  5u  
+R_R6         $N_0013 0  10  
+L_L3         $N_0013 $N_0014  1m  
+D_D9         $N_0005 $N_0006 Dbreak 
+D_D10         $N_0007 $N_0005 Dbreak 
+D_D12         $N_0007 $N_0008 Dbreak 
+D_D13         0 $N_0015 Dbreak 
+D_D14         $N_0015 $N_0014 Dbreak 
+D_D15         $N_0016 $N_0014 Dbreak 
+D_D16         0 $N_0016 Dbreak 
+L_L2         $N_0005 $N_0008  12mH  
+L_L1         $N_0015 $N_0016  0.75mH  
+D_D11         $N_0008 $N_0006 Dbreak 
+V_V3         $N_0006 0 240
+V_V1         aa 0  
++PULSE 0 15 0 0.1u 0.1u 9u 20u
+V_V2         bb 0  
++PULSE 0 15 10u 0.1u 0.1u 9u 20u
+Kn_K1         L_L2 L_L1     1
+C_C3         0 $N_0017  1n  
+R_R3         0 $N_0007  100m  
+R_R7         $N_0017 $N_0007  10k  

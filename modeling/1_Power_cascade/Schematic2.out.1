@@ -1,0 +1,84 @@
+
+**** 04/28/19 19:07:10 ********* PSpice 9.2 (Mar 2000) ******** ID# 1 ********
+
+ * D:\GIT\MAI\viser\modeling\1_Power_cascade\Schematic2.sch
+
+
+ ****     CIRCUIT DESCRIPTION
+
+
+******************************************************************************
+
+
+
+
+* Schematics Version 9.2
+* Sun Apr 28 19:07:07 2019
+
+
+
+** Analysis setup **
+.tran 0ns 10m SKIPBP
+
+
+* From [PSPICE NETLIST] section of d:\Program Files\Orcad\PSpice\PSpice.ini:
+.lib "D:\Program Files\Orcad\PSpice\UserLib\OPA_2.lib"
+.lib "D:\Program Files\Orcad\PSpice\UserLib\MyLib.lib"
+.lib "nom.lib"
+
+.INC "Schematic2.net"
+
+
+
+**** INCLUDING Schematic2.net ****
+* Schematics Netlist *
+
+
+
+R_R1         $N_0002 $N_0001  10  
+R_R2         $N_0004 $N_0003  10  
+E_E1         $N_0001 $N_0005 aa 0 1
+M_M1         $N_0006 $N_0002 $N_0005 $N_0005 IRF255
+D_D1         $N_0005 $N_0006 Dbreak-X 
+V_V1         aa 0  
++PULSE 0 15 0 0.1u 0.1u 9u 20u
+V_V2         bb 0  
++PULSE 0 15 10u 0.1u 0.1u 9u 20u
+E_E2         $N_0003 $N_0007 bb 0 1
+V_V3         $N_0006 $N_0007 240
+M_M2         $N_0005 $N_0004 $N_0007 $N_0007 IRF255
+D_D2         $N_0007 $N_0005 Dbreak-X 
+R_R3         0 $N_0007  0.1  
+M_M3         $N_0006 $N_0009 $N_0008 $N_0008 IRF255
+M_M4         $N_0008 $N_0010 $N_0007 $N_0007 IRF255
+E_E3         $N_0011 $N_0008 bb 0 1
+E_E4         $N_0012 $N_0007 aa 0 1
+R_R4         $N_0010 $N_0012  10  
+R_R5         $N_0009 $N_0011  10  
+D_D3         $N_0007 $N_0008 Dbreak-X 
+D_D4         $N_0008 $N_0006 Dbreak-X 
+L_L1         $N_0013 $N_0014  12mH  
+D_D5         0 $N_0014 Dbreak-X 
+D_D6         0 $N_0013 Dbreak-X 
+D_D7         $N_0013 $N_0015 Dbreak-X 
+D_D8         $N_0014 $N_0015 Dbreak-X 
+C_C1         $N_0016 0  5u  
+R_R6         $N_0016 0  10  
+L_L2         $N_0005 $N_0008  1mH  
+L_L3         $N_0016 $N_0015  1m  
+Kn_K1         L_L2 L_L1     1
+
+**** RESUMING Schematic2.cir ****
+.PROBE V(*) I(*) W(*) D(*) NOISE(*) 
+
+
+.END
+
+ERROR -- Model Dbreak-X used by D_D1 is undefined
+ERROR -- Model Dbreak-X used by D_D2 is undefined
+ERROR -- Model Dbreak-X used by D_D3 is undefined
+ERROR -- Model Dbreak-X used by D_D4 is undefined
+ERROR -- Model Dbreak-X used by D_D5 is undefined
+ERROR -- Model Dbreak-X used by D_D6 is undefined
+ERROR -- Model Dbreak-X used by D_D7 is undefined
+ERROR -- Model Dbreak-X used by D_D8 is undefined

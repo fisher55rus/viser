@@ -1,0 +1,23 @@
+* D:\GIT\MAI\viser\modeling\1_Power_cascade\Schematic2.sch
+
+* Schematics Version 9.2
+* Sun Apr 28 19:15:26 2019
+
+
+
+** Analysis setup **
+.tran 0ns 500u 0 1.57u SKIPBP
+
+
+* From [PSPICE NETLIST] section of d:\Program Files\Orcad\PSpice\PSpice.ini:
+.lib "D:\Program Files\Orcad\PSpice\UserLib\OPA_2.lib"
+.lib "D:\Program Files\Orcad\PSpice\UserLib\MyLib.lib"
+.lib "nom.lib"
+
+.INC "Schematic2.net"
+
+
+.PROBE V(*) I(*) W(*) D(*) NOISE(*) 
+
+
+.END
