@@ -1,7 +1,7 @@
 
-**** 05/06/19 21:59:42 ********* PSpice 9.2 (Mar 2000) ******** ID# 1 ********
+**** 05/06/19 19:43:27 ********* PSpice 9.2 (Mar 2000) ******** ID# 1 ********
 
- * D:\GIT\MAI\viser\modeling\Datasheet_example\SimmetrCM.sch
+ * D:\GIT\MAI\viser\modeling\nesimmetr\SimmetrCM.sch
 
 
  ****     CIRCUIT DESCRIPTION
@@ -13,12 +13,12 @@
 
 
 * Schematics Version 9.2
-* Mon May 06 21:59:38 2019
+* Mon May 06 19:43:23 2019
 
 
 
 ** Analysis setup **
-.tran 0ns 200m 0 1.57u SKIPBP
+.tran 0ns 80m 0 1.57u SKIPBP
 .OPTIONS ABSTOL=1uA
 .OPTIONS DIGINITSTATE=2
 .OPTIONS DIGIOLVL=1
@@ -44,45 +44,44 @@ X_S1    AA1 0 $N_0001 $N_0002 SimmetrCM_S1
 D_D1         $N_0002 $N_0001 Dbreak 
 X_S3    AA2 0 $N_0003 $N_0004 SimmetrCM_S3 
 D_D3         $N_0004 $N_0003 Dbreak 
-L_L1         $N_0002 $N_0004  12m  
-D_D7         $N_0005 $N_0006 Dbreak 
-D_D8         $N_0007 $N_0006 Dbreak 
-D_D6         0 $N_0007 Dbreak 
-D_D5         0 $N_0005 Dbreak 
-C_C3         0 $N_0008  1u  
-C_C4         0 $N_0009  1n  
-R_R3         $N_0010 0  500k  
-V_V2         $N_0011 0 15
-R_R6         $N_0013 $N_0012  50k  
-C_C6         $N_0014 $N_0012  100p  
-C_C7         $N_0014 $N_0013  1n  
-R_R7         $N_0015 $N_0014  5k  
-C_C10         0 $N_0014  1n  
-Kn_K1         L_L1 L_L2     1
-C_C2         0 $N_0016  100p  
-R_R9         $N_0017 $N_0015  10k  
-R_R18         $N_0015 0  5.1k  
-R_R8         $N_0018 0  3m  
-V_V1         $N_0001 0 240
-L_L2         $N_0007 $N_0005  0.75m  
-C_C1         0 $N_0019  0.5n  
-C_C8         0 $N_0020  100u  
-L_L5         $N_0020 $N_0006  1m  
-R_R19         $N_0020 $N_0015  32k  
-C_C9         $N_0017 $N_0020  300p  
-V_V8         $N_0020 $N_0018 25
-R_R2         $N_0019 $N_0021  1k  
-D_D4         $N_0021 $N_0004 Dbreak 
-X_S4    AA1 0 $N_0004 $N_0021 SimmetrCM_S4 
-D_D2         $N_0021 $N_0002 Dbreak 
-X_S2    AA2 0 $N_0002 $N_0021 SimmetrCM_S2 
-R_R1         0 $N_0021  620m  
-V_V3         $N_0003 0 230
-R_R25         $N_0021 $N_0021  1k  
-C_C5         0 $N_0021  500p  
-X_U1         $N_0014 $N_0008 $N_0012 $N_0010 $N_0009 $N_0021 $N_0016 $N_0019 0
-+  AA1 0 $N_0011 AA2 $N_0011 $N_0008 SG1825 
+L_L2         $N_0005 $N_0006  0.75m  
+D_D7         $N_0006 $N_0007 Dbreak 
+D_D8         $N_0005 $N_0007 Dbreak 
+D_D6         0 $N_0005 Dbreak 
+D_D5         0 $N_0006 Dbreak 
+D_D4         I_sence $N_0004 Dbreak 
+X_S4    AA1 0 $N_0004 I_sence SimmetrCM_S4 
+D_D2         I_sence $N_0002 Dbreak 
+X_S2    AA2 0 $N_0002 I_sence SimmetrCM_S2 
+R_R2         $N_0008 I_sence  1k  
+C_C1         0 $N_0008  0.5n  
+C_C3         0 $N_0009  1u  
+C_C4         0 $N_0010  1n  
+R_R3         $N_0011 0  500k  
+V_V2         $N_0012 0 15
+C_C5         0 I_sence  500p  
+R_R6         $N_0014 $N_0013  50k  
+C_C6         $N_0015 $N_0013  100p  
+C_C7         $N_0015 $N_0014  1n  
+R_R7         $N_0016 $N_0015  5k  
+X_U1         $N_0015 $N_0009 $N_0013 $N_0011 $N_0010 I_sence $N_0017 $N_0008 0
++  AA1 0 $N_0012 AA2 $N_0012 $N_0009 SG1825 
 + PARAMS: PERIOD={1/20k} DEADTIME=5e-8
+C_C10         0 $N_0015  1n  
+Kn_K1         L_L1 L_L2     1
+C_C2         0 $N_0017  100p  
+R_R9         $N_0019 $N_0016  10k  
+C_C8         0 $N_0020  100u  
+L_L5         $N_0020 $N_0007  1m  
+R_R19         $N_0020 $N_0016  32k  
+C_C9         $N_0019 $N_0020  300p  
+R_R18         $N_0016 0  5.1k  
+R_R1         0 I_sence  600m  
+R_R8         $N_0021 0  3m  
+V_V1         $N_0001 0 240
+V_V8         $N_0020 $N_0021 25
+L_L1         $N_0002 $N_0004  12m  
+V_V3         $N_0003 0 150
 
 .subckt SimmetrCM_S1 1 2 3 4  
 S_S1         3 4 1 2 _S1
@@ -118,12 +117,12 @@ RS_S2         1 2 1G
 **** Generated AtoD and DtoA Interfaces ****
 
 *
-* Analog/Digital interface for node $N_0010
+* Analog/Digital interface for node $N_0011
 *
-* Moving X_U1.u99:OUT1 from analog node $N_0010 to new digital node $N_0010$DtoA
-X$$N_0010_DtoA1
-+ $N_0010$DtoA
-+ $N_0010
+* Moving X_U1.u99:OUT1 from analog node $N_0011 to new digital node $N_0011$DtoA
+X$$N_0011_DtoA1
++ $N_0011$DtoA
++ $N_0011
 + X_U1.DPWR
 + X_U1.DGND
 + DtoA_STD
@@ -189,9 +188,9 @@ X$X_U1.45_DtoA1
 
 X$DIGIFPWR 0 DIGIFPWR
 
-**** 05/06/19 21:59:42 ********* PSpice 9.2 (Mar 2000) ******** ID# 1 ********
+**** 05/06/19 19:43:27 ********* PSpice 9.2 (Mar 2000) ******** ID# 1 ********
 
- * D:\GIT\MAI\viser\modeling\Datasheet_example\SimmetrCM.sch
+ * D:\GIT\MAI\viser\modeling\nesimmetr\SimmetrCM.sch
 
 
  ****     Diode MODEL PARAMETERS
@@ -208,9 +207,9 @@ X$DIGIFPWR 0 DIGIFPWR
          CJO  100.000000E-15                 
 
 
-**** 05/06/19 21:59:42 ********* PSpice 9.2 (Mar 2000) ******** ID# 1 ********
+**** 05/06/19 19:43:27 ********* PSpice 9.2 (Mar 2000) ******** ID# 1 ********
 
- * D:\GIT\MAI\viser\modeling\Datasheet_example\SimmetrCM.sch
+ * D:\GIT\MAI\viser\modeling\nesimmetr\SimmetrCM.sch
 
 
  ****     BJT MODEL PARAMETERS
@@ -248,9 +247,9 @@ X$DIGIFPWR 0 DIGIFPWR
            D     .87             .87         
 
 
-**** 05/06/19 21:59:42 ********* PSpice 9.2 (Mar 2000) ******** ID# 1 ********
+**** 05/06/19 19:43:27 ********* PSpice 9.2 (Mar 2000) ******** ID# 1 ********
 
- * D:\GIT\MAI\viser\modeling\Datasheet_example\SimmetrCM.sch
+ * D:\GIT\MAI\viser\modeling\nesimmetr\SimmetrCM.sch
 
 
  ****     Voltage Controlled Switch MODEL PARAMETERS
@@ -275,9 +274,9 @@ X$DIGIFPWR 0 DIGIFPWR
         VOFF   12                .7          
 
 
-**** 05/06/19 21:59:42 ********* PSpice 9.2 (Mar 2000) ******** ID# 1 ********
+**** 05/06/19 19:43:27 ********* PSpice 9.2 (Mar 2000) ******** ID# 1 ********
 
- * D:\GIT\MAI\viser\modeling\Datasheet_example\SimmetrCM.sch
+ * D:\GIT\MAI\viser\modeling\nesimmetr\SimmetrCM.sch
 
 
  ****     Current Controlled Switch MODEL PARAMETERS
@@ -295,9 +294,9 @@ X$DIGIFPWR 0 DIGIFPWR
         IOFF    1.3          
 
 
-**** 05/06/19 21:59:42 ********* PSpice 9.2 (Mar 2000) ******** ID# 1 ********
+**** 05/06/19 19:43:27 ********* PSpice 9.2 (Mar 2000) ******** ID# 1 ********
 
- * D:\GIT\MAI\viser\modeling\Datasheet_example\SimmetrCM.sch
+ * D:\GIT\MAI\viser\modeling\nesimmetr\SimmetrCM.sch
 
 
  ****     Digital Input MODEL PARAMETERS
@@ -340,9 +339,9 @@ X$DIGIFPWR 0 DIGIFPWR
        S5RHI  200.000000E+03  200.000000E+03   98.4          
 
 
-**** 05/06/19 21:59:42 ********* PSpice 9.2 (Mar 2000) ******** ID# 1 ********
+**** 05/06/19 19:43:27 ********* PSpice 9.2 (Mar 2000) ******** ID# 1 ********
 
- * D:\GIT\MAI\viser\modeling\Datasheet_example\SimmetrCM.sch
+ * D:\GIT\MAI\viser\modeling\nesimmetr\SimmetrCM.sch
 
 
  ****     Digital Output MODEL PARAMETERS
@@ -377,9 +376,9 @@ X$DIGIFPWR 0 DIGIFPWR
        S1VHI   20.000000E+03   30            
 
 
-**** 05/06/19 21:59:42 ********* PSpice 9.2 (Mar 2000) ******** ID# 1 ********
+**** 05/06/19 19:43:27 ********* PSpice 9.2 (Mar 2000) ******** ID# 1 ********
 
- * D:\GIT\MAI\viser\modeling\Datasheet_example\SimmetrCM.sch
+ * D:\GIT\MAI\viser\modeling\nesimmetr\SimmetrCM.sch
 
 
  ****     Digital Gate MODEL PARAMETERS
@@ -399,9 +398,9 @@ X$DIGIFPWR 0 DIGIFPWR
       TPHLMX    0            
 
 
-**** 05/06/19 21:59:42 ********* PSpice 9.2 (Mar 2000) ******** ID# 1 ********
+**** 05/06/19 19:43:27 ********* PSpice 9.2 (Mar 2000) ******** ID# 1 ********
 
- * D:\GIT\MAI\viser\modeling\Datasheet_example\SimmetrCM.sch
+ * D:\GIT\MAI\viser\modeling\nesimmetr\SimmetrCM.sch
 
 
  ****     Digital Edge Triggered FF MODEL PARAMETERS
@@ -451,9 +450,9 @@ X$DIGIFPWR 0 DIGIFPWR
    THCECLKMX    0            
 
 
-**** 05/06/19 21:59:42 ********* PSpice 9.2 (Mar 2000) ******** ID# 1 ********
+**** 05/06/19 19:43:27 ********* PSpice 9.2 (Mar 2000) ******** ID# 1 ********
 
- * D:\GIT\MAI\viser\modeling\Datasheet_example\SimmetrCM.sch
+ * D:\GIT\MAI\viser\modeling\nesimmetr\SimmetrCM.sch
 
 
  ****     Digital Gated FF MODEL PARAMETERS
@@ -500,9 +499,9 @@ X$DIGIFPWR 0 DIGIFPWR
       THDGMX    0            
 
 
-**** 05/06/19 21:59:42 ********* PSpice 9.2 (Mar 2000) ******** ID# 1 ********
+**** 05/06/19 19:43:27 ********* PSpice 9.2 (Mar 2000) ******** ID# 1 ********
 
- * D:\GIT\MAI\viser\modeling\Datasheet_example\SimmetrCM.sch
+ * D:\GIT\MAI\viser\modeling\nesimmetr\SimmetrCM.sch
 
 
  ****     Digital Delay Line MODEL PARAMETERS
@@ -519,9 +518,9 @@ X$DIGIFPWR 0 DIGIFPWR
        DLYMX   70.000000E-09 
 
 
-**** 05/06/19 21:59:42 ********* PSpice 9.2 (Mar 2000) ******** ID# 1 ********
+**** 05/06/19 19:43:27 ********* PSpice 9.2 (Mar 2000) ******** ID# 1 ********
 
- * D:\GIT\MAI\viser\modeling\Datasheet_example\SimmetrCM.sch
+ * D:\GIT\MAI\viser\modeling\nesimmetr\SimmetrCM.sch
 
 
  ****     Digital IO  MODEL PARAMETERS
@@ -554,9 +553,9 @@ X$DIGIFPWR 0 DIGIFPWR
        TPWRT  100.000000E+03  100.000000E+03  100.000000E+03  100.000000E+03 
 
 
-**** 05/06/19 21:59:42 ********* PSpice 9.2 (Mar 2000) ******** ID# 1 ********
+**** 05/06/19 19:43:27 ********* PSpice 9.2 (Mar 2000) ******** ID# 1 ********
 
- * D:\GIT\MAI\viser\modeling\Datasheet_example\SimmetrCM.sch
+ * D:\GIT\MAI\viser\modeling\nesimmetr\SimmetrCM.sch
 
 
  ****     SIMULATION ERRORS
@@ -576,10 +575,11 @@ DIGITAL INPUT VOLTAGE Hazard at time 0s
 DIGITAL Message ID#2 (SERIOUS):
 DIGITAL INPUT VOLTAGE Hazard at time 0s
   Device: X_U1.xbl1.x1.o6
-  Voltage V(X_U1.xbl1.x1.67,X_U1.57)= 177.9600 is beyond the ranges defined in model X_U1.xbl1.x1.compwm
+  Voltage V(X_U1.xbl1.x1.67,X_U1.57)= 143.7300 is beyond the ranges defined in model X_U1.xbl1.x1.compwm
 
 
-          JOB ABORTED
 
-          TOTAL JOB TIME           31.93
+          JOB CONCLUDED
+
+          TOTAL JOB TIME           94.19
 

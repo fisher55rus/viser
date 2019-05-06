@@ -1,12 +1,12 @@
-* D:\GIT\MAI\viser\modeling\Datasheet_example\SimmetrCM.sch
+* D:\GIT\MAI\viser\modeling\nesimmetr\SimmetrCM.sch
 
 * Schematics Version 9.2
-* Mon May 06 21:59:38 2019
+* Mon May 06 19:43:23 2019
 
 
 
 ** Analysis setup **
-.tran 0ns 200m 0 1.57u SKIPBP
+.tran 0ns 80m 0 1.57u SKIPBP
 .OPTIONS ABSTOL=1uA
 .OPTIONS DIGINITSTATE=2
 .OPTIONS DIGIOLVL=1

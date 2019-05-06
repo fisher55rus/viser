@@ -1,0 +1,124 @@
+
+**** 05/05/19 15:20:43 ********* PSpice 9.2 (Mar 2000) ******** ID# 1 ********
+
+ * D:\GIT\MAI\viser\modeling\Datasheet_example\SimmetrCM.sch
+
+
+ ****     CIRCUIT DESCRIPTION
+
+
+******************************************************************************
+
+
+
+
+* Schematics Version 9.2
+* Sun May 05 15:20:43 2019
+
+
+.PARAM         Vvar=25 
+
+** Analysis setup **
+.tran 0ns 40m 0 1.57u SKIPBP
+.OPTIONS ABSTOL=1uA
+.OPTIONS DIGINITSTATE=2
+.OPTIONS DIGIOLVL=1
+.OPTIONS ITL4=70
+.OPTIONS RELTOL=0.01
+.STEP  PARAM Vvar LIST 
++ 37.136, 37.135, 37.13,  37.129, 37.2, 37
+----------------------------------$
+ERROR -- Must be monotonically increasing or decreasing
+
+
+* From [PSPICE NETLIST] section of d:\Program Files\Orcad\PSpice\PSpice.ini:
+.lib "D:\Program Files\Orcad\PSpice\UserLib\OPA_2.lib"
+.lib "D:\Program Files\Orcad\PSpice\UserLib\MyLib.lib"
+.lib "nom.lib"
+
+.INC "SimmetrCM.net"
+
+
+
+**** INCLUDING SimmetrCM.net ****
+* Schematics Netlist *
+
+
+
+X_S1    AA1 0 $N_0001 $N_0002 SimmetrCM_S1 
+D_D1         $N_0002 $N_0001 Dbreak 
+X_S3    AA2 0 $N_0003 $N_0004 SimmetrCM_S3 
+V_V3         $N_0003 0 240
+D_D3         $N_0004 $N_0003 Dbreak 
+L_L1         $N_0002 $N_0004  12m  
+L_L2         $N_0005 $N_0006  0.75m  
+D_D7         $N_0006 $N_0007 Dbreak 
+D_D8         $N_0005 $N_0007 Dbreak 
+D_D6         0 $N_0005 Dbreak 
+D_D5         0 $N_0006 Dbreak 
+D_D4         I_sence $N_0004 Dbreak 
+X_S4    AA1 0 $N_0004 I_sence SimmetrCM_S4 
+D_D2         I_sence $N_0002 Dbreak 
+X_S2    AA2 0 $N_0002 I_sence SimmetrCM_S2 
+R_R2         $N_0008 I_sence  1k  
+C_C1         0 $N_0008  0.5n  
+C_C3         0 $N_0009  1u  
+C_C4         0 $N_0010  1n  
+R_R3         $N_0011 0  500k  
+V_V2         $N_0012 0 15
+C_C5         0 I_sence  500p  
+R_R6         $N_0014 $N_0013  50k  
+C_C6         $N_0015 $N_0013  100p  
+C_C7         $N_0015 $N_0014  1n  
+R_R7         $N_0016 $N_0015  5k  
+X_U1         $N_0015 $N_0009 $N_0013 $N_0011 $N_0010 I_sence $N_0017 $N_0008 0
++  AA1 0 $N_0012 AA2 $N_0012 $N_0009 SG1825 
++ PARAMS: PERIOD={1/20k} DEADTIME=5e-8
+C_C10         0 $N_0015  1n  
+Kn_K1         L_L1 L_L2     1
+C_C2         0 $N_0017  100p  
+R_R9         $N_0019 $N_0016  10k  
+C_C8         0 $N_0020  100u  
+L_L5         $N_0020 $N_0007  1m  
+R_R19         $N_0020 $N_0016  32k  
+C_C9         $N_0019 $N_0020  300p  
+R_R18         $N_0016 0  5.1k  
+R_R1         0 I_sence  600m  
+R_R8         $N_0021 0  3m  
+V_V1         $N_0001 0 240
+V_V8         $N_0020 $N_0021 {Vvar}
+
+.subckt SimmetrCM_S1 1 2 3 4  
+S_S1         3 4 1 2 _S1
+RS_S1         1 2 1G
+.MODEL         _S1 VSWITCH Roff=1e6 Ron=1m Voff=0.0V Von=1.0V
+.ends SimmetrCM_S1
+
+.subckt SimmetrCM_S3 1 2 3 4  
+S_S3         3 4 1 2 _S3
+RS_S3         1 2 1G
+.MODEL         _S3 VSWITCH Roff=1e6 Ron=1m Voff=0.0V Von=1.0V
+.ends SimmetrCM_S3
+
+.subckt SimmetrCM_S4 1 2 3 4  
+S_S4         3 4 1 2 _S4
+RS_S4         1 2 1G
+.MODEL         _S4 VSWITCH Roff=1e6 Ron=1m Voff=0.0V Von=1.0V
+.ends SimmetrCM_S4
+
+.subckt SimmetrCM_S2 1 2 3 4  
+S_S2         3 4 1 2 _S2
+RS_S2         1 2 1G
+.MODEL         _S2 VSWITCH Roff=1e6 Ron=1m Voff=0.0V Von=1.0V
+.ends SimmetrCM_S2
+
+**** RESUMING SimmetrCM.cir ****
+.PROBE D(*) 
+.probe I(R_R8) 
+.probe N($N_0008) 
+.probe N($N_0001) 
+.probe N($N_0020) 
+
+
+.END
+
