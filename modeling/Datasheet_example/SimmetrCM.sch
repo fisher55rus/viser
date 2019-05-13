@@ -1,5 +1,5 @@
-*version 9.2 546498560
-u 1987
+*version 9.2 2903319779
+u 1998
 U? 5
 V? 9
 D? 14
@@ -8,9 +8,9 @@ L? 9
 R? 27
 C? 13
 K? 3
-? 25
+? 26
 Q? 3
-GAIN? 2
+GAIN? 3
 PM? 2
 @libraries
 @analysis
@@ -42,11 +42,11 @@ connectViaLocalLabels 0
 NoStim4ExtIFPortsWarnings 1
 AutoGenStim4ExtIFPorts 1
 @index
-pageloc 1 0 20770 
+pageloc 1 0 21192 
 @status
-c 119:04:06:23:01:11;1557172871
-n 0 119:04:06:23:01:12;1557172872 e 
-s 2832 119:04:06:23:01:12;1557172872 e 
+c 119:04:12:16:28:50;1557667730
+n 0 119:04:12:16:28:51;1557667731 e 
+s 2832 119:04:12:16:28:51;1557667731 e 
 *page 1 0 1520 970 iB
 @ports
 port 46 GND_ANALOG 160 140 h
@@ -68,9 +68,9 @@ port 142 BUBBLE 780 190 v
 a 1 x 3 0 20 6 hcn 100 LABEL=AA1
 port 144 BUBBLE 780 210 v
 a 1 x 3 0 20 6 hcn 100 LABEL=AA2
-port 1969 BUBBLE 770 300 V
+port 1969 BUBBLE 880 40 V
 a 1 x 3 0 20 6 hcn 100 LABEL=AA1
-port 1970 BUBBLE 770 320 V
+port 1970 BUBBLE 880 60 V
 a 1 x 3 0 20 6 hcn 100 LABEL=AA2
 @parts
 part 42 S 170 130 h
@@ -179,11 +179,6 @@ a 0 s 0:13 0 0 0 hln 100 GATE=
 a 0 a 0:13 0 0 0 hln 100 PKGREF=R8
 a 0 ap 9 0 17 30 hln 100 REFDES=R8
 a 0 u 13 0 31 33 hln 100 VALUE=3m
-part 38 VDC 120 180 h
-a 1 u 13 0 37 26 hcn 100 DC=240
-a 0 sp 0 0 22 37 hln 100 PART=VDC
-a 0 a 0:13 0 0 0 hln 100 PKGREF=V1
-a 1 ap 9 0 28 17 hcn 100 REFDES=V1
 part 372 l 440 430 D
 a 0 s 0 0 0 10 hlb 100 PART=l
 a 0 s 0:13 0 0 0 hln 100 PKGTYPE=L2012C
@@ -226,11 +221,6 @@ a 0 s 0:13 0 0 0 hln 100 GATE=
 a 0 a 0:13 0 0 0 hln 100 PKGREF=C9
 a 0 ap 9 0 15 2 hln 100 REFDES=C9
 a 0 u 13 0 1 5 hln 100 VALUE=300p
-part 1855 VDC 690 420 h
-a 1 u 13 0 31 28 hcn 100 DC=25
-a 0 sp 0 0 22 37 hln 100 PART=VDC
-a 0 a 0:13 0 0 0 hln 100 PKGREF=V8
-a 1 ap 9 0 28 17 hcn 100 REFDES=V8
 part 242 R 580 280 u
 a 0 sp 0 0 0 10 hlb 100 PART=R
 a 0 s 0:13 0 0 0 hln 100 PKGTYPE=RC05
@@ -282,12 +272,6 @@ a 0 s 0:13 0 0 0 hln 100 PKGTYPE=RC05
 a 0 s 0:13 0 0 0 hln 100 GATE=
 a 0 a 0:13 0 0 0 hln 100 PKGREF=R26
 a 0 ap 9 0 25 26 hln 100 REFDES=R26
-part 1968 Q2N1420 690 310 H
-a 0 sp 11 0 25 40 hln 100 PART=Q2N1420
-a 0 s 0:13 0 0 0 hln 100 PKGTYPE=TO-5
-a 0 s 0:13 0 0 0 hln 100 GATE=
-a 0 a 0:13 0 0 0 hln 100 PKGREF=Q2
-a 0 ap 9 0 5 5 hln 100 REFDES=Q2
 part 37 SG1825 870 170 H
 a 0 sp 11 0 54 182 hlb 100 PART=SG1825
 a 0 s 0:13 0 0 0 hln 100 PKGTYPE=DIP16
@@ -295,11 +279,6 @@ a 0 s 0:13 0 0 0 hln 100 GATE=
 a 1 ap 9 0 58 8 hln 100 REFDES=U1
 a 0 a 0:13 0 0 0 hln 100 PKGREF=U1
 a 0 u 0 0 0 10 hln 100 PERIOD={1/20k}
-part 1967 NOR2 770 300 H
-a 0 sp 11 0 44 48 hln 100 PART=NOR2
-a 0 s 0:13 0 0 0 hln 100 PKGTYPE=
-a 0 a 0:13 0 0 0 hln 100 PKGREF=U4
-a 0 ap 9 0 40 0 hln 100 REFDES=U4
 part 309 R 1010 300 d
 a 0 sp 0 0 0 10 hlb 100 PART=R
 a 0 s 0:13 0 0 0 hln 100 PKGTYPE=RC05
@@ -346,13 +325,35 @@ part 131 VDC 460 160 h
 a 1 ap 9 0 28 11 hcn 100 REFDES=V3
 a 0 sp 0 0 22 37 hln 100 PART=VDC
 a 0 a 0:13 0 0 0 hln 100 PKGREF=V3
-a 1 u 13 0 33 24 hcn 100 DC=100
+a 1 u 13 0 33 24 hcn 100 DC=200
+part 38 VDC 120 180 h
+a 0 sp 0 0 22 37 hln 100 PART=VDC
+a 0 a 0:13 0 0 0 hln 100 PKGREF=V1
+a 1 ap 9 0 28 17 hcn 100 REFDES=V1
+a 1 u 13 0 37 26 hcn 100 DC=240
+part 1968 Q2N1420 690 310 H
+a 0 sp 11 0 25 40 hln 100 PART=Q2N1420
+a 0 s 0:13 0 0 0 hln 100 PKGTYPE=TO-5
+a 0 s 0:13 0 0 0 hln 100 GATE=
+a 0 a 0:13 0 0 0 hln 100 PKGREF=Q2
+a 0 ap 9 0 5 5 hln 100 REFDES=Q2
+part 1967 NOR2 880 40 H
+a 0 sp 11 0 44 48 hln 100 PART=NOR2
+a 0 s 0:13 0 0 0 hln 100 PKGTYPE=
+a 0 a 0:13 0 0 0 hln 100 PKGREF=U4
+a 0 ap 9 0 40 0 hln 100 REFDES=U4
+part 1855 VDC 690 420 h
+a 0 sp 0 0 22 37 hln 100 PART=VDC
+a 0 a 0:13 0 0 0 hln 100 PKGREF=V8
+a 1 ap 9 0 28 17 hcn 100 REFDES=V8
+a 1 u 13 0 31 28 hcn 100 DC=37.2
 part 1 titleblk 1520 970 h
 a 1 s 13 0 350 10 hcn 100 PAGESIZE=B
 a 1 s 13 0 180 60 hcn 100 PAGETITLE=
 a 1 s 13 0 340 95 hrn 100 PAGECOUNT=1
 a 1 s 13 0 300 95 hrn 100 PAGENO=1
 part 1865 iMarker 690 510 h
+a 0 s 0 0 0 0 hln 100 PROBEVAR=
 a 0 s 0 0 0 0 hln 100 PROBEVAR=
 a 0 s 0 0 0 0 hln 100 PROBEVAR=I(R8)
 a 0 s 0 0 0 0 hln 100 PROBEVAR=
@@ -361,8 +362,10 @@ part 1867 nodeMarker 120 180 h
 a 0 s 0 0 0 0 hln 100 PROBEVAR=
 a 0 s 0 0 0 0 hln 100 PROBEVAR=
 a 0 s 0 0 0 0 hln 100 PROBEVAR=
+a 0 s 0 0 0 0 hln 100 PROBEVAR=
 a 0 a 0 0 4 22 hlb 100 LABEL=20
 part 1872 iMarker 590 370 h
+a 0 s 0 0 0 0 hln 100 PROBEVAR=
 a 0 s 0 0 0 0 hln 100 PROBEVAR=
 a 0 s 0 0 0 0 hln 100 PROBEVAR=I(L2)
 a 0 a 0 0 6 20 hlb 100 LABEL=21
@@ -370,12 +373,17 @@ part 1864 nodeMarker 690 370 h
 a 0 s 0 0 0 0 hln 100 PROBEVAR=
 a 0 s 0 0 0 0 hln 100 PROBEVAR=
 a 0 s 0 0 0 0 hln 100 PROBEVAR=
+a 0 s 0 0 0 0 hln 100 PROBEVAR=
 a 0 a 0 0 4 22 hlb 100 LABEL=17
 part 1866 nodeMarker 600 280 h
+a 0 s 0 0 0 0 hln 100 PROBEVAR=
 a 0 s 0 0 0 0 hln 100 PROBEVAR=
 a 0 s 0 0 0 0 hln 100 PROBEVAR=I_sence
 a 0 s 0 0 0 0 hln 100 PROBEVAR=
 a 0 a 0 0 4 22 hlb 100 LABEL=19
+part 1991 nodeMarker 810 50 h
+a 0 s 0 0 0 0 hln 100 PROBEVAR=U4:O
+a 0 a 0 0 4 22 hlb 100 LABEL=25
 @conn
 w 49
 a 0 up 0:33 0 0 0 hln 100 V=
@@ -615,7 +623,11 @@ s 600 280 670 280 1973
 s 670 280 780 280 1981
 s 670 290 670 280 1971
 w 1986
-s 690 310 700 310 1980
+a 0 up 0:33 0 0 0 hln 100 V=
+s 700 310 690 310 1988
+s 700 50 700 310 1987
+s 810 50 700 50 1980
+a 0 up 33 0 730 49 hct 100 V=
 @junction
 j 410 130
 + p 58 1
@@ -986,12 +998,6 @@ j 600 300
 j 600 280
 + p 1866 pin1
 + w 1977
-j 290 350
-+ p 100 1
-+ s 106
-j 290 350
-+ p 100 1
-+ w 1500
 j 690 510
 + p 1865 pin1
 + p 417 1
@@ -1015,9 +1021,6 @@ j 290 260
 + w 1962
 j 250 260
 + w 1962
-+ w 1962
-j 290 310
-+ p 100 2
 + w 1962
 j 340 250
 + p 56 1
@@ -1055,12 +1058,6 @@ j 960 130
 j 1000 130
 + p 1965 1
 + w 1966
-j 770 300
-+ p 1967 I0
-+ s 1969
-j 770 320
-+ p 1967 I1
-+ s 1970
 j 780 280
 + p 37 ILIM
 + w 1977
@@ -1106,11 +1103,32 @@ j 670 330
 j 670 350
 + w 1500
 + w 1500
+j 290 350
++ p 100 1
++ s 106
+j 290 350
++ p 100 1
++ w 1500
+j 290 310
++ p 100 2
++ w 1962
 j 690 310
 + p 1968 b
 + w 1986
-j 700 310
+j 880 40
++ p 1967 I0
++ s 1969
+j 880 60
++ p 1967 I1
++ s 1970
+j 810 50
 + p 1967 O
++ p 1991 pin1
+j 810 50
++ p 1967 O
++ w 1986
+j 810 50
++ p 1991 pin1
 + w 1986
 @attributes
 a 0 s 0:13 0 0 0 hln 100 PAGETITLE=

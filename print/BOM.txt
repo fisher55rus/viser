@@ -1,0 +1,110 @@
+Bill of Materials
+D:\GIT\MAI\viser\modeling\fuuul\ful2.sch
+Sun May 12 22:45:20 2019
+
+
+Item    Count   Mfg ID          Attributes                      RefDes          
+
+1       10      1N4151          DO-35                           D3, D4, D7, D8, 
+                                                                D9, D10, D13,   
+                                                                D14, D17, D18   
+
+2       2       2N1420          TO-5                            Q1, Q2          
+
+3       4       2N3505          TO-18                           Q3, Q5, Q9, Q11 
+
+4       8       2N4014          TO-18                           Q4, Q6, Q7, Q8, 
+                                                                Q10, Q12, Q13,  
+                                                                Q14             
+
+5       4       c               CK05                            C9, C10, C13,   
+                                22n                             C14             
+
+6       1       c               CK05                            C3              
+                                0.5n                                            
+
+7       1       c               CK05                            C12             
+                                100u                                            
+
+8       3       c               CK05                            C2, C4, C6      
+                                1n                                              
+
+9       1       c               CK05                            C7              
+                                1u                                              
+
+10      1       c               CK05                            C5              
+                                500p                                            
+
+11      2       c               CK05                            C1, C8          
+                                100p                                            
+
+12      1       c               CK05                            C11             
+                                300p                                            
+
+13      4       IRF255          TO-204AE                        M1, M2, M3, M4  
+
+14      10      IRFF110         TO-205AF                        M6, M8, M9, M10,
+                                                                M11, M12, M13,  
+                                                                M14, M15, M16   
+
+15      2       IRFF9110        TO-205AF                        M5, M7          
+
+16      1       l               L2012C                          L3              
+                                12m                                             
+
+17      1       l               L2012C                          L2              
+                                1m                                              
+
+18      1       l               L2012C                          L1              
+                                0.75m                                           
+
+19      5       L               L2012C                          L4, L5, L6, L7, 
+                                10m                             L8              
+
+20      1       R               RC05                            R1              
+                                50k                                             
+
+21      1       R               RC05                            R2              
+                                4k                                              
+
+22      1       R               RC05                            R3              
+                                5k                                              
+
+23      14      R               RC05                            R4, R7, R8, R16,
+                                1k                              R25, R28, R29,  
+                                                                R31, R32, R38,  
+                                                                R39, R41, R42,  
+                                                                R43             
+
+24      1       R               RC05                            R5              
+                                620m                                            
+
+25      1       R               RC05                            R6              
+                                500k                                            
+
+26      6       R               RC05                            R9, R12, R13,   
+                                3k                              R18, R21, R22   
+
+27      5       R               RC05                            R10, R14, R19,  
+                                10k                             R23, R34        
+
+28      4       R               RC05                            R11, R17, R20,  
+                                470                             R26             
+
+29      2       R               RC05                            R15, R24        
+                                100                                             
+
+30      4       R               RC05                            R27, R30, R37,  
+                                22                              R40             
+
+31      1       R               RC05                            R33             
+                                5.1k                                            
+
+32      1       R               RC05                            R35             
+                                32k                                             
+
+33      1       R               RC05                            R36             
+                                3m                                              
+
+34      1       SG1825          DIP16                           U1              
+

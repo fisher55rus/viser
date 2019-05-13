@@ -25,8 +25,8 @@
  lib="d:\Program Files\Orcad\Capture\Library\PSpice\swit_reg.lib", offset=69108, size=66
  lib="d:\Program Files\Orcad\Capture\Library\PSpice\swit_reg.lib", offset=68266, size=843
  lib="d:\Program Files\Orcad\Capture\Library\PSpice\swit_reg.lib", offset=67418, size=849
- lib="d:\Program Files\Orcad\Capture\Library\PSpice\dig_io.lib", offset=13421, size=487
  lib="d:\Program Files\Orcad\Capture\Library\PSpice\dig_io.lib", offset=37184, size=255
+ lib="d:\Program Files\Orcad\Capture\Library\PSpice\dig_io.lib", offset=13421, size=487
  lib="d:\Program Files\Orcad\Capture\Library\PSpice\dig_io.lib", offset=13230, size=192
  lib="d:\Program Files\Orcad\Capture\Library\PSpice\swit_reg.lib", offset=78679, size=170
  lib="d:\Program Files\Orcad\Capture\Library\PSpice\dig_io.lib", offset=37698, size=399
